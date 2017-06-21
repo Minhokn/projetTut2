@@ -22,7 +22,7 @@ import application.model.Champ;
 import application.model.database;
 
 
-public class champController implements Initializable {
+public class champController {
 
     @FXML
     TableView<Champ> champsTableau;
@@ -39,8 +39,7 @@ public class champController implements Initializable {
     private ObservableList<Champ> champs = FXCollections.observableArrayList();
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         surface.setPrefWidth(100);
         surface.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSurf_ch()));
         adresse.setPrefWidth(100);
@@ -50,10 +49,7 @@ public class champController implements Initializable {
         type.setPrefWidth(100);
         type.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCult_ch()));
 
-        champs.addAll(new database().recupererChamps());
-
         refreshData();
-
     }
 
     public void editChamp() {
@@ -102,6 +98,7 @@ public class champController implements Initializable {
     }
 
     public void refreshData() {
+        champs.setAll(new database().recupererChamps());
         champsTableau.getItems().setAll(champs);
     }
 }

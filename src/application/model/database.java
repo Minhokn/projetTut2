@@ -172,7 +172,7 @@ public class database {
 
             ResultSet resultat = stat.executeQuery("SELECT * FROM vehicule");
             while (resultat.next()) {
-                mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Modèle"), String.valueOf(resultat.getInt("Etat")));
+                mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Modèle"), resultat.getInt("Etat"));
                 liste.add(mach);
             }
 
@@ -180,6 +180,35 @@ public class database {
             e.printStackTrace();
         }
         return liste;
+    }
+
+    public void editMachine(Machine m) {
+        if (m != null) {
+            try {
+                Statement stat = connexion.createStatement();
+                stat.executeUpdate("UPDATE vehicule SET marque='" + m.getMarque() + "', modèle='" + m.getModele() + "', etat='" + m.getEtat() + "' WHERE id_mach='" + m.getId() + "'");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void addMachine(String marque, String modele, int etat) {
+        try {
+            Statement stat = connexion.createStatement();
+            stat.executeUpdate("INSERT INTO vehicule(marque, modèle, etat) VALUES('" + marque + "', '" + modele + "', '" + etat + "')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMachine(int id_mach) {
+        try {
+            Statement stat = connexion.createStatement();
+            stat.executeUpdate("DELETE FROM vehicule WHERE id_mach='" + id_mach + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
