@@ -111,15 +111,23 @@ public class database {
         }
     }
 
-    public void addChamp(Champ c) {
+    public void addChamp(int id_cl, int surf_ch, String cdn_ch, String adr_ch, String cult_ch, int etat, String gps_ch) {
         try {
             Statement stat = connexion.createStatement();
-            stat.executeUpdate("INSERT INTO champs(id_cl, surf_ch, cdn_ch, adr_ch, cult_ch, etat) VALUES('" + c.getClient().getId() + "', '" + c.getSurf_ch() + "', '" + c.getCdn_ch() + "', '" + c.getAdr_ch() + "',  '" + c.getCult_ch() + "', '" + c.getEtat() + "', '" + c.getGPS_ch() + "')");
+            stat.executeUpdate("INSERT INTO champs(id_cl, surf_ch, cdn_ch, adr_ch, cult_ch, etat, GPS_Ch) VALUES('" + id_cl + "', '" + surf_ch + "', '" + cdn_ch + "', '" + adr_ch + "',  '" + cult_ch + "', '" + etat + "', '" + gps_ch + "')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void deleteChamp(int id_ch) {
+        try {
+            Statement stat = connexion.createStatement();
+            stat.executeUpdate("DELETE FROM Champs WHERE id_ch='" + id_ch + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public List<Champ> recupererChamps() {
 

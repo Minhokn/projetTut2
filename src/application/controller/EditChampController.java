@@ -48,6 +48,8 @@ public class EditChampController {
             champSelected.setCdn_ch(coordoneeCentreField.getText());
 
             new database().editChamp(champSelected);
+        } else {
+            new database().addChamp(clientField.getValue().getId(), Integer.parseInt(surfaceField.getText()), coordoneeCentreField.getText(), adresseField.getText(), typeField.getText(), etatField.getValue(), coordoneeGPSField.getText());
         }
 
         champController.refreshData();

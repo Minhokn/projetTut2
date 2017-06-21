@@ -67,7 +67,10 @@ public class champController implements Initializable {
     }
 
     public void deleteChamp() {
-
+        if (champsTableau.getSelectionModel().getSelectedItem() != null) {
+            new database().deleteChamp(champsTableau.getSelectionModel().getSelectedItem().getId_ch());
+            refreshData();
+        }
     }
 
     public void newFenetre(Champ champ) {
