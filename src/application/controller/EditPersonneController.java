@@ -30,7 +30,6 @@ public class EditPersonneController {
     private List<Client> listClients;
 
     public void initialize() {
-
         typeField.getItems().setAll("Agriculteur", "Coop");
 
     }
