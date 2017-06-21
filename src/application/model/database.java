@@ -63,7 +63,7 @@ public class database {
 
     }
 
-    public void addClient(int nom, int prenom, String tel, String adr, int type) {
+    public void addClient(String nom, String prenom, String tel, String adr, int type) {
         try {
             Statement stat = connexion.createStatement();
             if(type == 0)

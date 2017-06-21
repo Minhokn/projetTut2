@@ -53,6 +53,7 @@ public class personneController implements Initializable {
 			telLabel.setText(client.getTelephone());
 			typeLabel.setText(client.getTypeCl());
 		});
+
 		refreshData();
 	}
 
@@ -73,7 +74,6 @@ public class personneController implements Initializable {
 			refreshData();
 		}
 	}
-
 
 
 	public void newFenetre(Client client) {
@@ -101,7 +101,6 @@ public class personneController implements Initializable {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
 	}
 
 	public void refreshData() {

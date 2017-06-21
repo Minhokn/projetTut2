@@ -21,23 +21,18 @@ public class EditPersonneController {
     @FXML private TextField telField;
     @FXML private TextField adresseField;
     @FXML private TextField typeField;
-    @FXML private ComboBox<Client> clientField;
 
     private Client clientSelected;
-    private personneController clientController;
-
+    private personneController personneController;
 
     private List<Client> listClients;
 
     public void initialize() {
-        listClients = new database().recupererClients();
-        clientField.getItems().setAll(listClients);
-        clientField.setValue(clientField.getItems().get(0));
+
     }
 
     public void handleOk() {
         if(clientSelected != null) {
-            clientSelected.setId (clientField.getValue().getId());
             clientSelected.setPrenom(prenomField.getText());
             clientSelected.setNom(nomField.getText());
             clientSelected.setTelephone(telField.getText());
@@ -45,23 +40,20 @@ public class EditPersonneController {
             clientSelected.setTypeCl(typeField.getText());
             new database().editClient(clientSelected);
         } else {
-            new database().addClient( clientField.getValue().getId(), prenomField.getText(), nomField.getText(), Integer.parseInt(telField.getText()), adresseField.getText(), typeField.getText());
-
+            new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), Integer.parseInt(typeField.getText()));
         }
 
         personneController.refreshData();
 
         ((Stage) vbox.getScene().getWindow()).close();
-
     }
 
 
     public void handleCancel() {
-
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
-    public void setMachineSelected(Client client) {
+    public void setClientSelected(Client client) {
         this.clientSelected = client;
 
         prenomField.setText(client.getPrenom());
@@ -75,6 +67,4 @@ public class EditPersonneController {
         this.personneController = personneController;
     }
 
-
-    public void setClientSelected(Client client){}
 }
