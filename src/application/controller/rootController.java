@@ -30,14 +30,14 @@ public class rootController implements Initializable {
 		/*
 		 * Charger la page d'accuil
 		 */
-		loadFXML("maps.fxml", null);
+		loadFXML("maps.fxml");
 		
 		
 		accueil.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("maps.fxml", arg0);	
+				loadFXML("maps.fxml");
 			}
 			
 			
@@ -47,7 +47,7 @@ public class rootController implements Initializable {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("passerCommande.fxml", arg0);	
+				loadFXML("passerCommande.fxml");
 			}	
 		});
 		
@@ -55,7 +55,7 @@ public class rootController implements Initializable {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("champVue.fxml", arg0);	
+				loadFXML("champVue.fxml");
 			}
 			
 			
@@ -66,17 +66,17 @@ public class rootController implements Initializable {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("personneVue.fxml", arg0);	
+				loadFXML("personneVue.fxml");
 			}
-			
-			
-			
+
+
+
 		});
 		machines.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("machineVue.fxml", arg0);	
+				loadFXML("machineVue.fxml");
 			}
 			
 			
@@ -86,7 +86,7 @@ public class rootController implements Initializable {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				loadFXML("statistiqueVue.fxml", arg0);	
+				loadFXML("statistiqueVue.fxml");
 			}	
 		});
 		
@@ -96,7 +96,7 @@ public class rootController implements Initializable {
 	}
 	
 	
-	public void loadFXML(String file, ActionEvent event) {
+	public void loadFXML(String file) {
 		Parent contenu;
 		try {
 			contenu = FXMLLoader.load(getClass().getResource("/application/view/"+file));
