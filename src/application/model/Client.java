@@ -80,11 +80,11 @@ public class Client {
 	}
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", adresse=" + adresse + ", telephone=" + telephone + ", typeCl=" + typeCl
-				+ ", nom=" + nom + ", prenom=" + prenom + "]";
+		return nom + " " +prenom ;
 	}
 	
 	
 	
+
 
 }
