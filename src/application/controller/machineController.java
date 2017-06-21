@@ -63,7 +63,6 @@ public class machineController {
 		}
 	}
 	
-	
 	public void newFenetre(Machine machine) {
 		Stage primaryStage = new Stage();
 		try {

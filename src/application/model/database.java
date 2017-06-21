@@ -63,8 +63,20 @@ public class database {
 
     }
 
+    public void addClient(int nom, int prenom, String tel, String adr, int type) {
+        try {
+            Statement stat = connexion.createStatement();
+            if(type == 0)
+                stat.executeUpdate("INSERT INTO agriculteur(nom_cl, prénom_cl, tel_cl, adr_cl) VALUES('" + nom + "', '" + prenom + "', '" + tel + "', '" + adr + "')");
+            else
+                stat.executeUpdate("INSERT INTO coop(nom_co, adr_co, tel_co) VALUES('" + nom + "', '" + tel + "', '" + adr + "')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void editClient(Client c) {
-        if (c.getTypeCl().equals("Agriculteur")) {
+        if (!c.getTypeCl().equals("Agriculteur")) {
             try {
                 Statement stat = connexion.createStatement();
                 stat.executeUpdate("UPDATE coop SET Nom_Co='" + c.getNom() + "',Adr_Co='" + c.getAdresse() + "',Tel_Co='" + c.getTelephone() + "' WHERE ID_Co='" + c.getId() + "' ");
@@ -82,22 +94,21 @@ public class database {
     }
 
     public void deleteClient(Client c) {
-        if (c.getTypeCl().equals("Agriculteur")) {
+        if (!c.getTypeCl().equals("Agriculteur")) {
             try {
                 Statement stat = connexion.createStatement();
-                stat.executeUpdate("DELETE FROM coop WHERE WHERE ID_Co='" + c.getId() + "' ");
+                stat.executeUpdate("DELETE FROM coop WHERE WHERE ID_Co='" + c.getId() + "'");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 Statement stat2 = connexion.createStatement();
-                stat2.executeUpdate("DELETE FROM client WHERE ID_CL='" + c.getId() + "' ");
+                stat2.executeUpdate("DELETE FROM client WHERE ID_CL='" + c.getId() + "'");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
     }
 
     public void editChamp(Champ c) {
@@ -130,12 +141,20 @@ public class database {
     }
 
     public List<Champ> recupererChamps() {
+        return recupererChampsClient(-1);
+
+    }
+
+    public List<Champ> recupererChampsClient(int id_cl) {
 
         List<Champ> liste = new ArrayList<>();
         try {
             Statement stat = connexion.createStatement();
+            String request = "SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_cl";
+            if(id_cl >= 0)
+                request += " WHERE id_cl='" + id_cl + "'";
 
-            ResultSet resultat = stat.executeQuery("SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_cl");
+            ResultSet resultat = stat.executeQuery(request);
             while (resultat.next()) {
                 liste.add(new Champ(
                         resultat.getInt("ID_Ch"),
