@@ -56,11 +56,11 @@ public class personneController implements Initializable {
 	}
 	public void editClient(ActionEvent e) {
 		Client client = (Client) personTable.getSelectionModel().getSelectedItem();
-		newFenetre(e, "EditerPersonne.fxml", client);
+		newFenetre(e, "editerPersonne.fxml", client);
 		
 	}
 	public void addClient(ActionEvent e) {
-		newFenetre(e, "EditerPersonne.fxml");
+		newFenetre(e, "editerPersonne.fxml");
 	}
 	
 	
@@ -69,7 +69,7 @@ public class personneController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerPersonne.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 
@@ -90,7 +90,7 @@ public class personneController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerPersonne.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 

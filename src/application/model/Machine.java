@@ -7,16 +7,17 @@ public class Machine {
 	private String marque = "";
 	private String modele = "";
 	private String etat = "";
-
+	private String type = "";
 	
 
-	public Machine(int id_Mach, String marque, String modele, String etat) {
+	public Machine(int id_Mach, String marque, String modele, String etat,String type) {
 
 		super();
 		this.id_Mach = id_Mach;
 		this.marque = marque;
 		this.modele = modele;
 		this.etat = etat;
+		this.type=type;
 	}
 
 
@@ -58,6 +59,16 @@ public class Machine {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
+	public void setType(String etat) {
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+
 
 
 
