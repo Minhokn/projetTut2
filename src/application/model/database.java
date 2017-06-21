@@ -106,16 +106,28 @@ public class database {
 	
 public List<Champ> recupererChamps() {
 		
-		List<Champ> liste = new ArrayList<Champ>();
-		Champ ch = null;
-
+		List<Champ> liste = new ArrayList<>();
 		try {
 			Statement stat = connexion.createStatement();
 
-			ResultSet resultat = stat.executeQuery("SELECT * FROM champs");
+			ResultSet resultat = stat.executeQuery("SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_ch");
 			while(resultat.next()) {
-				ch = new Champ(resultat.getInt("ID_Ch"), resultat.getInt("ID_Cl"), resultat.getInt("Surf_ch"), resultat.getString("Cdn_Ch"), resultat.getString("Adr_Ch"),resultat.getString("Cult_Ch"),resultat.getInt("Etat"),resultat.getString("GPS_Ch"));
-				liste.add(ch);
+				liste.add(new Champ(
+				        resultat.getInt("ID_Ch"),
+                        new Client(
+                                resultat.getInt("ID_Cl"),
+                                resultat.getString("Nom_Cl"),
+                                resultat.getString("Prénom_Cl"),
+                                resultat.getString("Tel_Cl"),
+                                resultat.getString("Adr_Cl")
+                                ),
+                        resultat.getInt("Surf_ch"),
+                        resultat.getString("Cdn_Ch"),
+                        resultat.getString("Adr_Ch"),
+                        resultat.getString("Cult_Ch"),
+                        resultat.getInt("Etat"),
+                        resultat.getString("GPS_Ch")
+                ));
 			}
 					
 		} catch (SQLException e) {

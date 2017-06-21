@@ -3,21 +3,21 @@ package application.model;
 
 public class Champ {
 	
-	private int id_ch=0;
-	private int surf_ch=0;
-	private String cdn_ch = "";
-	private String adr_ch = "";
-	private int id_cl= 0;
-	private String cult_ch = "";
-	private int etat=0;
-	private String GPS_ch = "";
+	private int id_ch;
+	private int surf_ch;
+	private String cdn_ch;
+	private String adr_ch;
+	private Client client;
+	private String cult_ch;
+	private int etat;
+	private String GPS_ch;
 
 
 
-	public Champ(int id_ch, int id_cl, int surf_ch, String cdn_ch, String adr_ch, String cult_ch, int etat, String GPS_ch) {
+	public Champ(int id_ch, Client client, int surf_ch, String cdn_ch, String adr_ch, String cult_ch, int etat, String GPS_ch) {
 		super();
 		this.id_ch = id_ch;
-		this.id_cl = id_cl;
+		this.client = client;
 		this.surf_ch = surf_ch;
 		this.cdn_ch = cdn_ch;
 		this.adr_ch = adr_ch;
@@ -76,14 +76,14 @@ public class Champ {
 
 
 
-	public int getId_cl() {
-		return id_cl;
+	public Client getClient() {
+		return client;
 	}
 
 
 
-	public void setId_cl(int id_cl) {
-		this.id_cl = id_cl;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 
@@ -127,7 +127,7 @@ public class Champ {
 	@Override
 	public String toString() {
 		return "Champ [id_ch=" + id_ch + ", surf_ch=" + surf_ch + ", cdn_ch=" + cdn_ch + ", adr_ch=" + adr_ch
-				+ ", id_cl=" + id_cl + ", cult_ch=" + cult_ch + ", etat=" + etat + ", GPS_ch=" + GPS_ch + "]";
+				+ ", client=" + client + ", cult_ch=" + cult_ch + ", etat=" + etat + ", GPS_ch=" + GPS_ch + "]";
 	}
 
 
