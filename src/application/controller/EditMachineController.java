@@ -18,18 +18,11 @@ public class EditMachineController {
     @FXML private VBox vbox;
     @FXML private TextField marqueField;
     @FXML private TextField modeleField;
-    @FXML private TextField typeField;
     @FXML private TextField etatField;
-    @FXML private ComboBox<Machine> machineField;
 
     private Machine machineSelected;
 
-    private List<Machine> listMachine;
-
     public void initialize() {
-        listMachine = new database().recupererMachine();
-        machineField.getItems().setAll(listMachine);
-        machineField.setValue(machineField.getItems().get(0));
     }
 
     public void handleOk() {
@@ -37,6 +30,7 @@ public class EditMachineController {
 
 
     public void handleCancel() {
+
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
@@ -45,20 +39,6 @@ public class EditMachineController {
 
         marqueField.setText(machine.getMarque());
         modeleField.setText(machine.getModele());
-        typeField.setText(machine.getType());
         etatField.setText(machine.getEtat());
-
-/*
-        for(Client client : listClients)
-            if(client.equals(champ.getClient()))
-                listClients.remove(client);
-
-        clientField.setValue(champ.getClient());
-        /*
-        for(Machine machine : listMachine)
-            if(machine.equals(machine.getMachine()))
-                listMachine.remove(machine);
-
-        machineField.setValue(machine.getMachine());*/
     }
 }

@@ -50,7 +50,6 @@ public class machineController implements Initializable {
 
 		machines.setAll(new database().recupererMachine());
 		machineTableau.getItems().setAll(machines);
-
 	
 	}
 	public void editMachine(ActionEvent e) {

@@ -10,16 +10,16 @@ import java.util.List;
 
 public class database {
 	
-	private static String url = "jdbc:mysql://127.0.0.1/eta?autoReconnect=true&useSSL=false";
-	private static String user = "root";
-	private static String passwd = "";
+	private final static String url = "jdbc:mysql://127.0.0.1/eta?autoReconnect=true&useSSL=false";
+	private final static String user = "root";
+	private final static String passwd = "";
 	private static Connection connexion;
 	
 	public database() {
 		super();
-		getConnexion();
+        defineConnexion();
 	}
-	public static Connection getConnexion() {
+	private static void defineConnexion() {
 		if (connexion == null) {
 			try {
 				connexion = DriverManager.getConnection(url, user, passwd);
@@ -30,8 +30,6 @@ public class database {
 				System.exit(0);
 			}
 		}
-		
-		return connexion;
 	}
 	
 	
@@ -65,7 +63,7 @@ public class database {
 	}
 	
 	public void editClient(Client c) {
-		if(c.getTypeCl() != "Agriculteur") {
+		if(c.getTypeCl().equals("Agriculteur")) {
 			try {
 				Statement stat = connexion.createStatement();
 				stat.executeUpdate("UPDATE coop SET Nom_Co='"+c.getNom()+"',Adr_Co='"+c.getAdresse()+"',Tel_Co='"+c.getTelephone()+"' WHERE ID_Co='"+c.getId()+"' ");
@@ -84,7 +82,7 @@ public class database {
 	
 	public void deleteClient(Client c)
 	{
-		if(c.getTypeCl()!="Agriculteur") {
+		if(c.getTypeCl().equals("Agriculteur")) {
 			try {
 				Statement stat = connexion.createStatement();
 				stat.executeUpdate("DELETE FROM coop WHERE WHERE ID_Co='"+c.getId()+"' ");
@@ -148,15 +146,15 @@ public List<Champ> recupererChamps() {
 		
 	}
 public List<Machine> recupererMachine() {
-	List<Machine> liste = new ArrayList<Machine>();
-	Machine mach = null;
+	List<Machine> liste = new ArrayList<>();
+	Machine mach;
 
 	try {
 		Statement stat = connexion.createStatement();
 
 		ResultSet resultat = stat.executeQuery("SELECT * FROM vehicule");
 		while(resultat.next()) {
-			mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Mod�le"), String.valueOf( resultat.getInt("Etat")    )   );
+			mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Modele"), String.valueOf( resultat.getInt("Etat")));
 			liste.add(mach);
 		}
 				

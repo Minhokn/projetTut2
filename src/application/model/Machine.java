@@ -3,21 +3,19 @@ package application.model;
 
 public class Machine {
 	
-	private int id_Mach = 0;
-	private String marque = "";
-	private String modele = "";
-	private String etat = "";
-	private String type = "";
+	private int id_Mach;
+	private String marque;
+	private String modele;
+	private String etat;
 	
 
-	public Machine(int id_Mach, String marque, String modele, String etat,String type) {
+	public Machine(int id_Mach, String marque, String modele, String etat) {
 
 		super();
 		this.id_Mach = id_Mach;
 		this.marque = marque;
 		this.modele = modele;
 		this.etat = etat;
-		this.type=type;
 	}
 
 
@@ -60,24 +58,8 @@ public class Machine {
 		this.etat = etat;
 	}
 
-	public void setType(String etat) {
-		this.type = type;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "Machine [id_Mach=" + id_Mach + ", marque=" + marque + ", modele=" + modele + ", etat=" + etat + "]";	}
-	
-	
-	
 
 }
