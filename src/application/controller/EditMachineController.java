@@ -48,7 +48,7 @@ public class EditMachineController {
         typeField.setText(machine.getType());
         etatField.setText(machine.getEtat());
 
-
+/*
         for(Client client : listClients)
             if(client.equals(champ.getClient()))
                 listClients.remove(client);
