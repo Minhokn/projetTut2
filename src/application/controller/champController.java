@@ -5,6 +5,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,10 +29,10 @@ public class champController implements Initializable {
 	
 	@FXML TableView<Champ> champsTableau;
 	
-	private TableColumn<Champ, String> surface;
-	private TableColumn<Champ, String> adresse;
-	private TableColumn<Champ, String> coordoneeGPS;
-	private TableColumn<Champ, String> type;
+	@FXML private TableColumn<Champ, Integer> surface;
+	@FXML private TableColumn<Champ, String> adresse;
+	@FXML private TableColumn<Champ, String> coordoneeGPS;
+	@FXML private TableColumn<Champ, String> type;
 	
 	private ObservableList<Champ> champs = FXCollections.observableArrayList();
 	
@@ -37,18 +40,17 @@ public class champController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		surface.setPrefWidth(100);
-		surface.setCellValueFactory(new PropertyValueFactory<Champ,String>("surf_ch"));
+		surface.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSurf_ch()));
 		adresse.setPrefWidth(100);
-		adresse.setCellValueFactory(new PropertyValueFactory<Champ,String>("adr_ch"));
+		adresse.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAdr_ch()));
 		coordoneeGPS.setPrefWidth(100);
-		coordoneeGPS.setCellValueFactory(new PropertyValueFactory<Champ,String>("GPS_ch"));
+		coordoneeGPS.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGPS_ch()));
 		type.setPrefWidth(100);
-		type.setCellValueFactory(new PropertyValueFactory<Champ,String>("cult_ch"));
+		type.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCult_ch()));
 
 		champs.addAll(new database().recupererChamps());
 		
 		champsTableau.getItems().setAll(champs);
-		champsTableau.getColumns().addAll(surface, adresse,coordoneeGPS,type);
 		
 	}
 	
