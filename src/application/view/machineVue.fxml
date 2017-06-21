@@ -5,39 +5,24 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane prefHeight="547.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.machineController">
-   <children>
-      <Pane prefHeight="547.0" prefWidth="841.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="839.0">
-               <children>
-                  <TableView fx:id="machineTableau" prefHeight="547.0" prefWidth="841.0">
-                     <columns>
-                        <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque" />
-                        <TableColumn fx:id="modeleColonne" prefWidth="252.0" text="Modele" />
-                        <TableColumn fx:id="etatColonne" prefWidth="328.0" text="Etat" />
-                     </columns></TableView>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <ButtonBar layoutX="-1.0" layoutY="466.0" prefHeight="84.0" prefWidth="841.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" text="Nouveau" />
-                        <Button mnemonicParsing="false" text="Modifier" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
-                    </buttons>
-                     <padding>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </padding>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-         </children>
-      </Pane>
-   </children>
-</BorderPane>
+<VBox prefHeight="547.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.machineController">
+    <TableView fx:id="machineTableau" prefHeight="547.0" prefWidth="841.0">
+        <columns>
+            <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque"/>
+            <TableColumn fx:id="modeleColonne" prefWidth="252.0" text="Modele"/>
+            <TableColumn fx:id="etatColonne" prefWidth="328.0" text="Etat"/>
+        </columns>
+    </TableView>
+    <ButtonBar layoutX="-1.0" layoutY="466.0" prefHeight="84.0" prefWidth="841.0">
+        <buttons>
+            <Button onAction="#addMachine" text="Nouveau"/>
+            <Button onAction="#editMachine" text="Modifier"/>
+            <Button onAction="#deleteMachine" text="Supprimer"/>
+        </buttons>
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        </padding>
+    </ButtonBar>
+</VBox>

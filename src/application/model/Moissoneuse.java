@@ -12,7 +12,7 @@ public class Moissoneuse extends Machine {
 	private int capaciteReserve = 0;
 
 	
-	public Moissoneuse(int id, String marque, String modele, String etat, int consoR, int consoF, int tremie,
+	public Moissoneuse(int id, String marque, String modele, int etat, int consoR, int consoF, int tremie,
 			int lgCoupe, int lgRoute, int hauteur, int poids, int capaciteReserve) {
 		super(id, marque, modele, etat);
 		

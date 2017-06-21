@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,42 +22,46 @@ import javafx.stage.Stage;
 import application.model.Machine;
 import application.model.database;
 
-public class machineController implements Initializable {
+public class machineController {
 
 	@FXML
-	TableView<Machine> machineTableau;
+	private TableView<Machine> machineTableau;
 
 	@FXML
 	private TableColumn<Machine, String> marqueColonne;
 	@FXML
 	private TableColumn<Machine, String> modeleColonne;
 	@FXML
-	private TableColumn<Machine, String> etatColonne;
+	private TableColumn<Machine, Integer> etatColonne;
 
 	private ObservableList<Machine> machineList = FXCollections.observableArrayList();
 
-
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize() {
 		marqueColonne.setPrefWidth(100);
 		marqueColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
 		modeleColonne.setPrefWidth(100);
 		modeleColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModele()));
 		etatColonne.setPrefWidth(100);
-		etatColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
+		etatColonne.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEtat()));
 
-		machineList.setAll(new database().recupererMachine());
-		machineTableau.getItems().setAll(machineList);
+		refreshData();
 	
 	}
-	public void editMachine(ActionEvent e) {
-
+	public void editMachine() {
 		if (machineTableau.getSelectionModel().getSelectedItem() != null) {
 			newFenetre(machineTableau.getSelectionModel().getSelectedItem());
 		}
 	}
-	public void addMachine(ActionEvent e) {newFenetre(null);}
+	public void addMachine() {
+		newFenetre(null);
+	}
+
+	public void deleteMachine() {
+		if (machineTableau.getSelectionModel().getSelectedItem() != null) {
+			new database().deleteMachine(machineTableau.getSelectionModel().getSelectedItem().getId());
+			refreshData();
+		}
+	}
 	
 	
 	public void newFenetre(Machine machine) {
@@ -63,29 +69,28 @@ public class machineController implements Initializable {
 		try {
 
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/view/editerChamps.fxml"));
+			loader.setLocation(getClass().getResource("/application/view/editerMachine.fxml"));
 			Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 
 			EditMachineController controller = loader.getController();
-			if(machine == null) {
-
-			} else {
+			controller.setMachineController(this);
+			if(machine != null) {
 				controller.setMachineSelected(machine);
 			}
-
 
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
-
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+	}
 
-
-
+	public void refreshData() {
+		machineList.setAll(new database().recupererMachine());
+		machineTableau.getItems().setAll(machineList);
 	}
 
 }

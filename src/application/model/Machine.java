@@ -6,10 +6,10 @@ public class Machine {
 	private int id_Mach;
 	private String marque;
 	private String modele;
-	private String etat;
+	private int etat;
 	
 
-	public Machine(int id_Mach, String marque, String modele, String etat) {
+	public Machine(int id_Mach, String marque, String modele, int etat) {
 
 		super();
 		this.id_Mach = id_Mach;
@@ -49,12 +49,12 @@ public class Machine {
 	}
 
 
-	public String getEtat() {
+	public int getEtat() {
 		return etat;
 	}
 
 
-	public void setEtat(String etat) {
+	public void setEtat(int etat) {
 		this.etat = etat;
 	}
 
