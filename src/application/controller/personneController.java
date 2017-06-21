@@ -2,7 +2,6 @@ package application.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -23,15 +22,16 @@ import application.model.Client;
 import application.model.database;
 
 public class personneController implements Initializable {
-	@FXML Label prenomLabel;
-	@FXML Label nomLabel;
-	@FXML Label addrLabel;
-	@FXML Label telLabel;
-	@FXML Label typeLabel;
-	@FXML TableView personTable;
+	@FXML private Label prenomLabel;
+	@FXML private Label nomLabel;
+	@FXML private Label addrLabel;
+	@FXML private Label telLabel;
+	@FXML private Label typeLabel;
+	@FXML private TableView<Client> personTable;
 
 	@FXML private TableColumn<Client, String> nomColonne;
 	@FXML private TableColumn<Client, String> prenomColonne;
+
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 	
 	@Override
@@ -44,69 +44,68 @@ public class personneController implements Initializable {
 		clients.addAll(new database().recupererClients());
 		personTable.getItems().setAll(clients);
 
-
 		personTable.setOnMouseClicked(e -> {
-			Client client = (Client) personTable.getSelectionModel().getSelectedItem();
+			Client client = personTable.getSelectionModel().getSelectedItem();
 			nomLabel.setText(client.getNom());
 			prenomLabel.setText(client.getPrenom());
 			addrLabel.setText(client.getAdresse());
 			telLabel.setText(client.getTelephone());
 			typeLabel.setText(client.getTypeCl());
 		});
+
+		refreshData();
 	}
-	public void editClient(ActionEvent e) {
-		Client client = (Client) personTable.getSelectionModel().getSelectedItem();
-		newFenetre(e, "editerPersonne.fxml", client);
-		
+
+
+	public void editClient() {
+		if (personTable.getSelectionModel().getSelectedItem() != null) {
+			newFenetre(personTable.getSelectionModel().getSelectedItem());
+		}
 	}
-	public void addClient(ActionEvent e) {
-		newFenetre(e, "editerPersonne.fxml");
+
+	public void addClient() {
+		newFenetre(null);
 	}
-	
-	
-	public void newFenetre(ActionEvent e, String layout) {
+
+	public void deleteClient() {
+		if (personTable.getSelectionModel().getSelectedItem() != null) {
+			new database().deleteClient(personTable.getSelectionModel().getSelectedItem());
+			refreshData();
+		}
+	}
+
+
+	public void newFenetre(Client client) {
+
 		Stage primaryStage = new Stage();
 		try {
-			
+
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
-            Parent root = loader.load();
+			loader.setLocation(getClass().getResource("/application/view/editerPersonne.fxml"));
+			Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 
-			
-			editController controller = loader.getController();
+			EditPersonneController controller = loader.getController();
+
+			controller.setClientController(this);
+			if(client != null) {
+				controller.setClientSelected(client);
+			}
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
-			
+
+
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 	}
-	public void newFenetre(ActionEvent e, String layout, Client client) {
-		
-		Stage primaryStage = new Stage();
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
-            Parent root = loader.load();
-			primaryStage.setTitle("Edit Person");
 
-			
-			editController controller = loader.getController();
-            controller.setClient(client);
-			
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
+	public void refreshData() {
+
+        clients.setAll(new database().recupererClients());
+        personTable.getItems().setAll(clients);
 	}
 
 }

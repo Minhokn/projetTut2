@@ -3,14 +3,14 @@ package application.model;
 
 public class Client {
 	
-	private Integer id;
+	private int id;
 	private String adresse;
 	private String telephone;
 	private String typeCl;
 	private String nom;
 	private String prenom = null;
 
-	public Client(Integer id, String nom, String prenom, String adresse, String telephone) {
+	public Client(int id, String nom, String prenom, String adresse, String telephone) {
 		super();
 		this.id = id;
 		this.adresse = adresse;
@@ -20,7 +20,7 @@ public class Client {
 		this.typeCl = "Agriculteur";
 	}
 
-	public Client(Integer id, String nom, String adresse, String telephone) {
+	public Client(int id, String nom, String adresse, String telephone) {
 		super();
 		this.id = id;
 		this.adresse = adresse;
@@ -75,9 +75,7 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	@Override
 	public String toString() {
 		return nom + " " +prenom ;
