@@ -14,11 +14,11 @@ import application.model.database;
 public class statistiqueController implements Initializable {
 	
 		@FXML
-		Label duréeMoisson;
+		Label durÃ©eMoisson;
 		@FXML
 		Label distanceKM;
 		@FXML
-		Label tonneRecoltées;
+		Label tonneRecoltÃ©es;
 		@FXML
 		Label tonnesParHectar;
 		@FXML
@@ -36,16 +36,16 @@ public class statistiqueController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		setDuréeMoisson(database.nbrDuréeMoisson());
+		setDurÃ©eMoisson(database.nbrDurÃ©eMoisson());
 		setDistanceKM(database.nbrDistanceKM());
-		setTonneRecoltées(database.nbrTonneRecoltées());
+		setTonneRecoltÃ©es(database.nbrTonneRecoltÃ©es());
 		setTonnesParHectar(database.nbrTonnesParHectar());
 		
 	}
 	
-	public void setDuréeMoisson(double nbr){
-		duréeMoisson.setText("" + nbr);
-		duréeMoisson.setLayoutX(cercle1.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
+	public void setDurÃ©eMoisson(double nbr){
+		durÃ©eMoisson.setText("" + nbr);
+		durÃ©eMoisson.setLayoutX(cercle1.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
 	
 	public void setDistanceKM(double nbr){
@@ -53,10 +53,10 @@ public class statistiqueController implements Initializable {
 		distanceKM.setLayoutX(cercle2.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
 
-	public void setTonneRecoltées(double nbr){
+	public void setTonneRecoltÃ©es(double nbr){
 		nbr = 225;
-		tonneRecoltées.setText("" + nbr);
-		tonneRecoltées.setLayoutX(cercle3.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
+		tonneRecoltÃ©es.setText("" + nbr);
+		tonneRecoltÃ©es.setLayoutX(cercle3.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
 
 	public void setTonnesParHectar(double nbr){

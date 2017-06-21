@@ -25,7 +25,7 @@ public class database {
 				connexion = DriverManager.getConnection(url, user, passwd);
 
 			} catch (SQLException e) {
-				System.out.println("Pas de connexion à la base donnée ");
+				System.out.println("Pas de connexion Ã  la base donnÃ©e ");
 				System.out.println(e);
 				System.exit(0);
 			}
@@ -46,7 +46,7 @@ public class database {
 
 			ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur");
 			while(resultat.next()) {
-				agr = new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prénom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl"));
+				agr = new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prï¿½nom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl"));
 				liste.add(agr);
 			}
 			resultat = stat2.executeQuery("SELECT * FROM coop");
@@ -75,7 +75,7 @@ public class database {
 		}else {
 			try {
 				Statement stat2 = connexion.createStatement();
-				stat2.executeUpdate("UPDATE client SET Nom_Cl='"+c.getNom()+"',Prénom_Cl='"+c.getPrenom()+"',Adr_Cl='"+c.getAdresse()+"',Tel_Cl='"+c.getTelephone()+"' WHERE ID_CL='"+c.getId()+"' ");
+				stat2.executeUpdate("UPDATE client SET Nom_Cl='"+c.getNom()+"',Prï¿½nom_Cl='"+c.getPrenom()+"',Adr_Cl='"+c.getAdresse()+"',Tel_Cl='"+c.getTelephone()+"' WHERE ID_CL='"+c.getId()+"' ");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -134,7 +134,7 @@ public List<Machine> recupererMachine() {
 
 		ResultSet resultat = stat.executeQuery("SELECT * FROM vehicule");
 		while(resultat.next()) {
-			mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Modèle"), String.valueOf( resultat.getInt("Etat")    )   );
+			mach = new Machine(resultat.getInt("ID_Mach"), resultat.getString("Marque"), resultat.getString("Modï¿½le"), String.valueOf( resultat.getInt("Etat")    )   );
 			liste.add(mach);
 		}
 				
@@ -146,7 +146,7 @@ public List<Machine> recupererMachine() {
 
 
 
-public static double nbrDuréeMoisson() {
+public static double nbrDurÃ©eMoisson() {
 	// TODO Auto-generated method stub
 	return 8.74;
 }
@@ -156,7 +156,7 @@ public static double nbrDistanceKM() {
 	return 2.8;
 }
 
-public static double nbrTonneRecoltées() {
+public static double nbrTonneRecoltÃ©es() {
 	// TODO Auto-generated method stub
 	return 15.4;
 }

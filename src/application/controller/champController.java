@@ -24,12 +24,12 @@ import application.model.database;
 public class champController implements Initializable {
 
 	
-	@FXML TableView champsTableau;
+	@FXML TableView<Champ> champsTableau;
 	
-	private TableColumn<Champ, String> surface = new TableColumn<>("Surface");
-	private TableColumn<Champ, String> adresse = new TableColumn<>("Adresse");
-	private TableColumn<Champ, String> coordoneeGPS = new TableColumn<>("Coordonn�e GPS");
-	private TableColumn<Champ, String> type = new TableColumn<>("Type");
+	private TableColumn<Champ, String> surface;
+	private TableColumn<Champ, String> adresse;
+	private TableColumn<Champ, String> coordoneeGPS;
+	private TableColumn<Champ, String> type;
 	
 	private ObservableList<Champ> champs = FXCollections.observableArrayList();
 	
@@ -44,11 +44,10 @@ public class champController implements Initializable {
 		coordoneeGPS.setCellValueFactory(new PropertyValueFactory<Champ,String>("GPS_ch"));
 		type.setPrefWidth(100);
 		type.setCellValueFactory(new PropertyValueFactory<Champ,String>("cult_ch"));
-        
-		List<Champ> listChamp = (new database()).recupererChamps();
-		champs.addAll(listChamp);
+
+		champs.addAll(new database().recupererChamps());
 		
-		champsTableau.setItems(champs);
+		champsTableau.getItems().setAll(champs);
 		champsTableau.getColumns().addAll(surface, adresse,coordoneeGPS,type);
 		
 	}

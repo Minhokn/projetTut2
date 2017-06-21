@@ -31,7 +31,7 @@ public class personneController implements Initializable {
 	
 	
 	private TableColumn<Client, String> nom = new TableColumn<>("Nom");
-	private TableColumn<Client, String> pren = new TableColumn<>("Prénom");
+	private TableColumn<Client, String> pren = new TableColumn<>("PrÃ©nom");
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 	
 	@Override

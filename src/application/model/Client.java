@@ -26,7 +26,7 @@ public class Client {
 		this.adresse = adresse;
 		this.telephone = telephone;
 		this.nom = nom;
-		this.typeCl = "Coopérative";
+		this.typeCl = "CoopÃ©rative";
 	}
 
 	public int getId() {
