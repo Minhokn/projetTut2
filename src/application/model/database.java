@@ -150,7 +150,7 @@ public class database {
             Statement stat = connexion.createStatement();
             String request = "SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_cl";
             if(id_cl >= 0)
-                request += " WHERE id_cl='" + id_cl + "'";
+                request += " WHERE agriculteur.id_cl='" + id_cl + "'";
 
             ResultSet resultat = stat.executeQuery(request);
             while (resultat.next()) {

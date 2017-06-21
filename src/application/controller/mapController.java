@@ -34,10 +34,10 @@ public class mapController implements APIGoogleMap {
 		NdC.setValue(NdC.getItems().get(0));
 
 
-        //listChampsClient=new database().recupererChampsClient(NdC.getValue().getId());
+        listChampsClient=new database().recupererChampsClient(NdC.getValue().getId());
 
 
-        AdC.getItems().setAll(listChamps);
+        AdC.getItems().setAll(listChampsClient);
         AdC.setValue(AdC.getItems().get(0));
 
 
@@ -50,6 +50,9 @@ public class mapController implements APIGoogleMap {
 	}
     public void askToLoadChamp(){
         System.out.println("ok");
+        for(Champ champ:listChamps){
+            map.addChamp(champ);
+        }
     }
 
 }
