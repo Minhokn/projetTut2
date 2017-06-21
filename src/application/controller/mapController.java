@@ -20,16 +20,22 @@ public class mapController implements APIGoogleMap {
 	private static final int ZOOM = 12;
 	private List<Client> listClients;
     private List<Champ> listChamps;
+    private List<Champ> listChampsClient;
 	
 	public void initialize() {
 		map=new Maps("map",this);
 		map.setParent(googleMaps);
 
+        listChamps = new database().recupererChamps();
 		listClients = new database().recupererClients();
+
+
 		NdC.getItems().setAll(listClients);
 		NdC.setValue(NdC.getItems().get(0));
 
-        listChamps = new database().recupererChamps();
+
+        //listChampsClient=new database().recupererChampsClient(NdC.getValue().getId());
+
 
         AdC.getItems().setAll(listChamps);
         AdC.setValue(AdC.getItems().get(0));
@@ -42,6 +48,8 @@ public class mapController implements APIGoogleMap {
         dc2.getItems().setAll(listChamps);
         dc2.setValue(dc2.getItems().get(0));
 	}
-
+    public void askToLoadChamp(){
+        System.out.println("ok");
+    }
 
 }
