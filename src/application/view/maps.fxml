@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ComboBox?>
 
 <?import javafx.scene.layout.BorderPane?>
-<StackPane
-        prefHeight="546.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.mapController">
+<StackPane prefHeight="546.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.mapController">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="501.0" prefWidth="691.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -32,42 +32,42 @@
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField prefWidth="165.0">
+                  <ComboBox fx:id="NdC" prefWidth="165.0">
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
-                  </TextField>
+                  </ComboBox>
                   <Label text="Adresse d'un champ">
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField>
+                  <ComboBox fx:id="AdC"  prefWidth="165.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
-                  </TextField>
+                  </ComboBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Distance entre deux champs">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <TextField prefWidth="165.0">
+                  <ComboBox fx:id="dc1" prefWidth="165.0">
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
-                  </TextField>
-                  <TextField>
+                  </ComboBox>
+                  <ComboBox fx:id="dc2"  prefWidth="165.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" />
                      </VBox.margin>
-                  </TextField>
+                  </ComboBox>
                </children>
                <opaqueInsets>
                   <Insets />
