@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,44 +22,44 @@ import application.model.database;
 
 public class machineController implements Initializable {
 
-	@FXML TableView<Machine> machineTableau;
-	
-	
-	private TableColumn<Machine, String> marque = new TableColumn<>("Marque");
-	private TableColumn<Machine, String> modele = new TableColumn<>("Modele");
-	private TableColumn<Machine, String> etat = new TableColumn<>("Etat");
+	@FXML
+	TableView<Machine> machineTableau;
+
+	@FXML
+	private TableColumn<Machine, String> marqueColonne;
+	@FXML
+	private TableColumn<Machine, String> modeleColonne;
+	@FXML
+	private TableColumn<Machine, String> etatColonne;
+
 	private ObservableList<Machine> machines = FXCollections.observableArrayList();
+
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-	
-        marque.setPrefWidth(50);
-        marque.setCellValueFactory(new PropertyValueFactory<Machine,String>("marque"));
-        modele.setPrefWidth(50);
-        modele.setCellValueFactory(new PropertyValueFactory<Machine,String>("modele"));
-        etat.setPrefWidth(50);
-        etat.setCellValueFactory(new PropertyValueFactory<Machine,String>("etat"));
-        
-        
+
+
+
+		marqueColonne.setPrefWidth(100);
+		marqueColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
+		modeleColonne.setPrefWidth(100);
+		modeleColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModele()));
+		etatColonne.setPrefWidth(100);
+		etatColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
 
 		machines.setAll(new database().recupererMachine());
-		
 		machineTableau.getItems().setAll(machines);
-		machineTableau.getColumns().setAll(marque,modele,etat);
-		
-	
-		
-		
+
 	
 	}
 	public void editMachine(ActionEvent e) {
 		Machine machine = (Machine) machineTableau.getSelectionModel().getSelectedItem();
-		newFenetre(e, "EditerMachine.fxml", machine);
+		newFenetre(e, "editerMachine.fxml", machine);
 		
 	}
 	public void addMachine(ActionEvent e) {
-		newFenetre(e, "EditerMachine.fxml");
+		newFenetre(e, "editerMachine.fxml");
 	}
 	
 	
@@ -67,7 +68,7 @@ public class machineController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerMachine.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit Machine");
 
@@ -88,7 +89,7 @@ public class machineController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerMachine.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit machine");
 
