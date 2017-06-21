@@ -32,80 +32,23 @@ public class rootController implements Initializable {
 		 */
 		loadFXML("maps.fxml");
 		
-		
-		accueil.setOnAction(new EventHandler<ActionEvent>() {
+		accueil.setOnAction(arg0 -> loadFXML("maps.fxml"));
+		commande.setOnAction(arg0 -> loadFXML("passerCommande.fxml"));
+		champs.setOnAction(arg0 -> loadFXML("champVue.fxml"));
+		clients.setOnAction(arg0 -> loadFXML("personneVue.fxml"));
+		machines.setOnAction(arg0 -> loadFXML("machineVue.fxml"));
+		stats.setOnAction(arg0 -> loadFXML("statistiqueVue.fxml"));
 
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("maps.fxml");
-			}
-			
-			
-			
-		});
-		commande.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("passerCommande.fxml");
-			}	
-		});
-		
-		champs.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("champVue.fxml");
-			}
-			
-			
-			
-		});
-		
-		clients.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("personneVue.fxml");
-			}
-
-
-
-		});
-		machines.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("machineVue.fxml");
-			}
-			
-			
-			
-		});
-		stats.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				loadFXML("statistiqueVue.fxml");
-			}	
-		});
-		
-		
-		
-		
 	}
 	
 	
 	public void loadFXML(String file) {
-		Parent contenu;
 		try {
-			contenu = FXMLLoader.load(getClass().getResource("/application/view/"+file));
+			Parent contenu = FXMLLoader.load(getClass().getResource("/application/view/"+file));
 			borderpane.setCenter(contenu);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+
 }

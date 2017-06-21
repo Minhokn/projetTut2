@@ -38,15 +38,17 @@ public class EditChampController {
     }
 
     public void handleOk() {
-        champSelected.setId_ch(clientField.getValue().getId());
-        champSelected.setSurf_ch(Integer.parseInt(surfaceField.getText()));
-        champSelected.setAdr_ch(adresseField.getText());
-        champSelected.setGPS_ch(coordoneeGPSField.getText());
-        champSelected.setCult_ch(typeField.getText());
-        champSelected.setEtat(etatField.getValue());
-        champSelected.setCdn_ch(coordoneeCentreField.getText());
+        if(champSelected != null) {
+            champSelected.setId_ch(clientField.getValue().getId());
+            champSelected.setSurf_ch(Integer.parseInt(surfaceField.getText()));
+            champSelected.setAdr_ch(adresseField.getText());
+            champSelected.setGPS_ch(coordoneeGPSField.getText());
+            champSelected.setCult_ch(typeField.getText());
+            champSelected.setEtat(etatField.getValue());
+            champSelected.setCdn_ch(coordoneeCentreField.getText());
 
-        new database().editChamp(champSelected);
+            new database().editChamp(champSelected);
+        }
 
         champController.refreshData();
 
