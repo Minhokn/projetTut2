@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 21 Juin 2017 à 08:29
+-- Généré le :  Mer 21 Juin 2017 à 12:08
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -19,9 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `eta`
 --
-DROP DATABASE IF EXISTS eta;
-CREATE DATABASE eta;
-USE eta;
 
 -- --------------------------------------------------------
 
@@ -30,7 +27,7 @@ USE eta;
 --
 
 CREATE TABLE `agriculteur` (
-  `ID_CL` smallint(6) NOT NULL,
+  `ID_CL` int(6) NOT NULL,
   `Nom_Cl` varchar(50) NOT NULL,
   `Prénom_CL` varchar(50) NOT NULL,
   `Tel_Cl` int(11) NOT NULL,
@@ -54,7 +51,7 @@ INSERT INTO `agriculteur` (`ID_CL`, `Nom_Cl`, `Prénom_CL`, `Tel_Cl`, `Adr_Cl`) 
 --
 
 CREATE TABLE `botteleuse` (
-  `ID_Bot` smallint(6) NOT NULL,
+  `ID_Bot` int(6) NOT NULL,
   `ID_Mach` smallint(6) NOT NULL,
   `Type_Bot` varchar(50) NOT NULL,
   `Atr` smallint(6) DEFAULT NULL
@@ -77,7 +74,7 @@ INSERT INTO `botteleuse` (`ID_Bot`, `ID_Mach`, `Type_Bot`, `Atr`) VALUES
 --
 
 CREATE TABLE `champs` (
-  `ID_Ch` smallint(6) NOT NULL,
+  `ID_Ch` int(6) NOT NULL,
   `ID_CL` smallint(6) DEFAULT NULL,
   `Surf_Ch` int(11) NOT NULL,
   `Cdn_Ch` varchar(100) NOT NULL,
@@ -114,7 +111,7 @@ INSERT INTO `champs` (`ID_Ch`, `ID_CL`, `Surf_Ch`, `Cdn_Ch`, `Adr_Ch`, `Cult_Ch`
 --
 
 CREATE TABLE `commande` (
-  `ID_Com` smallint(6) NOT NULL,
+  `ID_Com` int(6) NOT NULL,
   `Date_Com` date DEFAULT NULL,
   `Bott_Com` varchar(50) DEFAULT NULL,
   `Trans_Rec` varchar(50) NOT NULL,
@@ -151,7 +148,7 @@ INSERT INTO `commande` (`ID_Com`, `Date_Com`, `Bott_Com`, `Trans_Rec`, `Taille_M
 --
 
 CREATE TABLE `contenir` (
-  `ID_Cont` smallint(6) NOT NULL,
+  `ID_Cont` int(6) NOT NULL,
   `N_Ordre` smallint(6) DEFAULT NULL,
   `H_A` varchar(50) DEFAULT NULL,
   `Duree` int(11) DEFAULT NULL,
@@ -214,7 +211,7 @@ INSERT INTO `contenir` (`ID_Cont`, `N_Ordre`, `H_A`, `Duree`, `Dist`, `ID_Mach`,
 --
 
 CREATE TABLE `coop` (
-  `ID_Co` smallint(6) NOT NULL,
+  `ID_Co` int(6) NOT NULL,
   `Nom_Co` varchar(50) NOT NULL,
   `Adr_CO` varchar(100) NOT NULL,
   `Tel_Co` int(11) NOT NULL
@@ -234,7 +231,7 @@ INSERT INTO `coop` (`ID_Co`, `Nom_Co`, `Adr_CO`, `Tel_Co`) VALUES
 --
 
 CREATE TABLE `culture` (
-  `ID_Cult` smallint(6) NOT NULL,
+  `ID_Cult` int(6) NOT NULL,
   `Type_Cult` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -255,7 +252,7 @@ INSERT INTO `culture` (`ID_Cult`, `Type_Cult`) VALUES
 --
 
 CREATE TABLE `moissonner` (
-  `ID_M` smallint(6) NOT NULL,
+  `ID_M` int(6) NOT NULL,
   `ID_Moi` smallint(6) DEFAULT NULL,
   `Vitesse_Moi` float DEFAULT NULL,
   `ID_Cult` smallint(6) DEFAULT NULL
@@ -310,7 +307,7 @@ INSERT INTO `moissonner` (`ID_M`, `ID_Moi`, `Vitesse_Moi`, `ID_Cult`) VALUES
 --
 
 CREATE TABLE `moissonneuses` (
-  `ID_Moi` smallint(6) NOT NULL,
+  `ID_Moi` int(6) NOT NULL,
   `ID_Mach` smallint(6) NOT NULL,
   `Taille_T_Moi` int(11) NOT NULL,
   `Taille_R_Moi` int(11) NOT NULL,
@@ -345,7 +342,7 @@ INSERT INTO `moissonneuses` (`ID_Moi`, `ID_Mach`, `Taille_T_Moi`, `Taille_R_Moi`
 --
 
 CREATE TABLE `tracteurs` (
-  `ID_Trac` smallint(6) NOT NULL,
+  `ID_Trac` int(6) NOT NULL,
   `ID_Mach` smallint(6) NOT NULL,
   `Capacité_Trac` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -380,7 +377,7 @@ INSERT INTO `tracteurs` (`ID_Trac`, `ID_Mach`, `Capacité_Trac`) VALUES
 --
 
 CREATE TABLE `vehicule` (
-  `ID_Mach` smallint(6) NOT NULL,
+  `ID_Mach` int(6) NOT NULL,
   `Marque` varchar(50) NOT NULL,
   `Modèle` varchar(50) NOT NULL,
   `Etat` int(11) NOT NULL,
@@ -502,6 +499,65 @@ ALTER TABLE `vehicule`
   ADD PRIMARY KEY (`ID_Mach`),
   ADD KEY `cle_etrangere_vehicule` (`Atr`);
 
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `agriculteur`
+--
+ALTER TABLE `agriculteur`
+  MODIFY `ID_CL` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `botteleuse`
+--
+ALTER TABLE `botteleuse`
+  MODIFY `ID_Bot` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `champs`
+--
+ALTER TABLE `champs`
+  MODIFY `ID_Ch` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `commande`
+--
+ALTER TABLE `commande`
+  MODIFY `ID_Com` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `contenir`
+--
+ALTER TABLE `contenir`
+  MODIFY `ID_Cont` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT pour la table `coop`
+--
+ALTER TABLE `coop`
+  MODIFY `ID_Co` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `culture`
+--
+ALTER TABLE `culture`
+  MODIFY `ID_Cult` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT pour la table `moissonner`
+--
+ALTER TABLE `moissonner`
+  MODIFY `ID_M` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+--
+-- AUTO_INCREMENT pour la table `moissonneuses`
+--
+ALTER TABLE `moissonneuses`
+  MODIFY `ID_Moi` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT pour la table `tracteurs`
+--
+ALTER TABLE `tracteurs`
+  MODIFY `ID_Trac` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT pour la table `vehicule`
+--
+ALTER TABLE `vehicule`
+  MODIFY `ID_Mach` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
