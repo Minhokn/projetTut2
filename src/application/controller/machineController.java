@@ -60,11 +60,11 @@ public class machineController implements Initializable {
 	}
 	public void editMachine(ActionEvent e) {
 		Machine machine = (Machine) machineTableau.getSelectionModel().getSelectedItem();
-		newFenetre(e, "EditerMachine.fxml", machine);
+		newFenetre(e, "editerMachine.fxml", machine);
 		
 	}
 	public void addMachine(ActionEvent e) {
-		newFenetre(e, "EditerMachine.fxml");
+		newFenetre(e, "editerMachine.fxml");
 	}
 	
 	
@@ -73,7 +73,7 @@ public class machineController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerMachine.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit Machine");
 
@@ -94,7 +94,7 @@ public class machineController implements Initializable {
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerMachine.fxml"));
+            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit machine");
 
