@@ -1,4 +1,5 @@
 package application.model;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -6,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class database {
 	
@@ -46,7 +46,7 @@ public class database {
 
 			ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur");
 			while(resultat.next()) {
-				agr = new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Pr�nom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl"));
+				agr = new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prénom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl"));
 				liste.add(agr);
 			}
 			resultat = stat2.executeQuery("SELECT * FROM coop");

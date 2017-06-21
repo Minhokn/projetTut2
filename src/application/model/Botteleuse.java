@@ -1,4 +1,5 @@
 package application.model;
+
 public class Botteleuse extends Machine {
 	
 	private String type = "";

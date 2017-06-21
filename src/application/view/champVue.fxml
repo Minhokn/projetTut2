@@ -16,10 +16,10 @@
                <children>
                   <TableView fx:id="champsTableau" prefHeight="547.0" prefWidth="841.0">
                      <columns>
-                        <TableColumn prefWidth="174.0" text="Surface" />
-                        <TableColumn fx:id="adresseColonne" prefWidth="193.0" text="Adresse" />
-                        <TableColumn fx:id="typeColonne" prefWidth="227.0" text="Type" />
-                        <TableColumn fx:id="coordonneeGPSColonne" minWidth="0.0" prefWidth="246.0" text="Coordonnée GPS" />
+                        <TableColumn fx:id="surface" prefWidth="174.0" text="Surface" />
+                        <TableColumn fx:id="adresse" prefWidth="193.0" text="Adresse" />
+                        <TableColumn fx:id="type" prefWidth="227.0" text="Type" />
+                        <TableColumn fx:id="coordoneeGPS" minWidth="0.0" prefWidth="246.0" text="Coordonnée GPS" />
                      </columns>
                   </TableView>
                </children>
