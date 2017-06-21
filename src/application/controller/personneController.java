@@ -28,7 +28,7 @@ public class personneController implements Initializable {
 	@FXML Label addrLabel;
 	@FXML Label telLabel;
 	@FXML Label typeLabel;
-	@FXML TableView personTable;
+	@FXML TableView<Client> personTable;
 
 	@FXML private TableColumn<Client, String> nomColonne;
 	@FXML private TableColumn<Client, String> prenomColonne;
@@ -53,60 +53,59 @@ public class personneController implements Initializable {
 			telLabel.setText(client.getTelephone());
 			typeLabel.setText(client.getTypeCl());
 		});
+		refreshData();
 	}
-	public void editClient(ActionEvent e) {
-		Client client = (Client) personTable.getSelectionModel().getSelectedItem();
-		newFenetre(e, "editerPersonne.fxml", client);
-		
+
+
+	public void editClient() {
+		if (personTable.getSelectionModel().getSelectedItem() != null) {
+			newFenetre(personTable.getSelectionModel().getSelectedItem());
+		}
 	}
-	public void addClient(ActionEvent e) {
-		newFenetre(e, "editerPersonne.fxml");
+
+	public void addClient() {
+		newFenetre(null);
 	}
-	
-	
-	public void newFenetre(ActionEvent e, String layout) {
+
+	public void deleteClient() {
+		if (personTable.getSelectionModel().getSelectedItem() != null) {
+			new database().deleteChamp(personTable.getSelectionModel().getSelectedItem().getId());
+			refreshData();
+		}
+	}
+
+
+
+	public void newFenetre(Client client) {
+
 		Stage primaryStage = new Stage();
 		try {
-			
+
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
-            Parent root = loader.load();
+			loader.setLocation(getClass().getResource("/application/view/editerPersonne.fxml"));
+			Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 
-			
-			editController controller = loader.getController();
+			EditPersonneController controller = loader.getController();
+
+			controller.setClientController(this);
+			if(client != null) {
+				controller.setClientSelected(client);
+			}
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
-	public void newFenetre(ActionEvent e, String layout, Client client) {
-		
-		Stage primaryStage = new Stage();
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerPersonne.fxml"));
-            Parent root = loader.load();
-			primaryStage.setTitle("Edit Person");
 
-			
-			editController controller = loader.getController();
-            controller.setClient(client);
-			
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			
+
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
+	}
+
+	public void refreshData() {
+		personTable.getItems().setAll(clients);
 	}
 
 }
