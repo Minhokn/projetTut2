@@ -20,7 +20,9 @@ public class EditPersonneController {
     @FXML private TextField nomField;
     @FXML private TextField telField;
     @FXML private TextField adresseField;
-    @FXML private TextField typeField;
+
+    @FXML private ComboBox<String> typeField;
+
 
     private Client clientSelected;
     private personneController personneController;
@@ -28,6 +30,10 @@ public class EditPersonneController {
     private List<Client> listClients;
 
     public void initialize() {
+
+        typeField.getItems().setAll("Agriculteur", "Coop");
+
+
 
     }
 
@@ -37,10 +43,10 @@ public class EditPersonneController {
             clientSelected.setNom(nomField.getText());
             clientSelected.setTelephone(telField.getText());
             clientSelected.setAdresse(adresseField.getText());
-            clientSelected.setTypeCl(typeField.getText());
+            clientSelected.setTypeCl(typeField.getValue());
             new database().editClient(clientSelected);
         } else {
-            new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), typeField.getText());
+            new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), typeField.getValue());
         }
 
         personneController.refreshData();
@@ -60,7 +66,7 @@ public class EditPersonneController {
         nomField.setText(client.getNom());
         telField.setText(client.getTelephone());
         adresseField.setText(client.getAdresse());
-        typeField.setText(client.getTypeCl());
+        typeField.setValue(client.getTypeCl());
     }
 
     public void setClientController(personneController personneController) {
