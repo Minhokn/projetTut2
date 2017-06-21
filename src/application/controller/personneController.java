@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,25 +29,22 @@ public class personneController implements Initializable {
 	@FXML Label telLabel;
 	@FXML Label typeLabel;
 	@FXML TableView personTable;
-	
-	
-	private TableColumn<Client, String> nom = new TableColumn<>("Nom");
-	private TableColumn<Client, String> pren = new TableColumn<>("Prénom");
+
+	@FXML private TableColumn<Client, String> nomColonne;
+	@FXML private TableColumn<Client, String> prenomColonne;
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-        nom.setPrefWidth(50);
-        nom.setCellValueFactory(new PropertyValueFactory<Client,String>("nom"));
-        pren.setPrefWidth(50);
-		pren.setCellValueFactory(new PropertyValueFactory<Client,String>("prenom"));
-        
-		List<Client> listClient = (new database()).recupererClients();
-		clients.addAll(listClient);
-		
-		personTable.setItems(clients);
-		personTable.getColumns().addAll(nom, pren);
-		
+		nomColonne.setPrefWidth(100);
+		nomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+		prenomColonne.setPrefWidth(100);
+		prenomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrenom()));
+
+		clients.addAll(new database().recupererClients());
+		personTable.getItems().setAll(clients);
+
+
 		personTable.setOnMouseClicked(e -> {
 			Client client = (Client) personTable.getSelectionModel().getSelectedItem();
 			nomLabel.setText(client.getNom());
