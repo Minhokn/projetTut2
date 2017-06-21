@@ -32,15 +32,12 @@ public class machineController implements Initializable {
 	@FXML
 	private TableColumn<Machine, String> etatColonne;
 
-	private ObservableList<Machine> machines = FXCollections.observableArrayList();
+	private ObservableList<Machine> machineList = FXCollections.observableArrayList();
 
 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-
-
 		marqueColonne.setPrefWidth(100);
 		marqueColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
 		modeleColonne.setPrefWidth(100);
@@ -48,8 +45,8 @@ public class machineController implements Initializable {
 		etatColonne.setPrefWidth(100);
 		etatColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
 
-		machines.setAll(new database().recupererMachine());
-		machineTableau.getItems().setAll(machines);
+		machineList.setAll(new database().recupererMachine());
+		machineTableau.getItems().setAll(machineList);
 	
 	}
 	public void editMachine(ActionEvent e) {

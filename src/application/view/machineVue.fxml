@@ -14,7 +14,7 @@
          <children>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="839.0">
                <children>
-                  <TableView prefHeight="547.0" prefWidth="841.0">
+                  <TableView fx:id="machineTableau" prefHeight="547.0" prefWidth="841.0">
                      <columns>
                         <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque" />
                         <TableColumn fx:id="modeleColonne" prefWidth="252.0" text="Modele" />
