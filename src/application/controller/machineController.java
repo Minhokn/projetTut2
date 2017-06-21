@@ -49,13 +49,8 @@ public class machineController implements Initializable {
 		etatColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEtat()));
 
 		machines.setAll(new database().recupererMachine());
-		
 		machineTableau.getItems().setAll(machines);
-		machineTableau.getColumns().setAll(marqueColonne,modeleColonne,etatColonne);
-		
-	
-		
-		
+
 	
 	}
 	public void editMachine(ActionEvent e) {
