@@ -33,8 +33,6 @@ public class EditPersonneController {
 
         typeField.getItems().setAll("Agriculteur", "Coop");
 
-
-
     }
 
     public void handleOk() {
