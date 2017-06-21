@@ -1,133 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane prefHeight="724.0" prefWidth="999.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.commandeController">
-   <children>
-      <SplitPane dividerPositions="0.5" prefHeight="715.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <items>
-            <StackPane prefHeight="722.0" prefWidth="599.0" />
-
-            <VBox alignment="TOP_CENTER" prefWidth="345.0" spacing="25.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Attribuer">
-                     <VBox.margin>
-                        <Insets left="15.0" right="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <BorderPane prefHeight="100.0" prefWidth="339.0">
-                     <left>
-                        <ImageView fitHeight="104.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../images/imageTracteur.png" />
-                           </image>
-                        </ImageView>
-                     </left>
-                     <center>
-                        <ListView fx:id="idListAttribuerTracteur" prefHeight="104.0" prefWidth="294.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </BorderPane.margin>
-                        </ListView>
-                     </center>
-                  </BorderPane>
-                  <BorderPane prefHeight="100.0" prefWidth="339.0">
-                     <left>
-                        <ImageView fitHeight="104.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../images/imageMoissonneuse.png" />
-                           </image>
-                        </ImageView>
-                     </left>
-                     <center>
-                        <ListView fx:id="idListAttribuerMoissoneuse" prefHeight="104.0" prefWidth="294.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </BorderPane.margin>
-                        </ListView>
-                     </center>
-                  </BorderPane>
-                  <BorderPane prefHeight="100.0" prefWidth="339.0">
-                     <left>
-                        <ImageView fitHeight="104.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../images/imageCamionCiterne.png" />
-                           </image>
-                        </ImageView>
-                     </left>
-                     <center>
-                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </BorderPane.margin>
-                           <children>
-                              <RadioButton fx:id="idRadioButtonCamionCiterneOui" mnemonicParsing="false" text="Oui">
-                                 <VBox.margin>
-                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                                 </VBox.margin>
-                              </RadioButton>
-                              <RadioButton fx:id="idRadioButtonCamionCiterneNon" mnemonicParsing="false" text="Non">
-                                 <VBox.margin>
-                                    <Insets bottom="25.0" left="25.0" right="25.0" />
-                                 </VBox.margin>
-                              </RadioButton>
-                           </children>
-                        </VBox>
-                     </center>
-                  </BorderPane>
-                  <BorderPane prefHeight="100.0" prefWidth="339.0">
-                     <left>
-                        <ImageView fitHeight="104.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                           <image>
-                              <Image url="@../images/imageVehiculeEscorte.png" />
-                           </image>
-                        </ImageView>
-                     </left>
-                     <center>
-                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets left="25.0" right="25.0" />
-                           </BorderPane.margin>
-                           <children>
-                              <RadioButton fx:id="idRadioButtonVehiculeHescorteOui" mnemonicParsing="false" text="Oui">
-                                 <VBox.margin>
-                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                                 </VBox.margin>
-                              </RadioButton>
-                              <RadioButton fx:id="idRadioButtonVehiculeHescorteNon" mnemonicParsing="false" text="Non">
-                                 <VBox.margin>
-                                    <Insets bottom="25.0" left="25.0" right="25.0" />
-                                 </VBox.margin>
-                              </RadioButton>
-                           </children>
-                        </VBox>
-                     </center>
-                  </BorderPane>
-                  <Button fx:id="idBouttonValiderChoix" mnemonicParsing="false" text="Valider votre choix" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableView?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0"
+          prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
+          fx:controller="application.controller.commandeController">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300" minWidth="10.0" prefWidth="150"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="900" minWidth="10.0" prefWidth="450"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                <children>
+                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Attribution des ressources logistiques"/>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <children>
+                    <ComboBox fx:id="champSelector" prefWidth="150.0"/>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="363.0" GridPane.columnIndex="1" GridPane.rowIndex="2"
+            spacing="10">
+                <children>
+                    <ComboBox fx:id="tracteurSelector" prefWidth="150.0"/>
+                    <Button fx:id="addTracteur" text="+" prefWidth="30"/>
+                    <TableView fx:id="viewTracteur"/>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                  GridPane.rowIndex="3" spacing="10">
+                <children>
+                    <ComboBox fx:id="moissonneuseSelector" prefWidth="150.0"/>
+                    <Button fx:id="addMoissonneuse" text="+" prefWidth="30"/>
+                    <TableView fx:id="viewMoissonneuse"/>
+                </children>
+            </HBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
+                  GridPane.rowIndex="4">
+                <children>
+                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui"/>
+                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non"/>
+                </children>
             </VBox>
-         </items>
-      </SplitPane>
-   </children>
-</AnchorPane>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
+                  GridPane.rowIndex="5">
+                <children>
+                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui"/>
+                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
+                  GridPane.rowIndex="6">
+                <children>
+                    <Button fx:id="valider" mnemonicParsing="false" text="Valider"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                <children>
+                    <Label text="Champ"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                <children>
+                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/imageTracteur.png"/>
+                        </image>
+                    </ImageView>
+                    <Label text="Tracteur"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+                <children>
+                    <ImageView fitHeight="48.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/imageMoissonneuse.png"/>
+                        </image>
+                    </ImageView>
+                    <Label text="Moissonneuse"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+                <children>
+                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/imageCamionCiterne.png"/>
+                        </image>
+                    </ImageView>
+                    <Label text="Ravitaillement"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+                <children>
+                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/imageVehiculeEscorte.png"/>
+                        </image>
+                    </ImageView>
+                    <Label text="Escorte"/>
+                </children>
+            </VBox>
+        </children>
+</GridPane>
