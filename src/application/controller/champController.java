@@ -55,25 +55,25 @@ public class champController implements Initializable {
 	}
 	
 	public void editChamp(ActionEvent e) {
-		Champ champ = (Champ) champsTableau.getSelectionModel().getSelectedItem();
-		newFenetre(e, "EditerChamps.fxml", champ);
+	    if(champsTableau.getSelectionModel().getSelectedItem() != null) {
+            newFenetre(champsTableau.getSelectionModel().getSelectedItem());
+        }
+
 		
 	}
-	public void addChamp(ActionEvent e) {
-		newFenetre(e, "EditerChamps.fxml");
+	public void addChamp() {
+		newFenetre();
 	}
 	
-	
-	public void newFenetre(ActionEvent e, String layout) {
+	public void newFenetre() {
 		Stage primaryStage = new Stage();
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerChamps.fxml"));
+            loader.setLocation(getClass().getResource("/application/view/editerChamps.fxml"));
             Parent root = loader.load();
-			primaryStage.setTitle("Edit Person");
+			primaryStage.setTitle("Edit Personne");
 
-			
 			editController controller = loader.getController();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
@@ -85,19 +85,18 @@ public class champController implements Initializable {
 		}
 	}
 	
-public void newFenetre(ActionEvent e, String layout, Champ champ) {
+public void newFenetre(Champ champ) {
 		
 		Stage primaryStage = new Stage();
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/EditerChamps.fxml"));
+            loader.setLocation(getClass().getResource("/application/view/editerChamps.fxml"));
             Parent root = loader.load();
 			primaryStage.setTitle("Edit Person");
 
-			
-			editController controller = loader.getController();
-            controller.setChamp(champ);
+			EditChampController controller = loader.getController();
+            controller.setChampSelected(champ);
 			
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);

@@ -5,40 +5,27 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="547.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.champController">
-   <children>
-      <Pane prefHeight="547.0" prefWidth="841.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="465.0" prefWidth="839.0">
-               <children>
-                  <TableView fx:id="champsTableau" prefHeight="547.0" prefWidth="841.0">
-                     <columns>
-                        <TableColumn fx:id="surface" prefWidth="174.0" text="Surface" />
-                        <TableColumn fx:id="adresse" prefWidth="193.0" text="Adresse" />
-                        <TableColumn fx:id="type" prefWidth="227.0" text="Type" />
-                        <TableColumn fx:id="coordoneeGPS" minWidth="0.0" prefWidth="246.0" text="Coordonnée GPS" />
-                     </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-          <AnchorPane fx:id="surfaceColonne" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <ButtonBar layoutX="-1.0" layoutY="466.0" prefHeight="84.0" prefWidth="841.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" text="Nouveau" />
-                        <Button mnemonicParsing="false" text="Modifier" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
-                    </buttons>
-                     <padding>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </padding>
-                  </ButtonBar>
-               </children>
-            </AnchorPane>
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+<?import javafx.scene.layout.VBox?>
+<VBox prefHeight="547.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.champController">
+
+      <TableView fx:id="champsTableau" prefHeight="547.0" prefWidth="841.0">
+         <columns>
+            <TableColumn fx:id="surface" prefWidth="174.0" text="Surface" />
+            <TableColumn fx:id="adresse" prefWidth="193.0" text="Adresse" />
+            <TableColumn fx:id="type" prefWidth="227.0" text="Type" />
+            <TableColumn fx:id="coordoneeGPS" minWidth="0.0" prefWidth="246.0" text="Coordonnée GPS" />
+         </columns>
+      </TableView>
+
+      <ButtonBar layoutX="-1.0" layoutY="466.0" prefHeight="84.0" prefWidth="841.0">
+        <buttons>
+          <Button mnemonicParsing="false" text="Nouveau" />
+            <Button mnemonicParsing="false" text="Modifier" />
+            <Button mnemonicParsing="false" text="Supprimer" />
+        </buttons>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </ButtonBar>
+</VBox>
