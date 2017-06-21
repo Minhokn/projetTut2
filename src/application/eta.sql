@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 21 Juin 2017 à 12:08
+-- Généré le :  Mer 21 Juin 2017 à 13:43
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -30,7 +30,7 @@ CREATE TABLE `agriculteur` (
   `ID_CL` int(6) NOT NULL,
   `Nom_Cl` varchar(50) NOT NULL,
   `Prénom_CL` varchar(50) NOT NULL,
-  `Tel_Cl` int(11) NOT NULL,
+  `Tel_Cl` varchar(11) NOT NULL,
   `Adr_Cl` varchar(100) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -39,10 +39,10 @@ CREATE TABLE `agriculteur` (
 --
 
 INSERT INTO `agriculteur` (`ID_CL`, `Nom_Cl`, `Prénom_CL`, `Tel_Cl`, `Adr_Cl`) VALUES
-(1, 'Dujardin', 'Jean', 278421952, 'La Couesnerie, Esse'),
-(2, 'Dutronc', 'Thomas', 285426985, 'La Berhaudière, Brie'),
-(3, 'Mathy', 'Mimie', 250481268, 'La Tremblais, La Couyère'),
-(4, 'Goldman', 'Jean-Jacques', 242684200, 'La Trinquandière, Amanlis');
+(1, 'Dujardin', 'Jean', '278421952', 'La Couesnerie, Esse'),
+(2, 'Dutronc', 'Thomas', '285426985', 'La Berhaudière, Brie'),
+(3, 'Mathy', 'Mimie', '250481268', 'La Tremblais, La Couyère'),
+(4, 'Goldman', 'Jean-Jacques', '242684200', 'La Trinquandière, Amanlis');
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ CREATE TABLE `coop` (
   `ID_Co` int(6) NOT NULL,
   `Nom_Co` varchar(50) NOT NULL,
   `Adr_CO` varchar(100) NOT NULL,
-  `Tel_Co` int(11) NOT NULL
+  `Tel_Co` varchar(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `coop` (
 --
 
 INSERT INTO `coop` (`ID_Co`, `Nom_Co`, `Adr_CO`, `Tel_Co`) VALUES
-(1, 'Terdici', '1750 Rue Louis Blériot, Janzé', 299445381);
+(1, 'Terdici', '1750 Rue Louis Blériot, Janzé', '299445381');
 
 -- --------------------------------------------------------
 
