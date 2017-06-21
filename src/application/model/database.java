@@ -37,21 +37,19 @@ public class database {
     public List<Client> recupererClients() {
 
         List<Client> liste = new ArrayList<Client>();
-        Client agr = null;
-        Client coop = null;
+
         try {
             Statement stat = connexion.createStatement();
             Statement stat2 = connexion.createStatement();
 
             ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur");
             while (resultat.next()) {
-                agr = new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prénom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl"));
-                liste.add(agr);
+                liste.add(new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prénom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl")));
             }
+
             resultat = stat2.executeQuery("SELECT * FROM coop");
             while (resultat.next()) {
-                coop = new Client(resultat.getInt("ID_Co"), resultat.getString("Nom_Co"), resultat.getString("Adr_Co"), resultat.getString("Tel_Co"));
-                liste.add(coop);
+                liste.add(new Client(resultat.getInt("ID_Co"), resultat.getString("Nom_Co"), resultat.getString("Adr_Co"), resultat.getString("Tel_Co")));
             }
 
 
@@ -63,10 +61,10 @@ public class database {
 
     }
 
-    public void addClient(String nom, String prenom, String tel, String adr, int type) {
+    public void addClient(String nom, String prenom, String tel, String adr, String type) {
         try {
             Statement stat = connexion.createStatement();
-            if(type == 0)
+            if (type.equals("Agriculteur"))
                 stat.executeUpdate("INSERT INTO agriculteur(nom_cl, prénom_cl, tel_cl, adr_cl) VALUES('" + nom + "', '" + prenom + "', '" + tel + "', '" + adr + "')");
             else
                 stat.executeUpdate("INSERT INTO coop(nom_co, adr_co, tel_co) VALUES('" + nom + "', '" + tel + "', '" + adr + "')");
@@ -86,7 +84,7 @@ public class database {
         } else {
             try {
                 Statement stat2 = connexion.createStatement();
-                stat2.executeUpdate("UPDATE client SET Nom_Cl='" + c.getNom() + "',Pr�nom_Cl='" + c.getPrenom() + "',Adr_Cl='" + c.getAdresse() + "',Tel_Cl='" + c.getTelephone() + "' WHERE ID_CL='" + c.getId() + "' ");
+                stat2.executeUpdate("UPDATE agriculteur SET Nom_Cl='" + c.getNom() + "',Prénom_Cl='" + c.getPrenom() + "',Adr_Cl='" + c.getAdresse() + "',Tel_Cl='" + c.getTelephone() + "' WHERE ID_CL='" + c.getId() + "' ");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -97,14 +95,14 @@ public class database {
         if (!c.getTypeCl().equals("Agriculteur")) {
             try {
                 Statement stat = connexion.createStatement();
-                stat.executeUpdate("DELETE FROM coop WHERE WHERE ID_Co='" + c.getId() + "'");
+                stat.executeUpdate("DELETE FROM coop WHERE ID_Co='" + c.getId() + "'");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 Statement stat2 = connexion.createStatement();
-                stat2.executeUpdate("DELETE FROM client WHERE ID_CL='" + c.getId() + "'");
+                stat2.executeUpdate("DELETE FROM agriculteur WHERE ID_CL='" + c.getId() + "'");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

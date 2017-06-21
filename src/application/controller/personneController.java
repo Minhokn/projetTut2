@@ -2,7 +2,6 @@ package application.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -23,15 +22,16 @@ import application.model.Client;
 import application.model.database;
 
 public class personneController implements Initializable {
-	@FXML Label prenomLabel;
-	@FXML Label nomLabel;
-	@FXML Label addrLabel;
-	@FXML Label telLabel;
-	@FXML Label typeLabel;
-	@FXML TableView<Client> personTable;
+	@FXML private Label prenomLabel;
+	@FXML private Label nomLabel;
+	@FXML private Label addrLabel;
+	@FXML private Label telLabel;
+	@FXML private Label typeLabel;
+	@FXML private TableView<Client> personTable;
 
 	@FXML private TableColumn<Client, String> nomColonne;
 	@FXML private TableColumn<Client, String> prenomColonne;
+
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 	
 	@Override
@@ -44,9 +44,8 @@ public class personneController implements Initializable {
 		clients.addAll(new database().recupererClients());
 		personTable.getItems().setAll(clients);
 
-
 		personTable.setOnMouseClicked(e -> {
-			Client client = (Client) personTable.getSelectionModel().getSelectedItem();
+			Client client = personTable.getSelectionModel().getSelectedItem();
 			nomLabel.setText(client.getNom());
 			prenomLabel.setText(client.getPrenom());
 			addrLabel.setText(client.getAdresse());
@@ -70,7 +69,7 @@ public class personneController implements Initializable {
 
 	public void deleteClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
-			new database().deleteChamp(personTable.getSelectionModel().getSelectedItem().getId());
+			new database().deleteClient(personTable.getSelectionModel().getSelectedItem());
 			refreshData();
 		}
 	}
@@ -104,7 +103,9 @@ public class personneController implements Initializable {
 	}
 
 	public void refreshData() {
-		personTable.getItems().setAll(clients);
+
+        clients.setAll(new database().recupererClients());
+        personTable.getItems().setAll(clients);
 	}
 
 }

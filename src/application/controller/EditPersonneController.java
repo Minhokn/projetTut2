@@ -40,7 +40,7 @@ public class EditPersonneController {
             clientSelected.setTypeCl(typeField.getText());
             new database().editClient(clientSelected);
         } else {
-            new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), Integer.parseInt(typeField.getText()));
+            new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), typeField.getText());
         }
 
         personneController.refreshData();
