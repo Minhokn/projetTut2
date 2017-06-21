@@ -18,9 +18,17 @@ public class Maps {
 
         final URL urlGoogleMaps = getClass().getResource("/application/view/"+ mapHTML+".html");
         webEngine.load(urlGoogleMaps.toExternalForm());
-        
-    }
 
+
+        javascriptOBJ = (JSObject) webView.getEngine().executeScript("window");
+        javascriptOBJ.setMember("jsInterface", controller);
+        webEngine.setOnAlert(e -> System.out.println(e.toString()));
+        webEngine.setOnError(e -> System.err.println(e.toString()));
+    }
+    public void addChamp(Champ champ){
+        javascriptOBJ.call("addChamp",champ.getId_ch(),champ.getAdr_ch(),champ.getCult_ch(),champ.getSurf_ch(),champ.getGPS_ch());
+    };
 	public void setParent(StackPane googleMaps) {
 		googleMaps.getChildren().setAll(webView);
-	}}
+	}
+}
