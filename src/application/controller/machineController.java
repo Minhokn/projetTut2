@@ -54,58 +54,42 @@ public class machineController implements Initializable {
 	
 	}
 	public void editMachine(ActionEvent e) {
-		Machine machine = (Machine) machineTableau.getSelectionModel().getSelectedItem();
-		newFenetre(e, "editerMachine.fxml", machine);
-		
+
+		if (machineTableau.getSelectionModel().getSelectedItem() != null) {
+			newFenetre(machineTableau.getSelectionModel().getSelectedItem());
+		}
 	}
-	public void addMachine(ActionEvent e) {
-		newFenetre(e, "editerMachine.fxml");
-	}
+	public void addMachine(ActionEvent e) {newFenetre(null);}
 	
 	
-	public void newFenetre(ActionEvent e, String layout) {
+	public void newFenetre(Machine machine) {
 		Stage primaryStage = new Stage();
 		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
-            Parent root = loader.load();
-			primaryStage.setTitle("Edit Machine");
 
-			
-			editController controller = loader.getController();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/application/view/editerChamps.fxml"));
+			Parent root = loader.load();
+			primaryStage.setTitle("Edit Person");
+
+			EditMachineController controller = loader.getController();
+			if(machine == null) {
+
+			} else {
+				controller.setMachineSelected(machine);
+			}
+
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
-	public void newFenetre(ActionEvent e, String layout, Machine machine) {
-		
-		Stage primaryStage = new Stage();
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/editerMachine.fxml"));
-            Parent root = loader.load();
-			primaryStage.setTitle("Edit machine");
 
-			
-			editController controller = loader.getController();
-            controller.setMachine(machine);
-			
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			
+
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
+
+
 	}
 
 }
