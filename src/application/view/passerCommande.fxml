@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.lynden.gmapsfx.GoogleMapView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="724.0" prefWidth="999.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.commandeController">
+   <children>
+      <SplitPane dividerPositions="0.5" prefHeight="715.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <GoogleMapView fx:id="mapView" prefHeight="465.0" prefWidth="656.0" />
+            <VBox alignment="TOP_CENTER" prefWidth="345.0" spacing="25.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Attribuer">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <BorderPane prefHeight="100.0" prefWidth="339.0">
+                     <left>
+                        <ImageView fitHeight="104.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../images/imageTracteur.png" />
+                           </image>
+                        </ImageView>
+                     </left>
+                     <center>
+                        <ListView fx:id="idListAttribuerTracteur" prefHeight="104.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </BorderPane.margin>
+                        </ListView>
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="100.0" prefWidth="339.0">
+                     <left>
+                        <ImageView fitHeight="104.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../images/imageMoissonneuse.png" />
+                           </image>
+                        </ImageView>
+                     </left>
+                     <center>
+                        <ListView fx:id="idListAttribuerMoissoneuse" prefHeight="104.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </BorderPane.margin>
+                        </ListView>
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="100.0" prefWidth="339.0">
+                     <left>
+                        <ImageView fitHeight="104.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../images/imageCamionCiterne.png" />
+                           </image>
+                        </ImageView>
+                     </left>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <RadioButton fx:id="idRadioButtonCamionCiterneOui" mnemonicParsing="false"  text="Oui">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="idRadioButtonCamionCiterneNon" mnemonicParsing="false" text="Non">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="100.0" prefWidth="339.0">
+                     <left>
+                        <ImageView fitHeight="104.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../images/imageVehiculeEscorte.png" />
+                           </image>
+                        </ImageView>
+                     </left>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <RadioButton fx:id="idRadioButtonVehiculeHescorteOui" mnemonicParsing="false" text="Oui">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="idRadioButtonVehiculeHescorteNon" mnemonicParsing="false" text="Non">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+                  <Button fx:id="idBouttonValiderChoix" mnemonicParsing="false" text="Valider votre choix" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

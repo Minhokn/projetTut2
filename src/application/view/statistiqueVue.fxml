@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.statistiqueController">
+   <children>
+      <AnchorPane fx:id="anchor1" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1000.0" style="-fx-background-color: #26ED00;">
+         <children>
+            <Label layoutX="128.0" layoutY="99.0" text="Durée de la moisson en heure">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="661.0" layoutY="94.0" text="Distance parcourue en KM">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Circle fx:id="cercle1" fill="WHITE" layoutX="273.0" layoutY="270.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="cercle2" fill="WHITE" layoutX="767.0" layoutY="273.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="duréeMoisson" layoutX="246.0" layoutY="234.0" text="3.5">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <Label fx:id="distanceKM" layoutX="738.0" layoutY="235.0" text="3.5">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <Text layoutX="368.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Machines">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchor2" layoutY="400.0" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1000.0" style="-fx-background-color: #A0B9FF;">
+         <children>
+            <Label layoutX="193.0" layoutY="99.0" text="Tonnes recoltées">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="644.0" layoutY="101.0" text="Tonnes recoltées par hectar">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Circle fx:id="cercle3" fill="WHITE" layoutX="272.0" layoutY="270.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="cercle4" fill="WHITE" layoutX="775.0" layoutY="264.0" radius="90.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="tonneRecoltées" layoutX="237.0" layoutY="238.0" text="3.5">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <Label fx:id="tonnesParHectar" layoutX="743.0" layoutY="232.0" text="3.5">
+               <font>
+                  <Font name="System Bold" size="43.0" />
+               </font>
+            </Label>
+            <Text layoutX="379.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Champs">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="borderpane" prefHeight="574.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.rootController">
+   <top>
+      <HBox prefHeight="30.0" prefWidth="893.0" style="-fx-background-color: #eee;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="accueil" mnemonicParsing="false" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #fff;" text="Accueil" />
+            <Button fx:id="commande" mnemonicParsing="false" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #fff;" text="Commande" />
+            <Button fx:id="champs" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #fff;" text="Champs" />
+            <Button fx:id="machines" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #fff;" text="Machines" />
+            <Button fx:id="clients" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #fff;" text="Clients" />
+            <Button fx:id="stats" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #fff;" text="Statistiques" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
