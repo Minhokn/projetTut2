@@ -65,7 +65,7 @@ public class database {
 	}
 	
 	public void editClient(Client c) {
-		if(c.getTypeCl()!="Agriculteur") {
+		if(c.getTypeCl() != "Agriculteur") {
 			try {
 				Statement stat = connexion.createStatement();
 				stat.executeUpdate("UPDATE coop SET Nom_Co='"+c.getNom()+"',Adr_Co='"+c.getAdresse()+"',Tel_Co='"+c.getTelephone()+"' WHERE ID_Co='"+c.getId()+"' ");
@@ -101,7 +101,17 @@ public class database {
 		}
 		
 	}
-	
+
+    public void editChamp(Champ c) {
+        if(c != null) {
+            try {
+                Statement stat = connexion.createStatement();
+                stat.executeUpdate("UPDATE champs SET id_cl='"+c.getClient().getId()+"',surf_ch='"+c.getSurf_ch()+"',cdn_ch='"+c.getCdn_ch()+"', adr_ch='"+c.getAdr_ch()+"', cult_ch='"+c.getCult_ch()+"', etat='"+c.getEtat()+"', gps_ch='"+c.getGPS_ch()+"' WHERE ID_Ch='"+c.getId_ch()+"' ");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 	
 	
 public List<Champ> recupererChamps() {
@@ -110,7 +120,7 @@ public List<Champ> recupererChamps() {
 		try {
 			Statement stat = connexion.createStatement();
 
-			ResultSet resultat = stat.executeQuery("SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_ch");
+			ResultSet resultat = stat.executeQuery("SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_cl");
 			while(resultat.next()) {
 				liste.add(new Champ(
 				        resultat.getInt("ID_Ch"),

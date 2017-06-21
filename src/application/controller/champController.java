@@ -10,7 +10,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import application.model.Champ;
 import application.model.database;
@@ -48,13 +46,13 @@ public class champController implements Initializable {
         adresse.setPrefWidth(100);
         adresse.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAdr_ch()));
         coordoneeGPS.setPrefWidth(100);
-        coordoneeGPS.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGPS_ch()));
+        coordoneeGPS.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCdn_ch()));
         type.setPrefWidth(100);
         type.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCult_ch()));
 
         champs.addAll(new database().recupererChamps());
 
-        champsTableau.getItems().setAll(champs);
+        refreshData();
 
     }
 
@@ -83,12 +81,11 @@ public class champController implements Initializable {
             primaryStage.setTitle("Edit Person");
 
             EditChampController controller = loader.getController();
-            if(champ == null) {
 
-            } else {
+            controller.setChampController(this);
+            if(champ != null) {
                 controller.setChampSelected(champ);
             }
-
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -99,5 +96,9 @@ public class champController implements Initializable {
             e1.printStackTrace();
         }
 
+    }
+
+    public void refreshData() {
+        champsTableau.getItems().setAll(champs);
     }
 }
