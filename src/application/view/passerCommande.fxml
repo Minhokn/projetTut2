@@ -165,7 +165,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="9" spacing="10">
                 <children>
-                    <TableView fx:id="viewCommandes">
+                    <TableView fx:id="viewCommande">
                         <columns>
                             <TableColumn fx:id="clientCom" prefWidth="260.0" text="Client"/>
                             <TableColumn fx:id="champCom" prefWidth="252.0" text="Champ"/>
