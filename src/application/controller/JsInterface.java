@@ -16,4 +16,11 @@ public class JsInterface {
     public Champ getChamp(int id){
         return Main.getMeJson().getChamp(id);
     }
+
+    public double getMiddleChampX(int id){
+        return Main.getMeJson().getChamp(id).getCentre().getX();
+    }
+    public double getMiddleChampY(int id){
+        return Main.getMeJson().getChamp(id).getCentre().getY();
+    }
 }

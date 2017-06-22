@@ -119,6 +119,7 @@ public class Champ {
             longi += points[i].getX();
             lat += points[i].getY();
         }
+        System.out.println(lat / points.length +"                   " + longi / points.length);
         return new Point(lat / points.length, longi / points.length);
     }
 

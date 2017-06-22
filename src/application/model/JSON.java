@@ -17,18 +17,12 @@ public class JSON {
 	 */
 	private List<Champ> listChamps = new ArrayList<>();
 	/**
-	 * Liste de tout les champs.
-	 */
-	private List<Champ> tousChamps;
-	/**
 	 * Constructeur permettant d'initialiser la liste de tous les champs.
-	 * 
-	 * @see JSON#tousChamps
+	 *
 	 * @see JSON#listChamps
 	 */
 	public JSON() {
 		super();
-		tousChamps = new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant d'ajouter un champ au fichier json.
@@ -36,12 +30,10 @@ public class JSON {
 	 * @param champ	Champ a ajouter.
 	 * 
 	 * @see JSON#listChamps
-	 * 
-	 * @see JSON#tousChamps
+	 *
 	 */
 	public void addChamp(Champ champ) {
 		listChamps.add(champ);
-		tousChamps = new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant de supprimer un champ du fichier json.
@@ -49,12 +41,10 @@ public class JSON {
 	 * @param ch	Champ a supprimer.
 	 * 
 	 * @see JSON#listChamps
-	 * 
-	 * @see JSON#tousChamps
+	 *
 	 */
 	public void removeChamp(Champ ch) {
 		listChamps.remove(ch);
-		tousChamps = new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant de r�cuperer un champ dans le fichier json.

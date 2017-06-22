@@ -4,42 +4,45 @@ package application.model;
  * Created by Killian Lts on 22/06/2017.
  */
 public class Point {
-
-    private double x, y; // coordonnées GPS
-    private double x1, y1; // coordonnées GPS
+    private static final long serialVersionUID = 1L;
+    private double x, y; // coordonnÃ©es GPS
 
     /**
-     * @param x latitude
-     * @param y longitude
+     * @param x
+     * latitude
+     * @param y
+     * longitude
      */
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
-
-    public Point(String x, String y) {
-        this.x1 = x1;
-        this.y1 = y1;
+    public Point(String x, String y){
+        this.x = Double.valueOf(x);
+        this.y = Double.valueOf(y);
     }
 
     /**
-     * @return la latitude
+     * @return
+     * la latitude
      */
     public double getX() {
         return this.x;
     }
 
     /**
-     * @return la longitude
+     * @return
+     * la longitude
      */
     public double getY() {
         return this.y;
     }
 
     /**
-     * @return les coordonnées sous la forme (latitude, longitude)
+     * @return
+     * les coordonnÃ©es sous la forme (latitude, longitude)
      */
     public String toString() {
-        return "[" + x + "," + y + "]";
+        return "(" + x + ", " + y + ")";
     }
 }
