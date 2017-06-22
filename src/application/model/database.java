@@ -1,5 +1,7 @@
 package application.model;
 
+import application.Main;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -139,8 +141,9 @@ public class database {
     }
 
     public List<Champ> recupererChamps() {
-        return recupererChampsClient(-1);
 
+
+        return recupererChampsClient(-1);
     }
 
     public List<Champ> recupererChampsClient(int id_cl) {
@@ -175,6 +178,12 @@ public class database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        for(Champ c : liste){
+            Main.getMeJson().addChamp(c);
+        }
+
+        System.out.println(Main.getMeJson().toString());
         return liste;
 
 

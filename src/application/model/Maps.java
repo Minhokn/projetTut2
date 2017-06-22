@@ -1,6 +1,7 @@
 package application.model;
 import java.net.URL;
 
+import application.Main;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -10,7 +11,7 @@ public class Maps {
 	private WebView webView;
     private JSObject javascriptOBJ;
 
-    public Maps(String mapHTML, APIGoogleMap controller) {
+    public Maps(String mapHTML) {
 
         webView = new WebView();
         WebEngine webEngine = webView.getEngine();
@@ -21,7 +22,7 @@ public class Maps {
 
 
         javascriptOBJ = (JSObject) webView.getEngine().executeScript("window");
-        javascriptOBJ.setMember("jsInterface", controller);
+        javascriptOBJ.setMember("jsInterface", Main.getJsInterface());
         webEngine.setOnAlert(e -> System.out.println(e.toString()));
         webEngine.setOnError(e -> System.err.println(e.toString()));
     }

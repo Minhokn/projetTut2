@@ -6,6 +6,7 @@ package application.model;
 public class Point {
 
     private double x, y; // coordonnées GPS
+    private double x1, y1; // coordonnées GPS
 
     /**
      * @param x latitude
@@ -14,6 +15,11 @@ public class Point {
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point(String x, String y) {
+        this.x1 = x1;
+        this.y1 = y1;
     }
 
     /**

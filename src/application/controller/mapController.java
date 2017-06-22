@@ -23,7 +23,7 @@ public class mapController implements APIGoogleMap {
     private List<Champ> listChampsClient;
 	
 	public void initialize() {
-		map=new Maps("map",this);
+		map=new Maps("map");
 		map.setParent(googleMaps);
 
         listChamps = new database().recupererChamps();
@@ -56,5 +56,4 @@ public class mapController implements APIGoogleMap {
             map.addChamp(champ);
         }
     }
-
 }
