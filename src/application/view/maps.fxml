@@ -15,7 +15,7 @@
 
 <StackPane prefHeight="546.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.mapController">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="501.0" prefWidth="691.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.8" prefHeight="501.0" prefWidth="691.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <StackPane fx:id="googleMaps" prefHeight="150.0" prefWidth="200.0" />
             <VBox alignment="TOP_CENTER" prefWidth="345.0" spacing="25.0">
