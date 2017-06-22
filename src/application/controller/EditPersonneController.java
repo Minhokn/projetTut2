@@ -41,6 +41,7 @@ public class EditPersonneController {
             clientSelected.setTelephone(telField.getText());
             clientSelected.setAdresse(adresseField.getText());
             clientSelected.setTypeCl(typeField.getValue());
+
             new database().editClient(clientSelected);
         } else {
             new database().addClient(prenomField.getText(), nomField.getText(), telField.getText(), adresseField.getText(), typeField.getValue());

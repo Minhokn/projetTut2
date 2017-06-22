@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
@@ -16,16 +16,29 @@
         margin: 0;
         padding: 0;
       }
+
     </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script type="text/javascript">
+</head>
+<body>
+<div id="map"></div>
+<script type="text/javascript">
       var map;
       var polygons=[];
       var infoWindow;
       var marker;
       var Centre = {lat: 47.970648, lng: -1.448672};
+      var selectionDeuxiemeLong;
+      var appuiLong;
+      var nbSelect;
+      var idPremier;
+      var idDeuxieme;
+      var selectionPremierLat;
+      var selectionPremierLong;
+      var latDeuxieme ;
+      var selectionDeuxiemeLong ;
+      var route;
+
+
 
       function initMap() {
 
@@ -46,6 +59,14 @@
 
       map.data.addGeoJson(JSON.parse(jsInterface.getGeoJson()), { idPropertyName : 'NUM_ILOT'});
 
+      map.data.addListener('mousedown', function(event){
+    		start = new Date().getTime(); // Temp de debut d'appui
+    	});
+      map.data.addListener('mouseup', function(event){
+    		end = new Date().getTime(); // Temp de fin d'appui
+    		longpress = (end - start < 500) ? false : true;
+    	});
+
 
       map.data.addListener('click', function(event) {
     		// Recuperation des informations sur les champs a afficher
@@ -56,8 +77,94 @@
     		var transport = event.feature.getProperty("transport");
 
 
+            if(appuiLong){
+                if(nbSelect < 1){ //Quand il n'y a pas encore de champ selectionné
+                    // Déselection si une selection simple existe.
+                    if(idPremier != undefined){
+                        map.data.getFeatureById(idPremier).setProperty('isColorful',false);
+                        idPremier = undefined;
+                    }
+                    idPremier = event.feature.getId(); // Enregistrement de l'identifiant du premier champ
 
-    		if(infoWindow != undefined) {infoWindow.close();}
+                    // Enregistrement des coordonnées du premier champ
+                    selectionPremierLat = event.latLng.lat();
+                    selectionPremierLong = event.latLng.lng();
+
+                    nbSelect ++;
+                }else{ // Deuxieme champ de la selection
+
+                    //Dans le cas d'un changement de champ de destination, réinitialiser l'ancienne si elle existe
+                    if(idDeuxieme != undefined){
+                        map.data.getFeatureById(idDeuxieme).setProperty('isColorful',false);
+                        idDeuxieme = undefined;
+                    }
+                    if(route != undefined){//Dans le cas d'un changement de champ de destination, enlever la ligne de distance si elle existe
+                        route.setMap(null);
+                    }
+                    idDeuxieme = event.feature.getId();// Enregistrement de l'identifiant du deuxieme champ
+                    event.feature.setProperty('isColorful',true);// Coloration du champ, par le style dynamique
+
+                    // Enregistrement des coordonnées du premier champ
+                    latDeuxieme = event.latLng.lat();
+                    selectionDeuxiemeLong = event.latLng.lng();
+
+                    // Création des points, de départ et d'arrivée utilisés pour la distance
+                    var origin = new google.maps.LatLng(selectionPremierLat,selectionPremierLong);
+                    var destination = new google.maps.LatLng(latDeuxieme,selectionDeuxiemeLong);
+
+
+                  //Afichage de la ligne, pour la distance a vol d'oiseau
+                        var flightPlanCoordinates = [origin,destination];
+                        route = new google.maps.Polyline({
+                            path: flightPlanCoordinates,
+                            geodesic: true,
+                            strokeColor: '#1E88E5',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 2
+                        });
+                        route.setMap(map);
+
+                        // Affiche une fenetre avec les informations sur la distance, au millieu de la ligne
+                        infowindow = new google.maps.InfoWindow({
+                            content: "Distance a vol d'oiseau : "+parseInt(getDistanceFromLatLonInKm(selectionPremierLat, selectionPremierLong, latDeuxieme, selectionDeuxiemeLong))+" kilomètres",
+                            position: {lat: (selectionPremierLat + latDeuxieme) / 2, lng: (selectionPremierLong + selectionDeuxiemeLong) / 2}
+                        });
+                        infowindow.open(map);
+                        google.maps.event.addListener(infowindow,'closeclick',function(){
+                            reset();
+                        });
+
+                }
+                nbSelect++;
+            }else{
+                // Dans le cas d'un appui simple, affichage des informations concernant le champ
+                nbSelect = 0;
+                // Si une fenetre existe la fermer pour laisser place a la nouvelle
+                if(infowindow != undefined){
+                    infowindow.close();
+                }
+                // Si une ligne de distance etait affiché sur la carte, l'enlever
+                if(route != undefined){
+                    route.setMap(null);
+                }
+                // Si la ligne d'itinéraire google est affichée, l'enlever
+                if(directionsDisplay){
+                    directionsDisplay.setMap(null);
+                }
+                // Décoloration des selections si elle existent
+                if(idPremier != undefined){
+                    map.data.getFeatureById(idPremier).setProperty('isColorful',false);
+                    idPremier = undefined;
+                }
+                if(idDeuxieme != undefined){
+                    map.data.getFeatureById(idDeuxieme).setProperty('isColorful',false);
+                    idDeuxieme = undefined;
+                }
+                // Place dans la variable de premiere selection, le champ selectionné
+                idPremier = event.feature.getId();
+                // Colore le champ selectionné
+                event.feature.setProperty('isColorful',true);
+               if(infoWindow != undefined) {infoWindow.close();}
 
             infoWindow = new google.maps.InfoWindow({
     				content: "",
@@ -71,6 +178,25 @@
     				      'Transport : ' + transport + '</br>');
     			infoWindow.open(map, this);
     		});
+                google.maps.event.addListener(infowindow,'closeclick',function(){
+                    reset();
+                });
+            }
+
+  map.data.setStyle(function(feature) {
+    		var color = '#427791';
+    		if (feature.getProperty('isColorful') && longpress) {
+    			color = '#0A1C91';
+    		}else if (feature.getProperty('isColorful') && !longpress) {
+    			color = '#0B9126';
+    		}
+    		return /** @type {google.maps.Data.StyleOptions} */({
+    			fillColor: color,
+    			strokeColor: color,
+    			strokeWeight: 2
+    		});
+    	});
+
 
 
     var cityCircle = new google.maps.Circle({
@@ -133,8 +259,9 @@
 
     return path;
 }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV9i0KaacFIFrAQBAEnFELQs_jq-7EFII&callback=initMap"
-    async defer></script>
-  </body>
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV9i0KaacFIFrAQBAEnFELQs_jq-7EFII&callback=initMap"
+        async defer></script>
+</body>
 </html>
