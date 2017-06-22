@@ -169,8 +169,8 @@ public class Champ {
      */
     public String getJson(){
         return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
-                + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
-                + "-type de la botte-" + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
+                + cult_ch + "\",\"proprio\": \"" + client + "\",\"etat\": \""
+                + etat + "\",\"surface\": \"" + surf_ch + "\"},\"geometry\":"
                 + GPS_ch + "}";
 
 

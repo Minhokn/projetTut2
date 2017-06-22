@@ -75,8 +75,8 @@
     		var num = event.feature.getProperty("NUM_ILOT");
     		var type = event.feature.getProperty("culture");
     		var proprio = event.feature.getProperty("proprio");
-    		var bottelage = event.feature.getProperty("bottelage");
-    		var transport = event.feature.getProperty("transport");
+    		var etat = event.feature.getProperty("etat");
+    		var surface = event.feature.getProperty("surface");
 
 
             if(appuiLong){
@@ -171,8 +171,8 @@
                 infoWindow.setContent('Champ numero : ' + num + '</br></br>' +
                                           'Type de cultures : ' + type + '</br></br>' +
 	                                          'Proprietaire : ' + proprio + '</br></br>' +
-	                                          'Botalage : ' + bottelage + '</br></br>' +
-	                                          'Transport : ' + transport + '</br>');
+	                                          'Etat : ' + etat + '</br></br>' +
+	                                          'Surface : ' + surface + '</br>');
 	                            infoWindow.open(map, this);
 
 
