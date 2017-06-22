@@ -235,7 +235,9 @@ public class database {
                                 resultat.getString("Cult_Ch"),
                                 resultat.getInt("Etat"),
                                 resultat.getString("GPS_Ch")
-                        )
+                        ),
+                        resultat.getString("rav_Com"),
+                        resultat.getString("esc_Com")
                 ));
             }
 

@@ -46,6 +46,7 @@ INSERT INTO `agriculteur` (`ID_CL`, `Nom_Cl`, `Prénom_CL`, `Tel_Cl`, `Adr_Cl`) 
 -- --------------------------------------------------------
 
 --
+
 -- Structure de la table `botteleuse`
 --
 
@@ -117,7 +118,9 @@ CREATE TABLE `commande` (
   `Taille_Max` float DEFAULT NULL,
   `Tonnes_Rec` float DEFAULT NULL,
   `Cout_Com` float DEFAULT NULL,
-  `ID_Ch` smallint(6) DEFAULT NULL
+  `ID_Ch` smallint(6) DEFAULT NULL,
+  `rav_Com` varchar(50) DEFAULT NULL,
+  `esc_Com` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -453,6 +456,7 @@ ALTER TABLE `champs`
 ALTER TABLE `commande`
   ADD PRIMARY KEY (`ID_Com`),
   ADD UNIQUE KEY `ID_Ch` (`ID_Ch`);
+
 
 --
 -- Index pour la table `contenir`

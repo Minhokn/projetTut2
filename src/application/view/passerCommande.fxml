@@ -167,12 +167,12 @@
                 <children>
                     <TableView fx:id="viewCommandes">
                         <columns>
-                            <TableColumn fx:id="clientCom" prefWidth="260.0" text="Marque"/>
-                            <TableColumn fx:id="champCom" prefWidth="252.0" text="Modele"/>
-                            <TableColumn fx:id="ravitaillementCom" prefWidth="328.0" text="Etat"/>
-                            <TableColumn fx:id="escortCom" prefWidth="328.0" text="Etat"/>
-                            <TableColumn fx:id="transportCom" prefWidth="328.0" text="Etat"/>
-                            <TableColumn fx:id="bottelageCom" prefWidth="328.0" text="Etat"/>
+                            <TableColumn fx:id="clientCom" prefWidth="260.0" text="Client"/>
+                            <TableColumn fx:id="champCom" prefWidth="252.0" text="Champ"/>
+                            <TableColumn fx:id="transportCom" prefWidth="328.0" text="Transport"/>
+                            <TableColumn fx:id="bottelageCom" prefWidth="328.0" text="Bottelage"/>
+                            <TableColumn fx:id="ravitaillementCom" prefWidth="328.0" text="Ravitaillement"/>
+                            <TableColumn fx:id="escortCom" prefWidth="328.0" text="Escorte"/>
                         </columns>
                     </TableView>
                     <Button fx:id="valider" text="Valider" onAction="#valider" minWidth="75"/>
