@@ -14,6 +14,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<!-- ajouter  bottelage et transport-->
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0"
           prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
           fx:controller="application.controller.commandeController">
@@ -22,11 +23,13 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="900" minWidth="10.0" prefWidth="450"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
             <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
             <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
             <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
             <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
         </rowConstraints>
@@ -45,7 +48,7 @@
             spacing="10">
                 <children>
                     <ComboBox fx:id="tracteurSelector" prefWidth="150.0"/>
-                    <Button fx:id="addTracteur" text="+" minWidth="25"/>
+                    <Button fx:id="addTracteur" text="+" minWidth="25" onAction="#addUnTracteur"/>
                     <TableView fx:id="viewTracteur">
                         <columns>
                             <TableColumn fx:id="marqueColonnet" prefWidth="260.0" text="Marque"/>
@@ -59,7 +62,7 @@
                   GridPane.rowIndex="3" spacing="10">
                 <children>
                     <ComboBox fx:id="moissonneuseSelector" prefWidth="150.0"/>
-                    <Button fx:id="addMoissonneuse" text="+" minWidth="25"/>
+                    <Button fx:id="addMoissonneuse" text="+" minWidth="25" onAction="#adduneMoissonneuse"/>
                     <TableView fx:id="viewMoissonneuse">
                         <columns>
                             <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque"/>
@@ -72,19 +75,19 @@
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
                   GridPane.rowIndex="4">
                 <children>
-                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui"/>
-                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non"/>
+                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui" onAction="#verifierOR"/>
+                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non" onAction="#verifierNR"/>
                 </children>
             </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
                   GridPane.rowIndex="5">
                 <children>
-                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui"/>
-                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non"/>
+                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui" onAction="#verifierOE"/>
+                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non" onAction="#verifierNE"/>
                 </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
-                  GridPane.rowIndex="6">
+                  GridPane.rowIndex="8">
                 <children>
                     <Button fx:id="valider" mnemonicParsing="false" text="Valider"/>
                 </children>
@@ -134,5 +137,25 @@
                     <Label text="Escorte"/>
                 </children>
             </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
+                <children>
+                    <Label text="Bottelage"/>
+                </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="7">
+                <children>
+                    <Label text="Transport"/>
+                </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <children>
+                    <ComboBox fx:id="bottelageSelector" prefWidth="150.0"/>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <children>
+                    <ComboBox fx:id="transportSelector" prefWidth="150.0"/>
+                </children>
+            </HBox>
         </children>
 </GridPane>
