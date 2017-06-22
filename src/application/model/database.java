@@ -228,7 +228,26 @@ public class database {
         }
     }
 
+    public List<Moissoneuse> recupererMoissonneuse() {
+        List<Moissoneuse> liste = new ArrayList<>();
+        Moissoneuse mach;
 
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("SELECT DISTINCT * FROM moissonneuses JOIN Machine WHERE Moissonneuses.Id_Mach=Machine.Id_Mach");
+            while (resultat.next()) {
+                mach = new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
+                        resultat.getInt("Etat"),resultat.getInt("Cons_R_Moi"),resultat.getInt("Cons_F_Moi"),resultat.getInt("Taille_T_Moi"),
+                        resultat.getInt("Large_C_Moi"),resultat.getInt("Large_Moi"),resultat.getInt("Hauteur_Moi"), resultat.getInt("Poids_Moi"),resultat.getInt("Taille_R_Moi"));
+                liste.add(mach);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return liste;
+    }
     public static double nbrDuréeMoisson() {
         // TODO Auto-generated method stub
         return 8.74;
