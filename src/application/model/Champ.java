@@ -126,15 +126,6 @@ public class Champ {
 
     @Override
     public String toString() {
-        return "Champ{" +
-                "id_ch=" + id_ch +
-                ", surf_ch=" + surf_ch +
-                ", cdn_ch='" + cdn_ch + '\'' +
-                ", adr_ch='" + adr_ch + '\'' +
-                ", client=" + client +
-                ", cult_ch='" + cult_ch + '\'' +
-                ", etat=" + etat +
-                ", GPS_ch='" + GPS_ch + '\'' +
-                '}';
+        return adr_ch+" ("+client+") ["+cult_ch+"]";
     }
 }
