@@ -248,6 +248,32 @@ public class database {
         }
         return liste;
     }
+
+
+
+    public void addBotteleuse(String type) {
+        try {
+            Statement stat = connexion.createStatement();
+            stat.executeUpdate("INSERT INTO vehicule(type) VALUES('" + type+ "')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editBotteleuse(Botteleuse b) {
+        if (b != null) {
+            try {
+                Statement stat = connexion.createStatement();
+                stat.executeUpdate("UPDATE botteleuse SET ID_Bot='" + b.getId()+ "',Type_Bot='" + b.getType() );
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
     public static double nbrDuréeMoisson() {
         // TODO Auto-generated method stub
         return 8.74;

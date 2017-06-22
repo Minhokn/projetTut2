@@ -1,6 +1,8 @@
 package application.controller;
 
+import application.model.Botteleuse;
 import application.model.Machine;
+import application.model.Moissoneuse;
 import application.model.database;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -15,8 +17,23 @@ public class EditMachineMoissoneuseController {
     @FXML private TextField modeleField;
     @FXML private ComboBox<Integer> etatField;
 
+    @FXML private TextField tailleTremisField;
+    @FXML private TextField tailleReservoirField;
+    @FXML private TextField largeurMoissonneuseField;
+    @FXML private TextField hauteurMoissonneuseField;
+    @FXML private TextField largeurCoupeField;
+    @FXML private TextField consommationChampField;
+    @FXML private TextField consommationRouteField;
+    @FXML private TextField poidsField;
+
+
     private Machine machineSelected;
+    private Moissoneuse moissoneuseSelected;
     private machineController machineController;
+
+    private machineController botteleuseController;
+
+
 
     public void initialize() {
         etatField.getItems().setAll(0, 1);
@@ -24,10 +41,18 @@ public class EditMachineMoissoneuseController {
     }
 
     public void handleOk() {
-        if(machineSelected != null) {
+        if(machineSelected != null && moissoneuseSelected != null) {
             machineSelected.setMarque(marqueField.getText());
             machineSelected.setModele(modeleField.getText());
             machineSelected.setEtat(etatField.getValue());
+            moissoneuseSelected.setCapaciteReserve(marqueField.getText());
+            moissoneuseSelected.setConsoF(marqueField.getText());
+            moissoneuseSelected.setConsoR(marqueField.getText());
+            moissoneuseSelected.setHauteur(marqueField.getText());
+            moissoneuseSelected.setLgCoupe(marqueField.getText());
+            moissoneuseSelected.setLgRoute(marqueField.getText());
+
+
 
             new database().editMachine(machineSelected);
         } else {

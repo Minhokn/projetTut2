@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Botteleuse;
+import application.model.Machine;
 import application.model.database;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -17,7 +18,9 @@ public class EditMachineBotteleuseController {
     @FXML private ComboBox<String> typeField;
 
     private Botteleuse botteleuseSelected;
+    private Machine machineSelected;
     private machineController botteleuseController;
+
 
     public void initialize() {
         etatField.getItems().setAll(0, 1);
@@ -25,15 +28,17 @@ public class EditMachineBotteleuseController {
     }
 
     public void handleOk() {
-        if(botteleuseSelected != null) {
-            botteleuseSelected.setMarque(marqueField.getText());
-            botteleuseSelected.setModele(modeleField.getText());
-            botteleuseSelected.setEtat(etatField.getValue());
+        if(botteleuseSelected != null && machineSelected != null) {
+            machineSelected.setMarque(marqueField.getText());
+            machineSelected.setModele(modeleField.getText());
+            machineSelected.setEtat(etatField.getValue());
             botteleuseSelected.setType(typeField.getValue());
 
+            new database().editMachine(machineSelected);
             new database().editBotteleuse(botteleuseSelected);
         } else {
-            new database().addBotteleuse(marqueField.getText(), modeleField.getText(), etatField.getValue(),typeField.getValue());
+            new database().addBotteleuse(typeField.getValue());
+            new database().addMachine(marqueField.getText(), modeleField.getText(), etatField.getValue());
         }
 
         machineController.refreshData();
