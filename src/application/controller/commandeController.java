@@ -157,11 +157,21 @@ public class commandeController implements Initializable {
     public void valider(){
 
     }
+    public String yonR(){
+        if (ouiR.isSelected())return "Oui";
+        else return "Non";
+    }
+    public String yonE(){
+        if (ouiE.isSelected())return "Oui";
+        else return "Non";
+    }
 
     @FXML
 	public void affecter(){
 		if(viewMoissonneuse.getItems().size()!=0 && viewTracteur.getItems().size()!=0){
-
+            viewCommande.getItems().add(new Commande(bottelageSelector.getValue(), transportSelector.getValue(),champSelector.getValue(),yonR(), yonE()));
+            viewTracteur.getItems().remove(0,viewTracteur.getItems().size());
+            viewMoissonneuse.getItems().remove(0,viewMoissonneuse.getItems().size());
 		}
 	}
 }
