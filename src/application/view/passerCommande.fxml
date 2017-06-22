@@ -90,7 +90,7 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
                   GridPane.rowIndex="8">
                 <children>
-                    <Button fx:id="valider" mnemonicParsing="false" text="Valider" onAction="#valider"/>
+                    <Button fx:id="affecter" mnemonicParsing="false" text="Affecter" onAction="#affecter"/>
                 </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -163,7 +163,7 @@
                     <Text  text="Commandes"/>
                 </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="9" spacing="10">
                 <children>
                     <TableView fx:id="viewCommandes">
                         <columns>
@@ -175,6 +175,7 @@
                             <TableColumn fx:id="bottelageCom" prefWidth="328.0" text="Etat"/>
                         </columns>
                     </TableView>
+                    <Button fx:id="valider" text="Valider" onAction="#valider" minWidth="75"/>
                 </children>
             </HBox>
         </children>

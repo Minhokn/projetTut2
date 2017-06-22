@@ -28,6 +28,7 @@ public class commandeController implements Initializable {
 	@FXML RadioButton  nonE;
 	@FXML ComboBox<String> bottelageSelector;
 	@FXML ComboBox<String> transportSelector;
+	@FXML Button affecter;
 	@FXML Button valider;
 	@FXML
 	private TableColumn<Moissoneuse, String> marqueColonne;
@@ -49,6 +50,10 @@ public class commandeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		nonR.setSelected(true);
+		nonE.setSelected(true);
+
 		listChamps = new database().recupererChamps();
 		champSelector.getItems().setAll(listChamps);
 		champSelector.setValue(champSelector.getItems().get(0));
@@ -75,7 +80,6 @@ public class commandeController implements Initializable {
 
 		marqueColonnet.setPrefWidth(100);
 		marqueColonnet.setCellValueFactory(cellData -> {
-			System.out.println(cellData.getValue());
 			return new SimpleStringProperty(cellData.getValue().getMarque());
 
 		});
@@ -122,4 +126,11 @@ public class commandeController implements Initializable {
     public void valider(){
 
     }
+
+    @FXML
+	public void affecter(){
+		if(viewMoissonneuse.getItems().size()!=0 && viewTracteur.getItems().size()!=0){
+
+		}
+	}
 }
