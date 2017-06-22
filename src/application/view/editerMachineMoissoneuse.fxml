@@ -29,6 +29,7 @@
          <RowConstraints />
          <RowConstraints />
          <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         <RowConstraints />
         </rowConstraints>
 
         <Label text="Marque" />
@@ -39,8 +40,9 @@
         <Label text="Largeur moissonneuse" GridPane.rowIndex="5" />
         <Label text="Hauteur moissonneuse" GridPane.rowIndex="6" />
         <Label text="Largeur coupe" GridPane.rowIndex="7" />
-        <Label text="Consommation" GridPane.rowIndex="8" />
-        <Label text="Poids" GridPane.rowIndex="9" />
+        <Label text="Consommation dans Champs" GridPane.rowIndex="8" />
+        <Label text="Consommation sur route" GridPane.rowIndex="9" />
+        <Label text="Poids" GridPane.rowIndex="10" />
         <TextField fx:id="marqueField" GridPane.columnIndex="1" />
         <ComboBox fx:id="etatField" prefHeight="31.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="modeleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -49,8 +51,9 @@
         <TextField fx:id="largeurMoissonneuseField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <TextField fx:id="hauteurMoissonneuseField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
         <TextField fx:id="largeurCoupeField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <TextField fx:id="consommationField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-        <TextField fx:id="poidsField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <TextField fx:id="consommationChampField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <TextField fx:id="consommationRouteField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <TextField fx:id="poidsField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -62,7 +65,7 @@
             <Button mnemonicParsing="false" onAction="#handleCancel" text="Annuler" />
         </buttons>
       <VBox.margin>
-         <Insets right="25.0" />
+         <Insets bottom="25.0" left="25.0" right="25.0" />
       </VBox.margin>
     </ButtonBar>
 </VBox>
