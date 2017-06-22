@@ -28,6 +28,13 @@ public class Commande {
         this.rav_Com=rav_Com;
         this.esc_Com=esc_Com;
     }
+    public Commande( String bott_Com, String trans_Com, Champ champ_Com, String rav_Com, String esc_Com) {
+        this.bott_Com = bott_Com;
+        this.trans_Com = trans_Com;
+        this.champ_Com = champ_Com;
+        this.rav_Com=rav_Com;
+        this.esc_Com=esc_Com;
+    }
 
 
     public String getRav_Com() {
