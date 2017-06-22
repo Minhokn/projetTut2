@@ -25,12 +25,11 @@ public class mapController implements APIGoogleMap {
     @FXML StackPane googleMaps;
     @FXML private SplitMenuButton triClient;
     @FXML private ComboBox<Champ> AdC;
-    @FXML private ComboBox<Champ> dc1;
-    @FXML private ComboBox<Champ> dc2;
+
 
     private Maps map;
     private static final int ZOOM = 12;
-    private List<Client> listClients;
+    private List<Client> listAgriculeur;
     private List<Champ> listChamps;
     private List<Champ> listChampsClient;
 
@@ -39,7 +38,7 @@ public class mapController implements APIGoogleMap {
         map.setParent(googleMaps);
 
         listChamps = new database().recupererChamps();
-        listClients = new database().recupererClients();
+        listAgriculeur = new database().recupererAgriculteurs();
 
 /*
         NdC.getItems().setAll(listClients);
@@ -52,18 +51,20 @@ public class mapController implements APIGoogleMap {
         triClient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println(listChamps.get(0).getClient());
                Main.getMeJson().afficherTousLesChamps();
                rafraichissementMap();
             }
         });
 
-        for (Client clt:listClients) {
+        for (Client clt:listAgriculeur) {
             MenuItem item=new MenuItem(clt.getNom());
             item.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     Main.getMeJson().afficherTousLesChamps();
-                    Main.getMeJson().trierParClient(clt.getNom()+" "+clt.getPrenom());
+                    Main.getMeJson().trierParAgriculteur(clt.getNom(),clt.getPrenom());
+                    System.out.println(clt.getNom()+" "+clt.getPrenom());
                     rafraichissementMap();
                 }
             });
@@ -76,20 +77,18 @@ public class mapController implements APIGoogleMap {
         AdC.setValue(AdC.getItems().get(0));*/
 
 
-        dc1.getItems().setAll(listChamps);
-        dc1.setValue(dc1.getItems().get(0));
-
-
-        dc2.getItems().setAll(listChamps);
-        dc2.setValue(dc2.getItems().get(0));
     }
 
 
     public void rafraichissementMap(){
+        System.out.println(Main.getMeJson().toString());
+
         if (map!= null){
             map.enleverParent(googleMaps);
             map = new Maps("map");
             map.setParent(googleMaps);
+
+
         }
     }
 
