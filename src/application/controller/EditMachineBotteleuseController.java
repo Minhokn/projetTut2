@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.model.Machine;
+import application.model.Botteleuse;
 import application.model.database;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -17,7 +17,7 @@ public class EditMachineBotteleuseController {
     @FXML private ComboBox<String> typeField;
 
     private Botteleuse botteleuseSelected;
-    private botteleuseController bottleuseController;
+    private machineController botteleuseController;
 
     public void initialize() {
         etatField.getItems().setAll(0, 1);
@@ -31,9 +31,9 @@ public class EditMachineBotteleuseController {
             botteleuseSelected.setEtat(etatField.getValue());
             botteleuseSelected.setType(typeField.getValue());
 
-            new database().editMachine(machineSelected);
+            new database().editBotteleuse(botteleuseSelected);
         } else {
-            new database().addMachine(marqueField.getText(), modeleField.getText(), etatField.getValue());
+            new database().addBotteleuse(marqueField.getText(), modeleField.getText(), etatField.getValue(),typeField.getValue());
         }
 
         machineController.refreshData();
@@ -45,15 +45,15 @@ public class EditMachineBotteleuseController {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
-    public void setMachineSelected(Machine machine) {
-        this.machineSelected = machine;
-
-        marqueField.setText(machine.getMarque());
-        modeleField.setText(machine.getModele());
-        etatField.setValue(machine.getEtat());
+    public void setMachineSelected(Botteleuse botteleuse) {
+        this.botteleuseSelected = botteleuse;
+        marqueField.setText(botteleuse.getMarque());
+        modeleField.setText(botteleuse.getModele());
+        etatField.setValue(botteleuse.getEtat());
+        typeField.setValue(botteleuse.getType());
     }
 
-    public void setMachineController(machineController machineController) {
-        this.machineController = machineController;
+    public void setBotteleuseController(machineController botteleuseController) {
+        this.botteleuseController = botteleuseController;
     }
 }
