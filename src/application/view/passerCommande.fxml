@@ -15,168 +15,178 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <!-- ajouter  bottelage et transport-->
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0"
-          prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800"
+          prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
           fx:controller="application.controller.commandeController">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300" minWidth="10.0" prefWidth="150"/>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="900" minWidth="10.0" prefWidth="450"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
-        </rowConstraints>
-        <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                <children>
-                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Attribution des ressources logistiques"/>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <children>
-                    <ComboBox fx:id="champSelector" prefWidth="150.0"/>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="363.0" GridPane.columnIndex="1" GridPane.rowIndex="2"
-            spacing="10">
-                <children>
-                    <ComboBox fx:id="tracteurSelector" prefWidth="150.0"/>
-                    <Button fx:id="addTracteur" text="+" minWidth="25" onAction="#addUnTracteur"/>
-                    <TableView fx:id="viewTracteur">
-                        <columns>
-                            <TableColumn fx:id="marqueColonnet" prefWidth="260.0" text="Marque"/>
-                            <TableColumn fx:id="modeleColonnet" prefWidth="252.0" text="Modele"/>
-                            <TableColumn fx:id="etatColonnet" prefWidth="328.0" text="Etat"/>
-                        </columns>
-                    </TableView>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
-                  GridPane.rowIndex="3" spacing="10">
-                <children>
-                    <ComboBox fx:id="moissonneuseSelector" prefWidth="150.0"/>
-                    <Button fx:id="addMoissonneuse" text="+" minWidth="25" onAction="#adduneMoissonneuse"/>
-                    <TableView fx:id="viewMoissonneuse">
-                        <columns>
-                            <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque"/>
-                            <TableColumn fx:id="modeleColonne" prefWidth="252.0" text="Modele"/>
-                            <TableColumn fx:id="etatColonne" prefWidth="328.0" text="Etat"/>
-                        </columns>
-                    </TableView>
-                </children>
-            </HBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
-                  GridPane.rowIndex="4">
-                <children>
-                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui" onAction="#verifierOR"/>
-                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non" onAction="#verifierNR"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
-                  GridPane.rowIndex="5">
-                <children>
-                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui" onAction="#verifierOE"/>
-                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non" onAction="#verifierNE"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
-                  GridPane.rowIndex="8">
-                <children>
-                    <Button fx:id="affecter" mnemonicParsing="false" text="Affecter" onAction="#affecter"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-                <children>
-                    <Label text="Champ"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
-                <children>
-                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../images/imageTracteur.png"/>
-                        </image>
-                    </ImageView>
-                    <Label text="Tracteur"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
-                <children>
-                    <ImageView fitHeight="48.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../images/imageMoissonneuse.png"/>
-                        </image>
-                    </ImageView>
-                    <Label text="Moissonneuse"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
-                <children>
-                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../images/imageCamionCiterne.png"/>
-                        </image>
-                    </ImageView>
-                    <Label text="Ravitaillement"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
-                <children>
-                    <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@../images/imageVehiculeEscorte.png"/>
-                        </image>
-                    </ImageView>
-                    <Label text="Escorte"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
-                <children>
-                    <Label text="Bottelage"/>
-                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="7">
-                <children>
-                    <Label text="Transport"/>
-                </children>
-            </VBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                <children>
-                    <ComboBox fx:id="bottelageSelector" prefWidth="150.0"/>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                <children>
-                    <ComboBox fx:id="transportSelector" prefWidth="150.0"/>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="0" GridPane.rowIndex="9">
-                <children>
-                    <Text  text="Commandes"/>
-                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="9" spacing="10">
-                <children>
-                    <TableView fx:id="viewCommande">
-                        <columns>
-                            <TableColumn fx:id="clientCom" prefWidth="260.0" text="Client"/>
-                            <TableColumn fx:id="champCom" prefWidth="252.0" text="Champ"/>
-                            <TableColumn fx:id="transportCom" prefWidth="328.0" text="Transport"/>
-                            <TableColumn fx:id="bottelageCom" prefWidth="328.0" text="Bottelage"/>
-                            <TableColumn fx:id="ravitaillementCom" prefWidth="328.0" text="Ravitaillement"/>
-                            <TableColumn fx:id="escortCom" prefWidth="328.0" text="Escorte"/>
-                        </columns>
-                    </TableView>
-                    <Button fx:id="valider" text="Valider" onAction="#valider" minWidth="75"/>
-                </children>
-            </HBox>
-        </children>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300" minWidth="100.0" prefWidth="100"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="900" minWidth="10.0" prefWidth="350"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="900" minWidth="10.0" prefWidth="350"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="112.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Attribution des ressources logistiques"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <ComboBox fx:id="champSelector" prefWidth="150.0"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="363.0" GridPane.columnIndex="1" GridPane.rowIndex="2"
+              spacing="10">
+            <children>
+                <ComboBox fx:id="tracteurSelector" prefWidth="150.0"/>
+                <Button fx:id="addTracteur" text="+" minWidth="25" onAction="#addUnTracteur"/>
+                <TableView fx:id="viewTracteur">
+                    <columns>
+                        <TableColumn fx:id="marqueColonnet" prefWidth="260.0" text="Marque"/>
+                        <TableColumn fx:id="modeleColonnet" prefWidth="252.0" text="Modele"/>
+                        <TableColumn fx:id="etatColonnet" prefWidth="328.0" text="Etat"/>
+                    </columns>
+                </TableView>
+                <VBox minWidth="10"></VBox>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="3" spacing="10">
+            <children>
+                <ComboBox fx:id="moissonneuseSelector" prefWidth="150.0"/>
+                <Button fx:id="addMoissonneuse" text="+" minWidth="25" onAction="#adduneMoissonneuse"/>
+                <TableView fx:id="viewMoissonneuse">
+                    <columns>
+                        <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque"/>
+                        <TableColumn fx:id="modeleColonne" prefWidth="252.0" text="Modele"/>
+                        <TableColumn fx:id="etatColonne" prefWidth="328.0" text="Etat"/>
+                    </columns>
+                </TableView>
+                <VBox minWidth="10"></VBox>
+            </children>
+        </HBox>
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="4">
+            <children>
+                <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui" onAction="#verifierOR"/>
+                <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non" onAction="#verifierNR"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="5">
+            <children>
+                <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui" onAction="#verifierOE"/>
+                <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non" onAction="#verifierNE"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="8">
+            <children>
+                <Button fx:id="affecter" mnemonicParsing="false" text="Affecter" onAction="#affecter"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <children>
+                <Label text="Champ"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/imageTracteur.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Tracteur"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+            <children>
+                <ImageView fitHeight="48.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/imageMoissonneuse.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Moissonneuse"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/imageCamionCiterne.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Ravitaillement"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/imageVehiculeEscorte.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Escorte"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
+            <children>
+                <Label text="Bottelage"/>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="7">
+            <children>
+                <Label text="Transport"/>
+            </children>
+        </VBox>
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <children>
+                <ComboBox fx:id="bottelageSelector" prefWidth="150.0"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <children>
+                <ComboBox fx:id="transportSelector" prefWidth="150.0"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <children>
+                <Text text="Commandes"/>
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="2" GridPane.rowIndex="2"
+              spacing="10">
+            <children>
+                <TableView fx:id="viewCommande">
+                    <columns>
+                        <TableColumn fx:id="clientCom" prefWidth="260.0" text="Client"/>
+                        <TableColumn fx:id="champCom" prefWidth="252.0" text="Champ"/>
+                        <TableColumn fx:id="transportCom" prefWidth="328.0" text="Transport"/>
+                        <TableColumn fx:id="bottelageCom" prefWidth="328.0" text="Bottelage"/>
+                        <TableColumn fx:id="ravitaillementCom" prefWidth="328.0" text="Ravitaillement"/>
+                        <TableColumn fx:id="escortCom" prefWidth="328.0" text="Escorte"/>
+                    </columns>
+                </TableView>
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER" prefHeight="57.0" prefWidth="404.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <children>
+                <Button fx:id="valider" text="Valider" onAction="#valider" minWidth="75"/>
+            </children>
+        </HBox>
+    </children>
 </GridPane>
