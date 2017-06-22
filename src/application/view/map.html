@@ -43,6 +43,27 @@
           title: 'Eta Louis Giboire'
         });
 
+
+
+    var cityCircle = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.7,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.03,
+        map: map,
+        center: Centre,
+        radius: 20 * 1000,
+        clickable:
+        false
+    });
+
+
+
+
+
+
+
         marker.addListener('click', function(e){
             var contentString = '<b>ETA Louis Giboire</b>';
 
@@ -61,7 +82,6 @@
       }
       
       function addChamp(id,adresse,culture,surface,coords){
-
       	var polygon = new google.maps.Polygon ({
       	paths: toJavascriptArray(coords),
       	 id : id,
@@ -70,15 +90,14 @@
       	 surface : surface,
         });
         polygon.setMap(map);
-
-
       }
-      /** Transforme les coordonnés java vers Javascript array **/
-function toJavascriptArray(coords) {
-    var path = [];
-    var coordsParse = JSON.parse(coords);
 
-    coordsParse.forEach(function(point){
+      /** Transforme les coordonnés java vers Javascript array **/
+      function toJavascriptArray(coords) {
+          var path = [];
+          var coordsParse = JSON.parse(coords);
+
+       coordsParse.forEach(function(point){
         var split = point.toString().split(",");
         path.push(new google.maps.LatLng(split[0], split[1]));
 

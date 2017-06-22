@@ -9,11 +9,12 @@ public class Moissoneuse extends Machine {
 	private int lgRoute = 0;
 	private int hauteur = 0;
 	private int poids = 0;
-	private int capaciteReserve = 0;
+	private int tailleReservoir = 0;
+
 
 	
 	public Moissoneuse(int id, String marque, String modele, int etat, int consoR, int consoF, int tremie,
-			int lgCoupe, int lgRoute, int hauteur, int poids, int capaciteReserve) {
+			int lgCoupe, int lgRoute, int hauteur, int poids, int tailleReservoir) {
 		super(id, marque, modele, etat);
 		
 		this.consoR = consoR; 
@@ -23,7 +24,8 @@ public class Moissoneuse extends Machine {
 		this.lgRoute = lgRoute; 
 		this.hauteur = hauteur; 
 		this.poids = poids;
-		this.capaciteReserve = capaciteReserve;
+		this.tailleReservoir=tailleReservoir;
+
 	}
 
 
@@ -97,18 +99,11 @@ public class Moissoneuse extends Machine {
 		this.poids = newPoids;
 	}
 
-
-
-	public int getCapaciteReserve() {
-		return capaciteReserve;
+	public int getTailleReservoir() {
+		return tailleReservoir;
 	}
 
-
-
-	public void setCapaciteReserve(int capaciteReserve) {
-		this.capaciteReserve = capaciteReserve;
+	public void setTailleReservoir(int tailleReservoir) {
+		this.tailleReservoir = tailleReservoir;
 	}
-
-
-
 }

@@ -48,6 +48,8 @@ public class mapController implements APIGoogleMap {
         dc2.getItems().setAll(listChamps);
         dc2.setValue(dc2.getItems().get(0));
 	}
+
+
     public void askToLoadChamp(){
         System.out.println("ok");
         for(Champ champ:listChamps){

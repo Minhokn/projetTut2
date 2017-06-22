@@ -19,7 +19,7 @@ public class EditMachineBotteleuseController {
 
     private Botteleuse botteleuseSelected;
     private Machine machineSelected;
-    private machineController botteleuseController;
+    private machineController machineController;
 
 
     public void initialize() {
@@ -59,6 +59,6 @@ public class EditMachineBotteleuseController {
     }
 
     public void setBotteleuseController(machineController botteleuseController) {
-        this.botteleuseController = botteleuseController;
+        this.machineController = botteleuseController;
     }
 }

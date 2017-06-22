@@ -288,9 +288,6 @@ public class database {
         }
     }
 
-
-
-
     public static double nbrDuréeMoisson() {
         // TODO Auto-generated method stub
         return 8.74;
