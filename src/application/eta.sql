@@ -123,6 +123,7 @@ CREATE TABLE `commande` (
   `esc_Com` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+
 --
 -- Contenu de la table `commande`
 --
