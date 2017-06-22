@@ -16,33 +16,33 @@ import javafx.scene.control.*;
 
 public class commandeController implements Initializable {
 
-	@FXML TableView viewTracteur;
-	@FXML TableView viewMoissonneuse;
-	@FXML ComboBox champSelector;
-	@FXML ComboBox moissonneuseSelector;
-	@FXML ComboBox tracteurSelector;
+	@FXML TableView<Tracteur> viewTracteur;
+	@FXML TableView<Moissoneuse> viewMoissonneuse;
+
+	@FXML ComboBox<Champ> champSelector;
+	@FXML ComboBox<Moissoneuse> moissonneuseSelector;
+	@FXML ComboBox<Tracteur> tracteurSelector;
 	@FXML RadioButton ouiR;
 	@FXML RadioButton  nonR;
 	@FXML RadioButton  ouiE;
 	@FXML RadioButton  nonE;
 	@FXML Button valider;
 	@FXML
-	private TableColumn<Machine, String> marqueColonne;
+	private TableColumn<Moissoneuse, String> marqueColonne;
 	@FXML
-	private TableColumn<Machine, String> modeleColonne;
+	private TableColumn<Moissoneuse, String> modeleColonne;
 	@FXML
-	private TableColumn<Machine, Integer> etatColonne;
+	private TableColumn<Moissoneuse, Integer> etatColonne;
 	@FXML
-	private TableColumn<Machine, String> marqueColonnet;
+	private TableColumn<Tracteur, String> marqueColonnet;
 	@FXML
-	private TableColumn<Machine, String> modeleColonnet;
+	private TableColumn<Tracteur, String> modeleColonnet;
 	@FXML
-	private TableColumn<Machine, Integer> etatColonnet;
+	private TableColumn<Tracteur, Integer> etatColonnet;
 
-	private ObservableList<Machine> machineList = FXCollections.observableArrayList();
+	private ObservableList<Moissoneuse> moissonneuseList = FXCollections.observableArrayList();
 
 	private List<Champ> listChamps;
-	private List<Tracteur> listTracteurs;
 	private List<Moissoneuse> listMoissonneuses;
 
 	@Override
@@ -51,14 +51,12 @@ public class commandeController implements Initializable {
 		champSelector.getItems().setAll(listChamps);
 		champSelector.setValue(champSelector.getItems().get(0));
 
-		listTracteurs = new database().recupererTracteur();
-		tracteurSelector.getItems().setAll(listTracteurs);
+		tracteurSelector.getItems().setAll(new database().recupererTracteur());
 		tracteurSelector.setValue(tracteurSelector.getItems().get(0));
 
 		listMoissonneuses = new database().recupererMoissonneuse();
 		moissonneuseSelector.getItems().setAll(listMoissonneuses);
 		moissonneuseSelector.setValue(moissonneuseSelector.getItems().get(0));
-
 
 		marqueColonne.setPrefWidth(100);
 		marqueColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
@@ -68,12 +66,48 @@ public class commandeController implements Initializable {
 		etatColonne.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEtat()));
 
 		marqueColonnet.setPrefWidth(100);
-		marqueColonnet.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
+		marqueColonnet.setCellValueFactory(cellData -> {
+			System.out.println(cellData.getValue());
+			return new SimpleStringProperty(cellData.getValue().getMarque());
+
+		});
 		modeleColonnet.setPrefWidth(100);
 		modeleColonnet.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModele()));
 		etatColonnet.setPrefWidth(100);
 		etatColonnet.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEtat()));
 
 	}
+	@FXML
+	public void addUnTracteur(){
+		viewTracteur.getItems().add(tracteurSelector.getValue());
+	}
 
+	@FXML
+	public void adduneMoissonneuse(){
+		viewMoissonneuse.getItems().add(moissonneuseSelector.getValue());
+	}
+	@FXML
+	public void verifierOR(){
+		if(nonR.isSelected()){
+			nonR.setSelected(false);
+		}
+	}
+	@FXML
+	public void verifierNR(){
+		if(ouiR.isSelected()){
+			ouiR.setSelected(false);
+		}
+	}
+	@FXML
+	public void verifierOE(){
+		if(nonE.isSelected()){
+			nonE.setSelected(false);
+		}
+	}
+	@FXML
+	public void verifierNE(){
+		if(ouiE.isSelected()){
+			ouiE.setSelected(false);
+		}
+	}
 }

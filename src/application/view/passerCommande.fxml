@@ -14,6 +14,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
+<!-- ajouter  bottelage et transport-->
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0"
           prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
           fx:controller="application.controller.commandeController">
@@ -45,7 +46,7 @@
             spacing="10">
                 <children>
                     <ComboBox fx:id="tracteurSelector" prefWidth="150.0"/>
-                    <Button fx:id="addTracteur" text="+" minWidth="25"/>
+                    <Button fx:id="addTracteur" text="+" minWidth="25" onAction="#addUnTracteur"/>
                     <TableView fx:id="viewTracteur">
                         <columns>
                             <TableColumn fx:id="marqueColonnet" prefWidth="260.0" text="Marque"/>
@@ -59,7 +60,7 @@
                   GridPane.rowIndex="3" spacing="10">
                 <children>
                     <ComboBox fx:id="moissonneuseSelector" prefWidth="150.0"/>
-                    <Button fx:id="addMoissonneuse" text="+" minWidth="25"/>
+                    <Button fx:id="addMoissonneuse" text="+" minWidth="25" onAction="#adduneMoissonneuse"/>
                     <TableView fx:id="viewMoissonneuse">
                         <columns>
                             <TableColumn fx:id="marqueColonne" prefWidth="260.0" text="Marque"/>
@@ -72,15 +73,15 @@
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
                   GridPane.rowIndex="4">
                 <children>
-                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui"/>
-                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non"/>
+                    <RadioButton fx:id="ouiR" mnemonicParsing="false" text="Oui" onAction="#verifierOR"/>
+                    <RadioButton fx:id="nonR" mnemonicParsing="false" text="Non" onAction="#verifierNR"/>
                 </children>
             </VBox>
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1"
                   GridPane.rowIndex="5">
                 <children>
-                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui"/>
-                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non"/>
+                    <RadioButton fx:id="ouiE" mnemonicParsing="false" text="Oui" onAction="#verifierOE"/>
+                    <RadioButton fx:id="nonE" mnemonicParsing="false" text="Non" onAction="#verifierNE"/>
                 </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
