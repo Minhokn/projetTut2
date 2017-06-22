@@ -6,7 +6,7 @@ import java.util.List;
 
 
 /**
- * /**
+ *
  * Classe permettat de creer un fichier json, qui a pour but de remplacer le fichier geojson contenant les champs a charger.
  *
  * @author KillianLts
@@ -63,7 +63,7 @@ public class JSON {
 		return null;
 	}
 	/**
-	 * Methode permettant de convertir le fichier JSON en chaine de caractere, en respectant les conventions.
+	 * Redefintion du toString permettant de convertir le fichier JSON en chaine de caractere
 	 * 
 	 * @return	Chaine de caractere, en respectant les conventions.
 	 * 
@@ -85,7 +85,11 @@ public class JSON {
 		return json;
 	}
 
-
+	/**
+	 * Methode permettant de trier les Agriculteur en fonctione de leurs nom et prénom
+	 * @param nom
+	 * @param prenom
+	 */
 	public void trierParAgriculteur(String nom, String prenom){
 		List<Champ> supprimee = new ArrayList<>();
 		allChamps = new ArrayList<>(listChamps);
@@ -98,7 +102,9 @@ public class JSON {
 		listChamps.removeAll(supprimee);
 	}
 
-
+	/**
+	 * Methode permettant d'afficher tous les champs
+	 */
 	public void afficherTousLesChamps(){
 		listChamps = new ArrayList<>(allChamps);
 	}

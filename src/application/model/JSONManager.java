@@ -5,21 +5,17 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
+
 /**
- * Une classe permettant encoder et d�coder au format JSON<br>
- * Soit en lecture a partir d'un chaine json vers un tableau de points (coordonn�es GPS)<br>
- * exemple de chaine :"{\"type\":\"Polygon\",\"coordinates\":[[[47.9219289,-1.5161884],[47.9206383,-1.51658],[47.920854,-1.5113872],[47.9221086,-1.5114999]]]}"<br>
- * Soit en ecriture a partir d'un tableau de points vers une chaine JSON.
- * 
- * @version 1.0
+ * Une classe permettant encoder et decoder au format JSON<br>
  */
 public class JSONManager {
 	/**
-	 * M�thode permettant de lire une chaine de caract�re aux convention geojson et d'en extraire les coordonn�es.
+	 * Methode permettant de lire une chaine de caractere aux convention geojson et d'en extraire les coordonnees.
 	 * 
 	 * @param s	Chaine de caractere respectant les conventions des fichiers JSON.
 	 * 
-	 * @return	Le tableau de coordonn�es.
+	 * @return	Le tableau de coordonnees.
 	 */
 	public static Point[] read(String s) {
 		Point[] points = null;
@@ -34,9 +30,9 @@ public class JSONManager {
 		return points;
 	}
 	/**
-	 * M�thode permettant de mettre un tableau de coordonn�es sous forme de chaine JSON.
+	 * Methode permettant de mettre un tableau de coordonnees sous forme de chaine JSON.
 	 * 
-	 * @param t	Tableau de coordonn�es.
+	 * @param t	Tableau de coordonnees.
 	 * 
 	 * @return	La chaine JSON.
 	 */
