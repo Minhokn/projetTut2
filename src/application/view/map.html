@@ -46,6 +46,29 @@
     //map.data.loadGeoJson("http://87.90.79.202/Files/test.geojson");
       map.data.addGeoJson(JSON.parse(jsInterface.getGeoJson()), { idPropertyName : 'NUM_ILOT'});
 
+
+      map.data.addListener('click', function(event) {
+    		// Recuperation des informations sur les champs a afficher
+    		var num = event.feature.getProperty("NUM_ILOT");
+    		var type = event.feature.getProperty("culture");
+    		var proprio = event.feature.getProperty("proprio");
+    		var bottelage = event.feature.getProperty("bottelage");
+    		var transport = event.feature.getProperty("transport");
+
+            infoWindow = new google.maps.InfoWindow({
+    				content: "",
+    				position: new google.maps.LatLng(jsInterface.getChamp(num).getCdn_ch().getX(), jsInterface.getChamp(num).getCdn_ch().getY())
+    			});
+
+    		infoWindow.setContent('Champ numero : ' + num + '</br></br>' +
+    				      'Type de cultures : ' + type + '</br></br>' +
+    				      'Proprietaire : ' + proprio + '</br></br>' +
+    				      'Botalage : ' + bottelage + '</br></br>' +
+    				      'Transport : ' + transport + '</br>');
+    			infoWindow.open(map, this);
+    		});
+
+
     var cityCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.7,

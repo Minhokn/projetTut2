@@ -141,7 +141,11 @@ public class database {
     }
 
     public List<Champ> recupererChamps() {
-
+        for(Champ c : recupererChampsClient(-1)){
+            Main.getMeJson().addChamp(c);
+        }
+        System.out.println("lol");
+        System.out.println(Main.getMeJson().toString());
 
         return recupererChampsClient(-1);
     }
@@ -179,11 +183,7 @@ public class database {
             e.printStackTrace();
         }
 
-        for(Champ c : liste){
-            Main.getMeJson().addChamp(c);
-        }
 
-        System.out.println(Main.getMeJson().toString());
         return liste;
 
 

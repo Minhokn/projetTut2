@@ -106,15 +106,21 @@ public class Champ {
     }
 
     public String getJson(){
-       // return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
-         //       + cult_ch + "\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\": "+ GPS_ch + "]}}";
-
-  //  System.out.println(GPS_ch);
-         return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
+        return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
                 + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
                 + "-type de la botte-" + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
                 + GPS_ch + "}";
         }
+
+    public Point getCentre() {
+        Point[] points = JSONManager.read(this.getJson());
+        float lat = 0, longi = 0;
+        for (int i = 0; i < points.length; i++) {
+            longi += points[i].getX();
+            lat += points[i].getY();
+        }
+        return new Point(lat / points.length, longi / points.length);
+    }
 
 
     @Override
