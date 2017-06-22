@@ -45,12 +45,12 @@ public class EditMachineMoissoneuseController {
             machineSelected.setMarque(marqueField.getText());
             machineSelected.setModele(modeleField.getText());
             machineSelected.setEtat(etatField.getValue());
-            moissoneuseSelected.setCapaciteReserve(marqueField.getText());
-            moissoneuseSelected.setConsoF(marqueField.getText());
-            moissoneuseSelected.setConsoR(marqueField.getText());
-            moissoneuseSelected.setHauteur(marqueField.getText());
-            moissoneuseSelected.setLgCoupe(marqueField.getText());
-            moissoneuseSelected.setLgRoute(marqueField.getText());
+           // moissoneuseSelected.setCapaciteReserve(marqueField.getText());
+           // moissoneuseSelected.setConsoF(marqueField.getText());
+            //moissoneuseSelected.setConsoR(marqueField.getText());
+            //moissoneuseSelected.setHauteur(marqueField.getText());
+            //moissoneuseSelected.setLgCoupe(marqueField.getText());
+            //moissoneuseSelected.setLgRoute(marqueField.getText());
 
 
 

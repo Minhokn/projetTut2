@@ -41,7 +41,7 @@ public class EditMachineBotteleuseController {
             new database().addMachine(marqueField.getText(), modeleField.getText(), etatField.getValue());
         }
 
-        machineController.refreshData();
+      //  machineController.refreshData();
 
         ((Stage) vbox.getScene().getWindow()).close();
     }

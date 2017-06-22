@@ -60,6 +60,6 @@ public class Machine {
 
 	@Override
 	public String toString() {
-		return "Machine [id_Mach=" + id_Mach + ", marque=" + marque + ", modele=" + modele + ", etat=" + etat + "]";	}
+		return marque +"( "+ modele+" )";	}
 
 }
