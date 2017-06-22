@@ -29,31 +29,5 @@ public class JSONManager {
 		}
 		return points;
 	}
-	/**
-	 * Methode permettant de mettre un tableau de coordonnees sous forme de chaine JSON.
-	 * 
-	 * @param t	Tableau de coordonnees.
-	 * 
-	 * @return	La chaine JSON.
-	 */
-	public static String write(Point[] t) {
-		JSONStringer stringer = new JSONStringer();
-		stringer.object();
-		stringer.key("type");
-		stringer.value("Polygon");
-		stringer.key("coordinates");
-		stringer.array();
-		stringer.array();
-		for (int j = 0; j < t.length; j++) {
-			stringer.array();
-			stringer.value(t[j].getX());
-			stringer.value(t[j].getY());
-			stringer.endArray();
-		}
-		stringer.endArray();
-		stringer.endArray();
-		stringer.endObject();
-	
-		return stringer.toString();
-	}
+
 }
