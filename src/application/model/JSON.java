@@ -105,13 +105,13 @@ public class JSON {
 	}
 
 
-	public void trierParClient(String client){
+	public void trierParAgriculteur(String nom, String prenom){
 		List<Champ> supprimee = new ArrayList<>();
 		allChamps = new ArrayList<>(listChamps);
 		for (Champ ch : listChamps) {
-			if (ch.getClient() == null)
+			if (ch.getClient() == null || ch.getClient().getPrenom()==null || ch.getClient().getNom()==null)
 			supprimee.add(ch);
-			else if (!ch.getClient().equals(client))
+			else if (!ch.getClient().getNom().equalsIgnoreCase(nom)&&!ch.getClient().getPrenom().equalsIgnoreCase(prenom))
 				supprimee.add(ch);
 		}
 		listChamps.removeAll(supprimee);
