@@ -18,7 +18,7 @@ public class commandeController implements Initializable {
 
 	@FXML TableView<Tracteur> viewTracteur;
 	@FXML TableView<Moissoneuse> viewMoissonneuse;
-
+    //@FXML TableView<Commande> viewCommande;
 	@FXML ComboBox<Champ> champSelector;
 	@FXML ComboBox<Moissoneuse> moissonneuseSelector;
 	@FXML ComboBox<Tracteur> tracteurSelector;
@@ -118,4 +118,8 @@ public class commandeController implements Initializable {
 			ouiE.setSelected(false);
 		}
 	}
+	@FXML
+    public void valider(){
+
+    }
 }
