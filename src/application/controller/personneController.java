@@ -33,7 +33,7 @@ public class personneController implements Initializable {
 	@FXML private TableColumn<Client, String> prenomColonne;
 
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nomColonne.setPrefWidth(100);

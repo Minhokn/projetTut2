@@ -23,6 +23,8 @@ public class rootController implements Initializable {
 	@FXML Button stats;
 	
 	@FXML BorderPane borderpane;
+
+	private mapController carteController;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
