@@ -50,7 +50,7 @@ public class commandeController implements Initializable {
     @FXML private TableColumn<Commande,String> transportCom;
     @FXML private TableColumn<Commande, String> bottelageCom;
 
-	private ObservableList<Moissoneuse> moissonneuseList = FXCollections.observableArrayList();
+	private ObservableList<Commande> CommandeList = FXCollections.observableArrayList();
 
 	private List<Champ> listChamps;
 	private List<Moissoneuse> listMoissonneuses;
@@ -96,7 +96,10 @@ public class commandeController implements Initializable {
         transportCom.setPrefWidth(100);
         transportCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTrans_Com()));
         bottelageCom.setPrefWidth(100);
-        bottelageCom.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getBott_Com()));
+        bottelageCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBott_Com()));
+
+        CommandeList.setAll(new database().recupererCommande(-1));
+        viewCommande.getItems().setAll(CommandeList);
 
 
         //ComboBox Bottelage
@@ -110,10 +113,7 @@ public class commandeController implements Initializable {
 
 		//TableColumn Tracteurs
 		marqueColonnet.setPrefWidth(100);
-		marqueColonnet.setCellValueFactory(cellData -> {
-			return new SimpleStringProperty(cellData.getValue().getMarque());
-
-		});
+		marqueColonnet.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
 		modeleColonnet.setPrefWidth(100);
 		modeleColonnet.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModele()));
 		etatColonnet.setPrefWidth(100);

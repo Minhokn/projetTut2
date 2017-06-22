@@ -214,7 +214,7 @@ public class database {
             Statement stat = connexion.createStatement();
             String request = "SELECT * FROM champs INNER JOIN commande ON commande.id_ch=champs.id_ch";
             if(id_ch >= 0)
-                request += " WHERE agriculteur.id_cl='" + id_ch + "'";
+                request += " WHERE champs.ID_Ch='" + id_ch + "'";
 
             ResultSet resultat = stat.executeQuery(request);
             while (resultat.next()) {
@@ -255,7 +255,7 @@ public class database {
         try {
             Statement stat = connexion.createStatement();
 
-            ResultSet resultat = stat.executeQuery("SELECT * FROM agricuteur WHERE agriculteur.id_cl='"+id_cl+"'");
+            ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur WHERE agriculteur.id_cl='"+id_cl+"'");
             while (resultat.next()) {
                 cl = new Client(
                         resultat.getInt("ID_Cl"),
