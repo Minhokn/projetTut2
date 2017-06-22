@@ -105,10 +105,29 @@ public class Champ {
         GPS_ch = gPS_ch;
     }
 
+    public String getJson(){
+       // return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
+         //       + cult_ch + "\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\": "+ GPS_ch + "]}}";
+
+  //  System.out.println(GPS_ch);
+         return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
+                + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
+                + "-type de la botte-" + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
+                + GPS_ch + "}";
+        }
+
 
     @Override
     public String toString() {
-        return adr_ch + " (" + client + ") [" + cult_ch + "]";
+        return "Champ{" +
+                "id_ch=" + id_ch +
+                ", surf_ch=" + surf_ch +
+                ", cdn_ch='" + cdn_ch + '\'' +
+                ", adr_ch='" + adr_ch + '\'' +
+                ", client=" + client +
+                ", cult_ch='" + cult_ch + '\'' +
+                ", etat=" + etat +
+                ", GPS_ch='" + GPS_ch + '\'' +
+                '}';
     }
-
 }

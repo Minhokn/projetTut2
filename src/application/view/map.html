@@ -43,7 +43,8 @@
           title: 'Eta Louis Giboire'
         });
 
-
+    //map.data.loadGeoJson("http://87.90.79.202/Files/test.geojson");
+      map.data.addGeoJson(JSON.parse(jsInterface.getGeoJson()), { idPropertyName : 'NUM_ILOT'});
 
     var cityCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
