@@ -23,13 +23,11 @@ public class Polygon {
 
     public Point getCenter() {
         double centroidX = 0, centroidY = 0;
-
         for(Point point : getPoints()) {
-//			System.out.println("ok");
+
             centroidX += point.getX();
             centroidY += point.getY();
         }
-//		System.out.println("ok");
         return new Point(centroidX / getPoints().length, centroidY / getPoints().length);
     }
 
