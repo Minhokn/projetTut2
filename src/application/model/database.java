@@ -62,6 +62,25 @@ public class database {
 
 
     }
+    public List<Client> recupererAgriculteurs() {
+
+        List<Client> liste = new ArrayList<Client>();
+
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur");
+            while (resultat.next()) {
+                liste.add(new Client(resultat.getInt("ID_CL"), resultat.getString("Nom_Cl"), resultat.getString("Prénom_CL"), resultat.getString("Adr_Cl"), resultat.getString("Tel_Cl")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return liste;
+
+    }
+
 
     public void addClient(String nom, String prenom, String tel, String adr, String type) {
         try {
@@ -188,6 +207,68 @@ public class database {
 
 
     }
+    public List<Commande> recupererCommande(int id_ch) {
+
+        List<Commande> liste = new ArrayList<>();
+        try {
+            Statement stat = connexion.createStatement();
+            String request = "SELECT * FROM champs INNER JOIN commande ON commande.id_ch=champs.id_ch";
+            if(id_ch >= 0)
+                request += " WHERE agriculteur.id_cl='" + id_ch + "'";
+
+            ResultSet resultat = stat.executeQuery(request);
+            while (resultat.next()) {
+                liste.add(new Commande(
+                        resultat.getInt("ID_Com"),
+                        resultat.getString("Date_Com"),
+                        resultat.getString("Bott_Com"),
+                        resultat.getString("Trans_Rec"),
+                        resultat.getFloat("Taille_Max"),
+                        resultat.getInt("Tonnes_Rec"),
+                        resultat.getFloat("Cout_Com"),
+                        new Champ(
+                                resultat.getInt("ID_Ch"),
+                                clientFromChamp(resultat.getInt("ID_CL")),
+                                resultat.getInt("Surf_Ch"),
+                                resultat.getString("Cdn_Ch"),
+                                resultat.getString("Adr_Ch"),
+                                resultat.getString("Cult_Ch"),
+                                resultat.getInt("Etat"),
+                                resultat.getString("GPS_Ch")
+                        )
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return liste;
+
+
+    }
+    public Client clientFromChamp(int id_cl){
+        Client cl=null;
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("SELECT * FROM agricuteur WHERE agriculteur.id_cl='"+id_cl+"'");
+            while (resultat.next()) {
+                cl = new Client(
+                        resultat.getInt("ID_Cl"),
+                        resultat.getString("Nom_Cl"),
+                        resultat.getString("Prénom_Cl"),
+                        resultat.getString("Tel_Cl"),
+                        resultat.getString("Adr_Cl")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cl;
+    }
 
     public List<Machine> recupererMachine() {
         List<Machine> liste = new ArrayList<>();
@@ -257,6 +338,7 @@ public class database {
         }
         return liste;
     }
+
     public List<Tracteur> recupererTracteur() {
         List<Tracteur> liste = new ArrayList<>();
 
