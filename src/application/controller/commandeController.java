@@ -26,6 +26,8 @@ public class commandeController implements Initializable {
 	@FXML RadioButton  nonR;
 	@FXML RadioButton  ouiE;
 	@FXML RadioButton  nonE;
+	@FXML ComboBox<String> bottelageSelector;
+	@FXML ComboBox<String> transportSelector;
 	@FXML Button valider;
 	@FXML
 	private TableColumn<Moissoneuse, String> marqueColonne;
@@ -64,6 +66,12 @@ public class commandeController implements Initializable {
 		modeleColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getModele()));
 		etatColonne.setPrefWidth(100);
 		etatColonne.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getEtat()));
+
+		bottelageSelector.getItems().setAll("Non","Rond","Carré");
+		bottelageSelector.setValue(bottelageSelector.getItems().get(0));
+
+		transportSelector.getItems().setAll("Lui","ETA","Négociant");
+		transportSelector.setValue(transportSelector.getItems().get(0));
 
 		marqueColonnet.setPrefWidth(100);
 		marqueColonnet.setCellValueFactory(cellData -> {
