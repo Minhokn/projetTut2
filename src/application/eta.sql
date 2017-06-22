@@ -123,6 +123,7 @@ CREATE TABLE `commande` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
+
 --
 -- Contenu de la table `commande`
 --
