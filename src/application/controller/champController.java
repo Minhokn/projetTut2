@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import application.model.APIGoogleMap;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,7 +23,7 @@ import application.model.Champ;
 import application.model.database;
 
 
-public class champController {
+public class champController{
 
     @FXML
     TableView<Champ> champsTableau;
