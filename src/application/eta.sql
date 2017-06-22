@@ -117,6 +117,8 @@ CREATE TABLE `commande` (
   `Taille_Max` float DEFAULT NULL,
   `Tonnes_Rec` float DEFAULT NULL,
   `Cout_Com` float DEFAULT NULL,
+  `rav_Com` varchar(50) DEFAULT NULL,
+  `esc_Com` varchar(50) DEFAULT NULL,
   `ID_Ch` smallint(6) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
