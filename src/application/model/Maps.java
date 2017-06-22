@@ -12,12 +12,28 @@ public class Maps {
     private JSObject javascriptOBJ;
 
     public Maps(String mapHTML) {
+        chargement(mapHTML);
 
+    }
+    public void addChamp(Champ champ){
+        javascriptOBJ.call("addChamp",champ.getId_ch(),champ.getAdr_ch(),champ.getCult_ch(),champ.getSurf_ch(),champ.getGPS_ch());
+    };
+	public void setParent(StackPane googleMaps) {
+		googleMaps.getChildren().setAll(webView);
+	}
+
+
+    public void enleverParent(StackPane googleMaps) {
+        googleMaps.getChildren().remove(webView);
+    }
+
+
+	public void chargement(String url){
         webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         webEngine.setJavaScriptEnabled(true);
 
-        final URL urlGoogleMaps = getClass().getResource("/application/view/"+ mapHTML+".html");
+        final URL urlGoogleMaps = getClass().getResource("/application/view/"+ url+".html");
         webEngine.load(urlGoogleMaps.toExternalForm());
 
 
@@ -26,10 +42,4 @@ public class Maps {
         webEngine.setOnAlert(e -> System.out.println(e.toString()));
         webEngine.setOnError(e -> System.err.println(e.toString()));
     }
-    public void addChamp(Champ champ){
-        javascriptOBJ.call("addChamp",champ.getId_ch(),champ.getAdr_ch(),champ.getCult_ch(),champ.getSurf_ch(),champ.getGPS_ch());
-    };
-	public void setParent(StackPane googleMaps) {
-		googleMaps.getChildren().setAll(webView);
-	}
 }

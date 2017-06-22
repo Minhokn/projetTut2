@@ -21,8 +21,12 @@ public class JSON {
 	 *
 	 * @see JSON#listChamps
 	 */
+
+	private List<Champ> allChamps = new ArrayList<>();
+
 	public JSON() {
 		super();
+		allChamps=new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant d'ajouter un champ au fichier json.
@@ -33,7 +37,9 @@ public class JSON {
 	 *
 	 */
 	public void addChamp(Champ champ) {
+
 		listChamps.add(champ);
+		allChamps=new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant de supprimer un champ du fichier json.
@@ -45,6 +51,7 @@ public class JSON {
 	 */
 	public void removeChamp(Champ ch) {
 		listChamps.remove(ch);
+		allChamps=new ArrayList<>(listChamps);
 	}
 	/**
 	 * M�thode permettant de r�cuperer un champ dans le fichier json.
@@ -95,5 +102,23 @@ public class JSON {
 		}
 		json += jsonEnd;
 		return json;
+	}
+
+
+	public void trierParClient(String client){
+		List<Champ> supprimee = new ArrayList<>();
+		allChamps = new ArrayList<>(listChamps);
+		for (Champ ch : listChamps) {
+			if (ch.getClient() == null)
+			supprimee.add(ch);
+			else if (!ch.getClient().equals(client))
+				supprimee.add(ch);
+		}
+		listChamps.removeAll(supprimee);
+	}
+
+
+	public void afficherTousLesChamps(){
+		listChamps = new ArrayList<>(allChamps);
 	}
 }
