@@ -86,11 +86,11 @@ public class commandeController implements Initializable {
 
 		//TableColumn Commandes
         clientCom.setPrefWidth(100);
-       // clientCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getChamp_Com().getClient()));
+        clientCom.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getChamp_Com().getClient()));
         champCom.setPrefWidth(100);
-        //champCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getChamp_Com()));
+        champCom.setCellValueFactory(cellData -> new SimpleObjectProperty(cellData.getValue().getChamp_Com().toString()));
         ravitaillementCom.setPrefWidth(100);
-        ravitaillementCom.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getRav_Com()));
+        ravitaillementCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRav_Com()));
         escortCom.setPrefWidth(100);
         escortCom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEsc_Com()));
         transportCom.setPrefWidth(100);
