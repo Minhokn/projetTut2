@@ -6,11 +6,13 @@ import java.util.List;
 
 
 /**
- * Classe permettat de cr�er un fichier json, qui a pour but de remplacer le fichier geojson contenant les champs a charger.
- * 
- * @author G8
+ * /**
+ * Classe permettat de creer un fichier json, qui a pour but de remplacer le fichier geojson contenant les champs a charger.
+ *
+ * @author KillianLts
  *
  */
+
 public class JSON {
 	/**
 	 * Liste des champs a afficher sur la carte.
@@ -29,7 +31,7 @@ public class JSON {
 		allChamps=new ArrayList<>(listChamps);
 	}
 	/**
-	 * M�thode permettant d'ajouter un champ au fichier json.
+	 * Methode permettant d'ajouter un champ au fichier json.
 	 * 
 	 * @param champ	Champ a ajouter.
 	 * 
@@ -42,23 +44,11 @@ public class JSON {
 		allChamps=new ArrayList<>(listChamps);
 	}
 	/**
-	 * M�thode permettant de supprimer un champ du fichier json.
-	 * 
-	 * @param ch	Champ a supprimer.
-	 * 
-	 * @see JSON#listChamps
-	 *
-	 */
-	public void removeChamp(Champ ch) {
-		listChamps.remove(ch);
-		allChamps=new ArrayList<>(listChamps);
-	}
-	/**
-	 * M�thode permettant de r�cuperer un champ dans le fichier json.
+	 * Methode permettant de recuperer un champ dans le fichier json.
 	 * 
 	 * @param id	Index du champ a recuperer.
 	 * 
-	 * @return	Le champ recherch�.
+	 * @return	Le champ recherche.
 	 * 
 	 * @see	JSON#listChamps
 	 */
@@ -73,18 +63,9 @@ public class JSON {
 		return null;
 	}
 	/**
-	 * M�thode permettant de savoir combien de champ il y a dans le fichier JSON.
+	 * Methode permettant de convertir le fichier JSON en chaine de caractere, en respectant les conventions.
 	 * 
-	 * @return	Nombre de champ.
-	 */
-	public int nombreChamp() {
-		return listChamps.size();
-	}
-
-	/**
-	 * M�thode permettant de convertir le fichier JSON en chaine de caract�re, en respectant les conventions.
-	 * 
-	 * @return	Chaine de caract�re, en respectant les conventions.
+	 * @return	Chaine de caractere, en respectant les conventions.
 	 * 
 	 * @see	JSON#listChamps
 	 */
