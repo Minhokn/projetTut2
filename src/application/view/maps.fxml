@@ -38,19 +38,6 @@
 
                     </items>
                   </SplitMenuButton>
-                  <Label text="Adresse d'un champ">
-                     <VBox.margin>
-                        <Insets left="30.0" right="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <ComboBox fx:id="AdC" prefWidth="165.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets left="30.0" right="30.0" />
-                     </VBox.margin>
-                  </ComboBox>
                </children>
                <opaqueInsets>
                   <Insets />
