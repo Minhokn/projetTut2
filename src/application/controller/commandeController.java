@@ -36,13 +36,15 @@ public class commandeController implements Initializable {
 		champSelector.getItems().setAll(listChamps);
 		champSelector.setValue(champSelector.getItems().get(0));
 
-		//listTracteurs = new database().recupererTracteurs();
-		//champSelector.getItems().setAll(listChamps);
-		//champSelector.setValue(champSelector.getItems().get(0));
+		listTracteurs = new database().recupererTracteur();
+		tracteurSelector.getItems().setAll(listTracteurs);
+		tracteurSelector.setValue(tracteurSelector.getItems().get(0));
 
 		listMoissonneuses = new database().recupererMoissonneuse();
 		moissonneuseSelector.getItems().setAll(listMoissonneuses);
 		moissonneuseSelector.setValue(moissonneuseSelector.getItems().get(0));
+
+
 
 	}
 

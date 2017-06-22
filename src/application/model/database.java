@@ -237,10 +237,27 @@ public class database {
 
             ResultSet resultat = stat.executeQuery("SELECT DISTINCT * FROM moissonneuses JOIN vehicule WHERE Moissonneuses.Id_Mach=vehicule.Id_Mach");
             while (resultat.next()) {
-                mach = new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
+                liste.add( new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
                         resultat.getInt("Etat"),resultat.getInt("Cons_R_Moi"),resultat.getInt("Cons_F_Moi"),resultat.getInt("Taille_T_Moi"),
-                        resultat.getInt("Large_C_Moi"),resultat.getInt("Large_Moi"),resultat.getInt("Hauteur_Moi"), resultat.getInt("Poids_Moi"),resultat.getInt("Taille_R_Moi"));
-                liste.add(mach);
+                        resultat.getInt("Large_C_Moi"),resultat.getInt("Large_Moi"),resultat.getInt("Hauteur_Moi"), resultat.getInt("Poids_Moi"),
+                        resultat.getInt("Taille_R_Moi")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return liste;
+    }
+    public List<Tracteur> recupererTracteur() {
+        List<Tracteur> liste = new ArrayList<>();
+
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("SELECT * FROM tracteurs JOIN vehicule WHERE tracteurs.Id_Mach=vehicule.Id_Mach");
+            while (resultat.next()) {
+                liste.add(new Tracteur(resultat.getInt("ID_Trac"), resultat.getString("Marque"), resultat.getString("Modèle"),resultat.getInt("Etat")
+                ,resultat.getString("Capacité_Trac")));
             }
 
         } catch (SQLException e) {
