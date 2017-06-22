@@ -49,5 +49,8 @@
                 <Button onAction="#handleOk" text="OK" />
                 <Button onAction="#handleCancel" text="Annuler" />
             </buttons>
+      <VBox.margin>
+         <Insets bottom="25.0" right="25.0" />
+      </VBox.margin>
         </ButtonBar>
 </VBox>
