@@ -235,7 +235,7 @@ public class database {
         try {
             Statement stat = connexion.createStatement();
 
-            ResultSet resultat = stat.executeQuery("SELECT DISTINCT * FROM moissonneuses JOIN Machine WHERE Moissonneuses.Id_Mach=Machine.Id_Mach");
+            ResultSet resultat = stat.executeQuery("SELECT DISTINCT * FROM moissonneuses JOIN vehicule WHERE Moissonneuses.Id_Mach=vehicule.Id_Mach");
             while (resultat.next()) {
                 mach = new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
                         resultat.getInt("Etat"),resultat.getInt("Cons_R_Moi"),resultat.getInt("Cons_F_Moi"),resultat.getInt("Taille_T_Moi"),
