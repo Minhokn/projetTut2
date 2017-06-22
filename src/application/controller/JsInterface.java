@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.Main;
+import application.model.Champ;
 import application.model.JSON;
 
 /**
@@ -10,5 +11,9 @@ public class JsInterface {
 
     public String getGeoJson(){
         return Main.getMeJson().toString();
+    }
+
+    public Champ getChamp(int id){
+        return Main.getMeJson().getChamp(id);
     }
 }
