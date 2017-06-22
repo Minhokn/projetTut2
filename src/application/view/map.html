@@ -28,15 +28,16 @@
       var marker;
       var Centre = {lat: 47.970648, lng: -1.448672};
       var selectionDeuxiemeLong;
+	  var selectionDeuxiemeLat;
       var appuiLong;
-      var nbSelect;
+      var nbSelect = 0;
       var idPremier;
       var idDeuxieme;
       var selectionPremierLat;
       var selectionPremierLong;
-      var latDeuxieme ;
-      var selectionDeuxiemeLong ;
       var route;
+	  var start;
+	  var end;
 
 
 
@@ -57,6 +58,7 @@
         });
 
 
+	//	map.data.loadGeoJson("http://87.90.79.202/Files/test.geojson", { idPropertyName : 'NUM_ILOT'});
       map.data.addGeoJson(JSON.parse(jsInterface.getGeoJson()), { idPropertyName : 'NUM_ILOT'});
 
       map.data.addListener('mousedown', function(event){
@@ -64,7 +66,7 @@
     	});
       map.data.addListener('mouseup', function(event){
     		end = new Date().getTime(); // Temp de fin d'appui
-    		longpress = (end - start < 500) ? false : true;
+    		appuiLong = (end - start < 500) ? false : true;
     	});
 
 
@@ -85,6 +87,7 @@
                         idPremier = undefined;
                     }
                     idPremier = event.feature.getId(); // Enregistrement de l'identifiant du premier champ
+    				event.feature.setProperty('isColorful',true);
 
                     // Enregistrement des coordonnées du premier champ
                     selectionPremierLat = event.latLng.lat();
@@ -105,18 +108,18 @@
                     event.feature.setProperty('isColorful',true);// Coloration du champ, par le style dynamique
 
                     // Enregistrement des coordonnées du premier champ
-                    latDeuxieme = event.latLng.lat();
+                    selectionDeuxiemeLat = event.latLng.lat();
                     selectionDeuxiemeLong = event.latLng.lng();
 
                     // Création des points, de départ et d'arrivée utilisés pour la distance
                     var origin = new google.maps.LatLng(selectionPremierLat,selectionPremierLong);
-                    var destination = new google.maps.LatLng(latDeuxieme,selectionDeuxiemeLong);
+                    var destination = new google.maps.LatLng(selectionDeuxiemeLat,selectionDeuxiemeLong);
 
-
+					if(infoWindow != undefined){infoWindow.close();}
                   //Afichage de la ligne, pour la distance a vol d'oiseau
-                        var flightPlanCoordinates = [origin,destination];
+                        var routeCoordonnee = [origin,destination];
                         route = new google.maps.Polyline({
-                            path: flightPlanCoordinates,
+                            path: routeCoordonnee,
                             geodesic: true,
                             strokeColor: '#1E88E5',
                             strokeOpacity: 1.0,
@@ -125,12 +128,12 @@
                         route.setMap(map);
 
                         // Affiche une fenetre avec les informations sur la distance, au millieu de la ligne
-                        infowindow = new google.maps.InfoWindow({
-                            content: "Distance a vol d'oiseau : "+parseInt(getDistanceFromLatLonInKm(selectionPremierLat, selectionPremierLong, latDeuxieme, selectionDeuxiemeLong))+" kilomètres",
-                            position: {lat: (selectionPremierLat + latDeuxieme) / 2, lng: (selectionPremierLong + selectionDeuxiemeLong) / 2}
+                        infoWindow = new google.maps.InfoWindow({
+                            content: "Distance a vol d'oiseau : "+parseInt(getDistanceFromLatLonInKm(selectionPremierLat, selectionPremierLong, selectionDeuxiemeLat, selectionDeuxiemeLong))+" kilomètres",
+                            position: {lat: (selectionPremierLat + selectionDeuxiemeLat) / 2, lng: (selectionPremierLong + selectionDeuxiemeLong) / 2}
                         });
-                        infowindow.open(map);
-                        google.maps.event.addListener(infowindow,'closeclick',function(){
+                        infoWindow.open(map);
+                        google.maps.event.addListener(infoWindow,'closeclick',function(){
                             reset();
                         });
 
@@ -140,16 +143,12 @@
                 // Dans le cas d'un appui simple, affichage des informations concernant le champ
                 nbSelect = 0;
                 // Si une fenetre existe la fermer pour laisser place a la nouvelle
-                if(infowindow != undefined){
-                    infowindow.close();
+                if(infoWindow != undefined){
+                    infoWindow.close();
                 }
                 // Si une ligne de distance etait affiché sur la carte, l'enlever
                 if(route != undefined){
                     route.setMap(null);
-                }
-                // Si la ligne d'itinéraire google est affichée, l'enlever
-                if(directionsDisplay){
-                    directionsDisplay.setMap(null);
                 }
                 // Décoloration des selections si elle existent
                 if(idPremier != undefined){
@@ -164,30 +163,30 @@
                 idPremier = event.feature.getId();
                 // Colore le champ selectionné
                 event.feature.setProperty('isColorful',true);
-               if(infoWindow != undefined) {infoWindow.close();}
 
-            infoWindow = new google.maps.InfoWindow({
-    				content: "",
-    				position: new google.maps.LatLng(jsInterface.getMiddleChampX(num), jsInterface.getMiddleChampY(num))
-    			});
+                 infoWindow = new google.maps.InfoWindow({
+	                                    content: "",
+                                    position: new google.maps.LatLng(jsInterface.getMiddleChampX(num), jsInterface.getMiddleChampY(num))
+	             });
+                infoWindow.setContent('Champ numero : ' + num + '</br></br>' +
+                                          'Type de cultures : ' + type + '</br></br>' +
+	                                          'Proprietaire : ' + proprio + '</br></br>' +
+	                                          'Botalage : ' + bottelage + '</br></br>' +
+	                                          'Transport : ' + transport + '</br>');
+	                            infoWindow.open(map, this);
 
-    		infoWindow.setContent('Champ numero : ' + num + '</br></br>' +
-    				      'Type de cultures : ' + type + '</br></br>' +
-    				      'Proprietaire : ' + proprio + '</br></br>' +
-    				      'Botalage : ' + bottelage + '</br></br>' +
-    				      'Transport : ' + transport + '</br>');
-    			infoWindow.open(map, this);
-    		});
-                google.maps.event.addListener(infowindow,'closeclick',function(){
-                    reset();
-                });
+
+
             }
 
-  map.data.setStyle(function(feature) {
+
+        });
+
+		map.data.setStyle(function(feature) {
     		var color = '#427791';
-    		if (feature.getProperty('isColorful') && longpress) {
+    		if (feature.getProperty('isColorful') && appuiLong) {
     			color = '#0A1C91';
-    		}else if (feature.getProperty('isColorful') && !longpress) {
+    		}else if (feature.getProperty('isColorful') && !appuiLong) {
     			color = '#0B9126';
     		}
     		return /** @type {google.maps.Data.StyleOptions} */({
@@ -227,14 +226,24 @@
         });
 
         map.addListener('click', function(e){
-            infoWindow.close();
+			nbSelect=0;
+            if(infoWindow != undefined){
+    			infoWindow.close();
+    		}
+    		if(route){
+    			route.setMap(null);
+    		}
+    		if(idPremier != undefined){
+    			map.data.getFeatureById(idPremier).setProperty('isColorful',false);
+    			idPremier = undefined;
+    		}
+    		if(idDeuxieme != undefined){
+    			map.data.getFeatureById(idDeuxieme).setProperty('isColorful',false);
+    			idDeuxieme = undefined;
+    		}
+    		map.data.revertStyle();
         });
 
-         jsInterface.askToLoadChamp();
-
-
-      }
-      
       function addChamp(id,adresse,culture,surface,coords){
       	var polygon = new google.maps.Polygon ({
       	paths: toJavascriptArray(coords),
@@ -255,10 +264,25 @@
         var split = point.toString().split(",");
         path.push(new google.maps.LatLng(split[0], split[1]));
 
-    });
+		});
 
-    return path;
-}
+		return path;
+		}
+	}
+	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+    		var R = 6371; // Rayon de la terre en km
+    		var dLat = degToRad(lat2-lat1);  // Difference entre les deux latitudes en radiant
+    		var dLon = degToRad(lon2-lon1);  // Difference entre les deux longitudes en radiant
+    		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    			Math.cos(degToRad(lat1)) * Math.cos(degToRad(lat2)) *
+    			Math.sin(dLon/2) * Math.sin(dLon/2);
+    		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    		var d = R * c; // Distance en km
+    		return d;
+    	}
+		function degToRad(deg) {
+    		return deg * (Math.PI/180)
+    	}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV9i0KaacFIFrAQBAEnFELQs_jq-7EFII&callback=initMap"
