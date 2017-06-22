@@ -168,16 +168,16 @@ public class Champ {
      * @return un Json pour les infos du champ
      */
     public String getJson(){
-       /* return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
-                + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
-                + "-type de la botte-" + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
-                + GPS_ch + "}";*/
-
-
         return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
                 + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
-                + etat + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
+                + "-type de la botte-" + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
                 + GPS_ch + "}";
+
+
+        /*return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
+                + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
+                + etat + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
+                + GPS_ch + "}";*/
 
 
 
