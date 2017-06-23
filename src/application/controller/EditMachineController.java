@@ -27,12 +27,17 @@ public class EditMachineController {
         this.dialogStage = dialogStage;
     }
 
-
+    /**
+     * Initialisation
+     */
     public void initialize() {
         etatField.getItems().setAll(0, 1);
         etatField.setValue(etatField.getItems().get(0));
     }
 
+    /**
+     * Ajoute a la bdd les données si les champs sont rentrés
+     */
     public void handleOk() {
         if(machineSelected != null || rentrerInvalide()) {
             machineSelected.setMarque(marqueField.getText());
@@ -53,6 +58,10 @@ public class EditMachineController {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
+    /**
+     * Les machine sont selectionné
+     * @param champ
+     */
     public void setMachineSelected(Machine machine) {
         this.machineSelected = machine;
 
@@ -66,9 +75,10 @@ public class EditMachineController {
     }
 
 
-
-
-
+    /**
+     * Verification des champs
+     * @return
+     */
     private boolean rentrerInvalide() {
         String errorMessage = "";
 

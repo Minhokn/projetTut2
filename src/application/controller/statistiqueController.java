@@ -34,6 +34,11 @@ public class statistiqueController implements Initializable {
 		@FXML
 		AnchorPane anchor2;
 
+	/**
+	 * Recuperer les donnees
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setDuréeMoisson(database.nbrDuréeMoisson());
@@ -42,23 +47,42 @@ public class statistiqueController implements Initializable {
 		setTonnesParHectar(database.nbrTonnesParHectar());
 		
 	}
-	
+
+	/**
+	 * Duree de la moisson totale
+	 * @param nbr
+	 */
 	public void setDuréeMoisson(double nbr){
 		duréeMoisson.setText("" + nbr);
+		/**
+		 * centre le texte
+		 */
 		duréeMoisson.setLayoutX(cercle1.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
-	
+
+	/**
+	 * Distance km
+	 * @param nbr
+	 */
 	public void setDistanceKM(double nbr){
 		distanceKM.setText("" + nbr);
 		distanceKM.setLayoutX(cercle2.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
 
+	/**
+	 * Tonne recoltes
+	 * @param nbr
+	 */
 	public void setTonneRecoltées(double nbr){
 		nbr = 225;
 		tonneRecoltées.setText("" + nbr);
 		tonneRecoltées.setLayoutX(cercle3.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));
 	}
 
+	/**
+	 * Tonne par hectar
+	 * @param nbr
+	 */
 	public void setTonnesParHectar(double nbr){
 		tonnesParHectar.setText("" + nbr);
 		tonnesParHectar.setLayoutX(cercle4.getLayoutX()-(28*Math.sqrt(Math.sqrt(Math.sqrt(nbr)))));

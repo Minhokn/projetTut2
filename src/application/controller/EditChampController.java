@@ -39,7 +39,9 @@ public class EditChampController {
         this.dialogStage = dialogStage;
     }
 
-
+    /**
+     * Initialisation du client
+     */
     public void initialize() {
         listClients = new database().recupererClients();
         clientField.getItems().setAll(listClients);
@@ -49,6 +51,9 @@ public class EditChampController {
         etatField.setValue(etatField.getItems().get(0));
     }
 
+    /**
+     * Si on appui sur le bouton ok on ajoute le client ssi tous les champs sont rentrés
+     */
     public void handleOk() {
         if(champSelected != null || rentrerInvalide()) {
             champSelected.setId_ch(clientField.getValue().getId());
@@ -69,10 +74,17 @@ public class EditChampController {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
+    /**
+     * Boutton annuler
+     */
     public void handleCancel() {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
+    /**
+     * Les champs sont selectionné
+     * @param champ
+     */
     public void setChampSelected(Champ champ) {
         this.champSelected = champ;
 
@@ -95,17 +107,12 @@ public class EditChampController {
     }
 
 
-
-
+    /**
+     * Verification des champs rentrés
+     * @return
+     */
     private boolean rentrerInvalide() {
         String errorMessage = "";
-
-
-
-
-
-
-
 
         if (adresseField.getText() == null || adresseField.getText().length() == 0) {
             errorMessage += "Surface invalide!\n";

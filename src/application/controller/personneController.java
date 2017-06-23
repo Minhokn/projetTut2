@@ -34,6 +34,11 @@ public class personneController implements Initializable {
 
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 
+	/**
+	 * Initialisation des personnes
+	 * @param arg0
+	 * @param arg1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nomColonne.setPrefWidth(100);
@@ -56,17 +61,25 @@ public class personneController implements Initializable {
 		refreshData();
 	}
 
-
+	/**
+	 * Editer les clients
+	 */
 	public void editClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
 			newFenetre(personTable.getSelectionModel().getSelectedItem());
 		}
 	}
 
+	/**
+	 * Ajouter un client
+	 */
 	public void addClient() {
 		newFenetre(null);
 	}
 
+	/**
+	 * Supprimer un client
+	 */
 	public void deleteClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
 			new database().deleteClient(personTable.getSelectionModel().getSelectedItem());
@@ -74,7 +87,10 @@ public class personneController implements Initializable {
 		}
 	}
 
-
+	/**
+	 * Ouvrir la fenettre edit client
+	 * @param client
+	 */
 	public void newFenetre(Client client) {
 
 		Stage primaryStage = new Stage();

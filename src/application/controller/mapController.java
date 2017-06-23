@@ -33,6 +33,9 @@ public class mapController implements APIGoogleMap {
     private List<Champ> listChamps;
     private List<Champ> listChampsClient;
 
+    /**
+     * Initialisation de la map
+     */
     public void initialize() {
         map=new Maps("map");
         map.setParent(googleMaps);
@@ -40,13 +43,6 @@ public class mapController implements APIGoogleMap {
         listChamps = new database().recupererChamps();
         listAgriculeur = new database().recupererAgriculteurs();
 
-/*
-        NdC.getItems().setAll(listClients);
-        NdC.setValue(NdC.getItems().get(0));
-
-
-
-        listChampsClient=new database().recupererChampsClient(NdC.getValue().getId());*/
 
         triClient.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -72,14 +68,14 @@ public class mapController implements APIGoogleMap {
             triClient.getItems().add(item);
         }
 
-/*
-        AdC.getItems().setAll(listChampsClient);
-        AdC.setValue(AdC.getItems().get(0));*/
+
 
 
     }
 
-
+    /**
+     * Rafraichissement de la map
+     */
     public void rafraichissementMap(){
         System.out.println(Main.getMeJson().toString());
 
