@@ -131,6 +131,7 @@ public class commandeController implements Initializable {
 	}
 
 	//les 4 verifierXX permettent de decocher oui si non est coché et vice versa
+
 	@FXML
 	public void verifierOR(){
 		if(nonR.isSelected()){
