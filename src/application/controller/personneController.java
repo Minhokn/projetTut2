@@ -83,7 +83,7 @@ public class personneController implements Initializable {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/application/view/editerPersonne.fxml"));
 			Parent root = loader.load();
-			primaryStage.setTitle("Edit Person");
+			primaryStage.setTitle("Editer Personne");
 
 			EditPersonneController controller = loader.getController();
 

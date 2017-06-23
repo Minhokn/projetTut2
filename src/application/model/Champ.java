@@ -131,64 +131,31 @@ public class Champ {
         this.cult_ch = cult_ch;
     }
 
-    /**
-     *
-     * @return l'etat du champ
-     */
+
     public int getEtat() {
         return etat;
     }
 
-    /**
-     * Definie l'etat du champ
-     * @param etat
-     */
+
     public void setEtat(int etat) {
         this.etat = etat;
     }
 
-    /**
-     *
-     * @return les coordonnees GPS
-     */
+
     public String getGPS_ch() {
         return GPS_ch;
     }
 
-    /**
-     * Defeinie les coordonnees GPS
-     * @param gPS_ch
-     */
+
     public void setGPS_ch(String gPS_ch) {
         GPS_ch = gPS_ch;
     }
 
-    /**
-     *
-     * @return un Json pour les infos du champ
-     */
     public String getJson(){
         return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
                 + cult_ch + "\",\"proprio\": \"" + client + "\",\"etat\": \""
                 + etat + "\",\"surface\": \"" + surf_ch + "\"},\"geometry\":"
                 + GPS_ch + "}";
-
-
-        /*return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"culture\": \""
-                + cult_ch + "\",\"proprio\": \"" + client + "\",\"bottelage\": \""
-                + etat + "\",\"transport\": \"" + "-transport(o/n)-" + "\"},\"geometry\":"
-                + GPS_ch + "}";*/
-
-
-
-
-
-
-
-        /*return "{\"type\":\"Feature\",\"properties\":{\"NUM_ILOT\": \"" + id_ch + "\",\"Culture\": \""
-                + cult_ch + "\",\"Client\": \"" + client + "\",\"etat\": \""
-                + etat + "\",\"Surface\": \"" + surf_ch + "\"},\"geometry\":"
-                + GPS_ch + "}";*/
         }
 
     /**
@@ -202,11 +169,12 @@ public class Champ {
             longi += points[i].getX();
             lat += points[i].getY();
         }
+        System.out.println(lat / points.length +"                   " + longi / points.length);
         return new Point(lat / points.length, longi / points.length);
     }
 
     /**
-     * Redefinition du toString
+     * Re
      * @return
      */
     @Override

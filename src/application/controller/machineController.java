@@ -70,7 +70,7 @@ public class machineController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/application/view/editerMachine.fxml"));
 			Parent root = loader.load();
-			primaryStage.setTitle("Edit Person");
+			primaryStage.setTitle("Editer Machine");
 
 			EditMachineController controller = loader.getController();
 			controller.setMachineController(this);

@@ -4,6 +4,7 @@ import application.model.Champ;
 import application.model.Client;
 import application.model.database;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -28,6 +29,17 @@ public class EditChampController {
 
     private List<Client> listClients;
 
+
+
+    /**
+     * boite de dialogue si erreur
+     */
+    private Stage dialogStage;
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
+
     public void initialize() {
         listClients = new database().recupererClients();
         clientField.getItems().setAll(listClients);
@@ -38,7 +50,7 @@ public class EditChampController {
     }
 
     public void handleOk() {
-        if(champSelected != null) {
+        if(champSelected != null || rentrerInvalide()) {
             champSelected.setId_ch(clientField.getValue().getId());
             champSelected.setSurf_ch(Integer.parseInt(surfaceField.getText()));
             champSelected.setAdr_ch(adresseField.getText());
@@ -80,5 +92,57 @@ public class EditChampController {
 
     public void setChampController(champController champController) {
         this.champController = champController;
+    }
+
+
+
+
+    private boolean rentrerInvalide() {
+        String errorMessage = "";
+
+
+
+
+
+
+
+
+        if (adresseField.getText() == null || adresseField.getText().length() == 0) {
+            errorMessage += "Surface invalide!\n";
+        }
+        if (coordoneeCentreField.getText() == null || coordoneeCentreField.getText().length() == 0) {
+            errorMessage += "Coodonne centre invalide!\n";
+        }
+        if (coordoneeGPSField.getText() == null || coordoneeGPSField.getText().length() == 0) {
+            errorMessage += "Coordonée GPS invalide!\n";
+        }
+
+        if (surfaceField.getText() == null || surfaceField.getText().length() == 0) {
+            errorMessage += "Surface invalide!\n";
+        } else {
+            try {
+                Integer.parseInt(surfaceField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "Rentrez une surface en chiffre ! \n";
+            }
+        }
+        if (typeField.getText() == null || typeField.getText().length() == 0) {
+            errorMessage += "Type invalide!\n";
+        }
+
+
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message.
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(dialogStage);
+            alert.setTitle("Erreur de renseignement");
+            alert.setHeaderText("Veuillez corriger les errreurs");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+            return false;
+        }
     }
 }

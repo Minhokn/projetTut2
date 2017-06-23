@@ -62,6 +62,7 @@ public class database {
 
 
     }
+
     public List<Client> recupererAgriculteurs() {
 
         List<Client> liste = new ArrayList<Client>();
@@ -160,7 +161,7 @@ public class database {
     }
 
     public List<Champ> recupererChamps() {
-        for(Champ c : recupererChampsClient(-1)){
+        for (Champ c : recupererChampsClient(-1)) {
             Main.getMeJson().addChamp(c);
         }
         System.out.println("lol");
@@ -175,7 +176,7 @@ public class database {
         try {
             Statement stat = connexion.createStatement();
             String request = "SELECT * FROM champs INNER JOIN agriculteur ON agriculteur.id_cl=champs.id_cl";
-            if(id_cl >= 0)
+            if (id_cl >= 0)
                 request += " WHERE agriculteur.id_cl='" + id_cl + "'";
 
             ResultSet resultat = stat.executeQuery(request);
@@ -207,13 +208,14 @@ public class database {
 
 
     }
+
     public List<Commande> recupererCommande(int id_ch) {
 
         List<Commande> liste = new ArrayList<>();
         try {
             Statement stat = connexion.createStatement();
             String request = "SELECT * FROM champs INNER JOIN commande ON commande.id_ch=champs.id_ch";
-            if(id_ch >= 0)
+            if (id_ch >= 0)
                 request += " WHERE champs.ID_Ch='" + id_ch + "'";
 
             ResultSet resultat = stat.executeQuery(request);
@@ -250,12 +252,13 @@ public class database {
 
 
     }
-    public Client clientFromChamp(int id_cl){
-        Client cl=null;
+
+    public Client clientFromChamp(int id_cl) {
+        Client cl = null;
         try {
             Statement stat = connexion.createStatement();
 
-            ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur WHERE agriculteur.id_cl='"+id_cl+"'");
+            ResultSet resultat = stat.executeQuery("SELECT * FROM agriculteur WHERE agriculteur.id_cl='" + id_cl + "'");
             while (resultat.next()) {
                 cl = new Client(
                         resultat.getInt("ID_Cl"),
@@ -329,9 +332,9 @@ public class database {
 
             ResultSet resultat = stat.executeQuery("SELECT DISTINCT * FROM moissonneuses JOIN vehicule WHERE Moissonneuses.Id_Mach=vehicule.Id_Mach");
             while (resultat.next()) {
-                liste.add( new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
-                        resultat.getInt("Etat"),resultat.getInt("Cons_R_Moi"),resultat.getInt("Cons_F_Moi"),resultat.getInt("Taille_T_Moi"),
-                        resultat.getInt("Large_C_Moi"),resultat.getInt("Large_Moi"),resultat.getInt("Hauteur_Moi"), resultat.getInt("Poids_Moi"),
+                liste.add(new Moissoneuse(resultat.getInt("ID_Moi"), resultat.getString("Marque"), resultat.getString("Modèle"),
+                        resultat.getInt("Etat"), resultat.getInt("Cons_R_Moi"), resultat.getInt("Cons_F_Moi"), resultat.getInt("Taille_T_Moi"),
+                        resultat.getInt("Large_C_Moi"), resultat.getInt("Large_Moi"), resultat.getInt("Hauteur_Moi"), resultat.getInt("Poids_Moi"),
                         resultat.getInt("Taille_R_Moi")));
             }
 
@@ -349,8 +352,8 @@ public class database {
 
             ResultSet resultat = stat.executeQuery("SELECT * FROM tracteurs JOIN vehicule WHERE tracteurs.Id_Mach=vehicule.Id_Mach");
             while (resultat.next()) {
-                liste.add(new Tracteur(resultat.getInt("ID_Trac"), resultat.getString("Marque"), resultat.getString("Modèle"),resultat.getInt("Etat")
-                ,resultat.getString("Capacité_Trac")));
+                liste.add(new Tracteur(resultat.getInt("ID_Trac"), resultat.getString("Marque"), resultat.getString("Modèle"), resultat.getInt("Etat")
+                        , resultat.getString("Capacité_Trac")));
             }
 
         } catch (SQLException e) {
@@ -360,11 +363,10 @@ public class database {
     }
 
 
-
     public void addBotteleuse(String type) {
         try {
             Statement stat = connexion.createStatement();
-            stat.executeUpdate("INSERT INTO vehicule(type) VALUES('" + type+ "')");
+            stat.executeUpdate("INSERT INTO vehicule(type) VALUES('" + type + "')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -374,32 +376,84 @@ public class database {
         if (b != null) {
             try {
                 Statement stat = connexion.createStatement();
-                stat.executeUpdate("UPDATE botteleuse SET ID_Bot='" + b.getId()+ "',Type_Bot='" + b.getType() );
+                stat.executeUpdate("UPDATE botteleuse SET ID_Bot='" + b.getId() + "',Type_Bot='" + b.getType());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static double nbrDuréeMoisson() {
-        // TODO Auto-generated method stub
-        return 8.74;
+    public static int nbrDuréeMoisson() {
+
+        int value = 0;
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("Select AVG(Duree) as DureeRecolte from CONTENIR");
+            if (resultat.next()) {
+                value = resultat.getInt("DureeRecolte");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return value;
+
     }
 
-    public static double nbrDistanceKM() {
-        // TODO Auto-generated method stub
-        return 2.8;
+    public static int nbrDistanceKM() {
+
+        int value = 0;
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("Select AVG(Dist) as DistanceParcourue FROM CONTENIR;");
+            if (resultat.next()) {
+                value = resultat.getInt("DistanceParcourue");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
     }
 
-    public static double nbrTonneRecoltées() {
-        // TODO Auto-generated method stub
-        return 15.4;
+    public static int nbrTonneRecoltées() {
+
+        int value = 0;
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("Select AVG(Tonnes_Rec) as TonneRecoltee from COMMANDE;");
+            if (resultat.next()) {
+                value = resultat.getInt("TonneRecoltee");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
     }
 
-    public static double nbrTonnesParHectar() {
-        // TODO Auto-generated method stub
-        return 3.5;
+    public static int nbrTonnesParHectar() {
+
+        int value = 0;
+        try {
+            Statement stat = connexion.createStatement();
+
+            ResultSet resultat = stat.executeQuery("Select AVG(Tonnes_Rec/Surf_Ch) as TonnesRecolteeSurface from COMMANDE join CHAMPS on CHAMPS.ID_Ch=COMMANDE.ID_Ch;");
+            if (resultat.next()) {
+                value = resultat.getInt("TonnesRecolteeSurface");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
     }
-
-
 }

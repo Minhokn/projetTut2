@@ -78,7 +78,7 @@ public class champController{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/application/view/editerChamps.fxml"));
             Parent root = loader.load();
-            primaryStage.setTitle("Edit Person");
+            primaryStage.setTitle("Editer Champ");
 
             EditChampController controller = loader.getController();
 
@@ -102,4 +102,9 @@ public class champController{
         champs.setAll(new database().recupererChamps());
         champsTableau.getItems().setAll(champs);
     }
+
+
+
+
+
 }
