@@ -5,6 +5,9 @@ package application.model;
  */
 public class Commande {
 
+    /*
+       Attributs
+     */
     private int id_Com;
     private String date_Com;
     private String bott_Com;
@@ -16,6 +19,9 @@ public class Commande {
     private String rav_Com;
     private String esc_Com;
 
+    /*
+    Constructeurs
+     */
     public Commande(int id_Com, String date_Com, String bott_Com, String trans_Com, float tailleMax_Com, float tonnes_Rec_Com, float cout_Com, Champ champ_Com, String rav_Com, String esc_Com) {
         this.id_Com = id_Com;
         this.date_Com = date_Com;
@@ -28,6 +34,7 @@ public class Commande {
         this.rav_Com=rav_Com;
         this.esc_Com=esc_Com;
     }
+
     public Commande( String bott_Com, String trans_Com, Champ champ_Com, String rav_Com, String esc_Com) {
         this.bott_Com = bott_Com;
         this.trans_Com = trans_Com;
@@ -36,7 +43,9 @@ public class Commande {
         this.esc_Com=esc_Com;
     }
 
-
+    /*
+        getters et setters
+     */
     public String getRav_Com() {
         return rav_Com;
     }
@@ -117,6 +126,9 @@ public class Commande {
         this.champ_Com = champ_Com;
     }
 
+    /*
+    redéfinition du toString
+     */
     @Override
     public String toString(){
         return "[ "+champ_Com.getClient()+" ] "+champ_Com+" ("+date_Com+")";

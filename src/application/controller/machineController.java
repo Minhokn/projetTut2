@@ -37,6 +37,7 @@ public class machineController {
 	private ObservableList<Machine> machineList = FXCollections.observableArrayList();
 
 	public void initialize() {
+		//prépare les colonnes de la TableView
 		marqueColonne.setPrefWidth(100);
 		marqueColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMarque()));
 		modeleColonne.setPrefWidth(100);
@@ -52,17 +53,19 @@ public class machineController {
 			newFenetre(machineTableau.getSelectionModel().getSelectedItem());
 		}
 	}
+	//ouvre une fenetre pour ouvrir une machine
 	public void addMachine() {
 		newFenetre(null);
 	}
-
+	//supprime une machine
 	public void deleteMachine() {
 		if (machineTableau.getSelectionModel().getSelectedItem() != null) {
 			new database().deleteMachine(machineTableau.getSelectionModel().getSelectedItem().getId());
 			refreshData();
 		}
 	}
-	
+
+	//ouvre la fenêtre de modification/d'ajout
 	public void newFenetre(Machine machine) {
 		Stage primaryStage = new Stage();
 		try {
@@ -86,7 +89,7 @@ public class machineController {
 			e1.printStackTrace();
 		}
 	}
-
+	//rafraichi les deonnées de la TableView
 	public void refreshData() {
 		machineList.setAll(new database().recupererMachine());
 		machineTableau.getItems().setAll(machineList);

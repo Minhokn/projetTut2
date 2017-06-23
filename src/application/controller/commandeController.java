@@ -129,6 +129,8 @@ public class commandeController implements Initializable {
 	public void adduneMoissonneuse(){
 		viewMoissonneuse.getItems().add(moissonneuseSelector.getValue());
 	}
+
+	//les 4 verifierXX permettent de decocher oui si non est coché et vice versa
 	@FXML
 	public void verifierOR(){
 		if(nonR.isSelected()){
@@ -153,19 +155,25 @@ public class commandeController implements Initializable {
 			ouiE.setSelected(false);
 		}
 	}
+
+	//permet de valider une commande @NOTDONE
 	@FXML
     public void valider(){
 
     }
+
+    //renvoie oui si oui est selectionné pour le ravitaillement et non dans le cas contraire
     public String yonR(){
         if (ouiR.isSelected())return "Oui";
         else return "Non";
     }
+	//renvoie oui si oui est selectionné pour l'escorte et non dans le cas contraire
     public String yonE(){
         if (ouiE.isSelected())return "Oui";
         else return "Non";
     }
 
+    //permet d'affecter des machines à un champ et de créer une commande
     @FXML
 	public void affecter(){
 		if(viewMoissonneuse.getItems().size()!=0 && viewTracteur.getItems().size()!=0){

@@ -36,6 +36,7 @@ public class personneController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//préparation des colonnes
 		nomColonne.setPrefWidth(100);
 		nomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
 		prenomColonne.setPrefWidth(100);
@@ -44,6 +45,7 @@ public class personneController implements Initializable {
 		clients.addAll(new database().recupererClients());
 		personTable.getItems().setAll(clients);
 
+		//rempli la TableView
 		personTable.setOnMouseClicked(e -> {
 			Client client = personTable.getSelectionModel().getSelectedItem();
 			nomLabel.setText(client.getNom());
@@ -56,13 +58,14 @@ public class personneController implements Initializable {
 		refreshData();
 	}
 
-
+	//ouvre une fenêtre de modification des clients
 	public void editClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
 			newFenetre(personTable.getSelectionModel().getSelectedItem());
 		}
 	}
 
+	//ouvre une fenêtre d'ajout de client
 	public void addClient() {
 		newFenetre(null);
 	}
@@ -74,6 +77,7 @@ public class personneController implements Initializable {
 		}
 	}
 
+	//fonction qui ouvre la fenêtre
 
 	public void newFenetre(Client client) {
 
@@ -102,6 +106,7 @@ public class personneController implements Initializable {
 		}
 	}
 
+	//rafraichi els données
 	public void refreshData() {
 
         clients.setAll(new database().recupererClients());

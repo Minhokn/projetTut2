@@ -41,6 +41,7 @@ public class champController{
 
 
     public void initialize() {
+        //prépare les colonnes de la TableView
         surface.setPrefWidth(100);
         surface.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getSurf_ch()));
         adresse.setPrefWidth(100);
@@ -53,12 +54,14 @@ public class champController{
         refreshData();
     }
 
+    //ouvre la fenêtre  de mofification des champs
     public void editChamp() {
         if (champsTableau.getSelectionModel().getSelectedItem() != null) {
             newFenetre(champsTableau.getSelectionModel().getSelectedItem());
         }
     }
 
+    // ouvre une fenêtre pour ajouter un champ
     public void addChamp() {
         newFenetre(null);
     }
@@ -70,6 +73,7 @@ public class champController{
         }
     }
 
+    //ouvre la fenêtre de modification/ajout de champ
     public void newFenetre(Champ champ) {
 
         Stage primaryStage = new Stage();
@@ -98,6 +102,7 @@ public class champController{
 
     }
 
+    //permet de rafraîchir les TableViews pour les mettre à jour dès qu'une opération est faite
     public void refreshData() {
         champs.setAll(new database().recupererChamps());
         champsTableau.getItems().setAll(champs);

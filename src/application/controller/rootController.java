@@ -33,7 +33,6 @@ public class rootController implements Initializable {
 		 * Charger la page d'accuil
 		 */
 		loadFXML("maps.fxml");
-		
 		accueil.setOnAction(arg0 -> loadFXML("maps.fxml"));
 		commande.setOnAction(arg0 -> loadFXML("passerCommande.fxml"));
 		champs.setOnAction(arg0 -> loadFXML("champVue.fxml"));
@@ -43,7 +42,7 @@ public class rootController implements Initializable {
 
 	}
 	
-	
+
 	public void loadFXML(String file) {
 		try {
 			Parent contenu = FXMLLoader.load(getClass().getResource("/application/view/"+file));
