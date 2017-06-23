@@ -164,8 +164,8 @@ public class database {
         for (Champ c : recupererChampsClient(-1)) {
             Main.getMeJson().addChamp(c);
         }
-        System.out.println("lol");
-        System.out.println(Main.getMeJson().toString());
+
+
 
         return recupererChampsClient(-1);
     }
