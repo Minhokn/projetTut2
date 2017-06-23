@@ -58,7 +58,7 @@
                         <Label fx:id="nomLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="telLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="addrLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="typeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="typeLabel"  GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                      <padding>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
