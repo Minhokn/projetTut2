@@ -34,9 +34,13 @@ public class personneController implements Initializable {
 
 	private ObservableList<Client> clients = FXCollections.observableArrayList();
 
+	/**
+	 * Initialisation des personnes
+	 * @param arg0
+	 * @param arg1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//préparation des colonnes
 		nomColonne.setPrefWidth(100);
 		nomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
 		prenomColonne.setPrefWidth(100);
@@ -45,7 +49,6 @@ public class personneController implements Initializable {
 		clients.addAll(new database().recupererClients());
 		personTable.getItems().setAll(clients);
 
-		//rempli la TableView
 		personTable.setOnMouseClicked(e -> {
 			Client client = personTable.getSelectionModel().getSelectedItem();
 			nomLabel.setText(client.getNom());
@@ -58,18 +61,25 @@ public class personneController implements Initializable {
 		refreshData();
 	}
 
-	//ouvre une fenêtre de modification des clients
+	/**
+	 * Editer les clients
+	 */
 	public void editClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
 			newFenetre(personTable.getSelectionModel().getSelectedItem());
 		}
 	}
 
-	//ouvre une fenêtre d'ajout de client
+	/**
+	 * Ajouter un client
+	 */
 	public void addClient() {
 		newFenetre(null);
 	}
 
+	/**
+	 * Supprimer un client
+	 */
 	public void deleteClient() {
 		if (personTable.getSelectionModel().getSelectedItem() != null) {
 			new database().deleteClient(personTable.getSelectionModel().getSelectedItem());
@@ -77,8 +87,10 @@ public class personneController implements Initializable {
 		}
 	}
 
-	//fonction qui ouvre la fenêtre
-
+	/**
+	 * Ouvrir la fenettre edit client
+	 * @param client
+	 */
 	public void newFenetre(Client client) {
 
 		Stage primaryStage = new Stage();
@@ -106,7 +118,6 @@ public class personneController implements Initializable {
 		}
 	}
 
-	//rafraichi els données
 	public void refreshData() {
 
         clients.setAll(new database().recupererClients());

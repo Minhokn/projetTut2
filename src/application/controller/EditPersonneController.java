@@ -38,11 +38,17 @@ public class EditPersonneController {
         this.dialogStage = dialogStage;
     }
 
+    /**
+     * Initialisation
+     */
     public void initialize() {
         typeField.getItems().setAll("Agriculteur", "Coop");
 
     }
 
+    /**
+     * Si on appui sur le bouton ok on ajoute le client ssi tous les champs sont rentrés sauf prenom
+     */
     public void handleOk() {
         if(clientSelected != null || rentrerInvalide()) {
             clientSelected.setPrenom(prenomField.getText());
@@ -61,11 +67,17 @@ public class EditPersonneController {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
-
+    /**
+     * Boutton annulé
+     */
     public void handleCancel() {
         ((Stage) vbox.getScene().getWindow()).close();
     }
 
+    /**
+     * Selection d'un client
+     * @param client
+     */
     public void setClientSelected(Client client) {
         this.clientSelected = client;
 
@@ -81,9 +93,10 @@ public class EditPersonneController {
     }
 
 
-
-
-
+    /**
+     * Verification des champs
+     * @return
+     */
     private boolean rentrerInvalide() {
         String errorMessage = "";
 
